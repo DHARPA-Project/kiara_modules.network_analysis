@@ -274,6 +274,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
+    network_graph.add_centrality_calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#network_graphadd_nodes" class="md-nav__link">
     network_graph.add_nodes
   </a>
@@ -475,6 +482,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
+    network_graph.add_centrality_calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#network_graphadd_nodes" class="md-nav__link">
     network_graph.add_nodes
   </a>
@@ -556,6 +570,93 @@
 <p class="admonition-title">Note</p>
 </div>
 <p>The formatting here will be improved later on, for now this should be enough to get the important details of each module type.</p>
+<h2 id="network_graphadd_centrality_calculations"><code>network_graph.add_centrality_calculations</code><a class="headerlink" href="#network_graphadd_centrality_calculations" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          -- n/a --                                             
+
+ Origin                                                                         
+                          Authors   Markus Binsteiner (markus@frkl.io)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    AddCentralityCalculationsModule         
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+                              graph: Graph = inputs.get_value_data(&quot;graph&quot;)     
+                              graph = copy.deepcopy(graph)                      
+
+                              # degree                                          
+                              degree_dict = graph.degree()                      
+                              nx.set_node_attributes(                           
+                                  graph, dict(degree_dict), inputs.get_value…   
+                              )                                                 
+
+                              # isolated                                        
+                              isolated_flag_dict = {id: True for id in nx.is…   
+                              nx.set_node_attributes(                           
+                                  graph, isolated_flag_dict, inputs.get_valu…   
+                              )                                                 
+
+                              if nx.is_directed(graph):                         
+                                  graph = typing.cast(nx.DiGraph, graph)        
+
+                                  # indegree                                    
+                                  indegree_dict = graph.in_degree()             
+                                  nx.set_node_attributes(                       
+                                      graph,                                    
+                                      dict(indegree_dict),                      
+                                      inputs.get_value_data(&quot;indegree_proper…   
+                                  )                                             
+
+                                  # outdegree                                   
+                                  outdegree_dict = graph.out_degree()           
+                                  nx.set_node_attributes(                       
+                                      graph,                                    
+                                      dict(outdegree_dict),                     
+                                      inputs.get_value_data(&quot;outdegree_prope…   
+                                  )                                             
+
+                              # eigenvector                                     
+                              # betweenness                                     
+                              betweenness_dict = nx.betweenness_centrality(g…   
+                              eigenvector_dict = nx.eigenvector_centrality(g…   
+
+                              nx.set_node_attributes(                           
+                                  graph, betweenness_dict, inputs.get_value_…   
+                              )                                                 
+                              nx.set_node_attributes(                           
+                                  graph, eigenvector_dict, inputs.get_value_…   
+                              )                                                 
+
+                              outputs.set_value(&quot;graph&quot;, graph)                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
 <h2 id="network_graphadd_nodes"><code>network_graph.add_nodes</code><a class="headerlink" href="#network_graphadd_nodes" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
                           Add nodes to an existing graph.                       
@@ -1097,6 +1198,12 @@
                                                     edges                       
                           density         boolean   Calculate the    no         
                                                     graph density.              
+                          degrees         boolean   Calculate the    no         
+                                                    graph degrees               
+                                                    metrics.                    
+                          shortest_path   boolean   Calculate the    no         
+                                                    graph shortest              
+                                                    path.                       
 
  Module config          -- no config --                                         
  Python class                                                                   
@@ -1118,6 +1225,30 @@
                               if self.get_config_value(&quot;density&quot;):              
                                   density = nx.density(graph)                   
                                   outputs.set_values(density=density)           
+
+                              if self.get_config_value(&quot;degrees&quot;):              
+
+                                  nodes_count: int = graph.number_of_nodes()    
+
+                                  if nodes_count &gt; 0:                           
+                                      if nx.is_directed(graph):                 
+                                          digraph = typing.cast(nx.DiGraph, …   
+                                          outputs.set_values(                   
+                                              average_in_degree=sum(d for _,…   
+                                              / float(nodes_count),             
+                                              average_out_degree=sum(d for _…   
+                                              / float(nodes_count),             
+                                          )                                     
+                                      else:                                     
+                                          outputs.set_values(                   
+                                              average_degree=sum(d for _, d …   
+                                              / float(nodes_count)              
+                                          )                                     
+                              if self.get_config_value(&quot;shortest_path&quot;):        
+                                  if nx.is_weakly_connected(graph):             
+                                      outputs.set_values(                       
+                                          average_shortest_path_length=nx.av…   
+                                      )                                         
 
                          ─────────────────────────────────────────────────────  
 </code></pre></div>
