@@ -572,10 +572,11 @@
 <p>The formatting here will be improved later on, for now this should be enough to get the important details of each module type.</p>
 <h2 id="network_graphadd_centrality_calculations"><code>network_graph.add_centrality_calculations</code><a class="headerlink" href="#network_graphadd_centrality_calculations" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
-                          -- n/a --                                             
+                          Add centrality properties to a graph.                 
 
  Origin                                                                         
                           Authors   Markus Binsteiner (markus@frkl.io)          
+                                    Roman Kalyakin (roman@kalyakin.com)         
 
  Context                                                                        
                           Tags         network_analysis                         
@@ -606,6 +607,7 @@
 
  Processing source code  ─────────────────────────────────────────────────────  
                           def process(self, inputs: ValueSet, outputs: Value…   
+
                               graph: Graph = inputs.get_value_data(&quot;graph&quot;)     
                               graph = copy.deepcopy(graph)                      
 
