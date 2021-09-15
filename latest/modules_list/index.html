@@ -1247,10 +1247,12 @@
                                               / float(nodes_count)              
                                           )                                     
                               if self.get_config_value(&quot;shortest_path&quot;):        
-                                  if nx.is_weakly_connected(graph):             
-                                      outputs.set_values(                       
-                                          average_shortest_path_length=nx.av…   
-                                      )                                         
+                                  # TODO: double check why the &#39;if&#39; was deem…   
+                                  # TODO: rename config option to &#39;average_s…   
+                                  # if nx.is_weakly_connected(graph):           
+                                  outputs.set_values(                           
+                                      average_shortest_path_length=nx.averag…   
+                                  )                                             
 
                          ─────────────────────────────────────────────────────  
 </code></pre></div>
