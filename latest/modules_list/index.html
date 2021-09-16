@@ -1228,12 +1228,13 @@
                                   density = nx.density(graph)                   
                                   outputs.set_values(density=density)           
 
+                              # TODO: rename config value to &#39;average_degree…   
                               if self.get_config_value(&quot;degrees&quot;):              
 
                                   nodes_count: int = graph.number_of_nodes()    
 
-                                  if nodes_count &gt; 0:                           
-                                      if nx.is_directed(graph):                 
+                                  if nx.is_directed(graph):                     
+                                      if nodes_count &gt; 0:                       
                                           digraph = typing.cast(nx.DiGraph, …   
                                           outputs.set_values(                   
                                               average_in_degree=sum(d for _,…   
@@ -1242,10 +1243,16 @@
                                               / float(nodes_count),             
                                           )                                     
                                       else:                                     
+                                          outputs.set_values(average_in_degr…   
+                                  else:                                         
+                                      if nodes_count:                           
                                           outputs.set_values(                   
                                               average_degree=sum(d for _, d …   
                                               / float(nodes_count)              
                                           )                                     
+                                      else:                                     
+                                          outputs.set_values(average_degree=…   
+
                               if self.get_config_value(&quot;shortest_path&quot;):        
                                   # TODO: double check why the &#39;if&#39; was deem…   
                                   # TODO: rename config option to &#39;average_s…   
