@@ -2815,11 +2815,11 @@ from it.</p>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">):</span>
         <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_directed</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_directed</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_undirected</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">undirected</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
         <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">directed</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">undirected</span>
 
     <span class="n">input_values</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;base_path&quot;</span><span class="p">:</span> <span class="n">base_path</span><span class="p">,</span>
