@@ -1534,7 +1534,7 @@
     <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
 <span class="p">]:</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">},</span>
         <span class="s2">&quot;node_attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
             <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The table containing node attributes.&quot;</span><span class="p">,</span>
@@ -1584,7 +1584,7 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
     <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
 <span class="p">]:</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">}}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">}}</span>
 </code></pre></div>
         </details>
     </div>
@@ -1738,17 +1738,17 @@
         <span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
             <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the column that contains the edge source in edges table.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the edge source column.&quot;</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="s2">&quot;target_column&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
             <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the column that contains the edge target in the edges table.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the edge target column.&quot;</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="s2">&quot;weight_column&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
             <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the column that contains the edge weight in edges table.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the weight column.&quot;</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">}</span>
 
@@ -1756,7 +1756,7 @@
         <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;graph_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
             <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;directed&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The type of the graph. Allowed: &#39;undirected&#39;, &#39;directed&#39;, &#39;multi_directed&#39;, &#39;multi_undirected&#39;.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The type of the graph.&quot;</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="k">return</span> <span class="n">inputs</span>
 </code></pre></div>
