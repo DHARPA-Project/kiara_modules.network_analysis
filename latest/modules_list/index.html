@@ -969,8 +969,7 @@
 
 <h2 id="network_graphfrom_edges_table"><code>network_graph.from_edges_table</code><a class="headerlink" href="#network_graphfrom_edges_table" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
-                          Create a directed network graph object from table     
-                          data.                                                 
+                          Create a network graph object from table data.        
 
  Origin                                                                         
                           Authors   Lena Jaskov (helena.jaskov@uni.lu)          
@@ -1046,11 +1045,16 @@
                               )                                                 
                               pandas_table = min_table.to_pandas()              
 
-                              if graph_type != GraphTypesEnum.directed:         
-                                  raise NotImplementedError(&quot;Only &#39;directed&#39;…   
-                              graph_cls = nx.DiGraph                            
+                              if graph_type is GraphTypesEnum.undirected:       
+                                  graph_cls = nx.Graph                          
+                              elif graph_type is GraphTypesEnum.directed:       
+                                  graph_cls = nx.DiGraph                        
+                              elif graph_type is GraphTypesEnum.multi_direct…   
+                                  graph_cls = nx.MultiDiGraph                   
+                              elif graph_type is GraphTypesEnum.multi_undire…   
+                                  graph_cls = nx.MultiGraph                     
 
-                              graph: nx.DiGraph = nx.from_pandas_edgelist(      
+                              graph = nx.from_pandas_edgelist(                  
                                   pandas_table,                                 
                                   source_column,                                
                                   target_column,                                
