@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -1165,7 +1165,11 @@
  Processing source code  ─────────────────────────────────────────────────────  
                           def process(self, inputs: ValueSet, outputs: Value…   
 
-                              value = inputs.get_value_obj(&quot;value_item&quot;)        
+                              input_name = self.value_type                      
+                              if input_name == &quot;any&quot;:                           
+                                  input_name = &quot;value_item&quot;                     
+
+                              value = inputs.get_value_obj(input_name)          
                               if self.value_type != &quot;any&quot; and value.type_nam…   
                                   raise KiaraProcessingException(               
                                       f&quot;Can&#39;t extract metadata for value of …   
@@ -1176,7 +1180,7 @@
                               outputs.set_value(&quot;metadata_item_schema&quot;, self…   
                               metadata = self.extract_metadata(value)           
                               if isinstance(metadata, BaseModel):               
-                                  metadata = metadata.dict()                    
+                                  metadata = metadata.dict(exclude_none=True)   
 
                               # TODO: validate metadata?                        
                               outputs.set_value(&quot;metadata_item&quot;, metadata)      
@@ -1327,10 +1331,29 @@
                               value_id: str = inputs.get_value_data(&quot;value_i…   
                               if not value_id:                                  
                                   raise KiaraProcessingException(&quot;No value i…   
-                              value_obj: Value = inputs.get_value_obj(&quot;value…   
+
+                              field_name = self.get_config_value(&quot;value_type…   
+                              if field_name == &quot;any&quot;:                           
+                                  field_name = &quot;value_item&quot;                     
+
+                              value_obj: Value = inputs.get_value_obj(field_…   
                               base_path: str = inputs.get_value_data(&quot;base_p…   
 
-                              load_config = self.save_value(value=value_obj,…   
+                              result = self.save_value(value=value_obj, base…   
+                              if isinstance(result, typing.Mapping):            
+                                  load_config = result                          
+                                  result_value = value_obj                      
+                              elif isinstance(result, tuple):                   
+                                  load_config = result[0]                       
+                                  if result[1]:                                 
+                                      result_value = result[1]                  
+                                  else:                                         
+                                      result_value = value_obj                  
+                              else:                                             
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid result type for &#39;save_value&#39;…   
+                                  )                                             
+
                               load_config[&quot;value_id&quot;] = value_id                
 
                               lc = LoadConfig(**load_config)                    
@@ -1340,7 +1363,9 @@
                                       f&quot;Invalid load config: base path &#39;{lc.…   
                                   )                                             
 
-                              outputs.set_values(load_config=lc)                
+                              outputs.set_values(                               
+                                  metadata=None, lineage=None, **{&quot;load_conf…   
+                              )                                                 
 
                          ─────────────────────────────────────────────────────  
 </code></pre></div>

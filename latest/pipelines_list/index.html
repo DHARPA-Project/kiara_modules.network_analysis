@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
     
     
       
@@ -752,7 +752,7 @@
                      &quot;defaults&quot;: {},                                            
                      &quot;steps&quot;: [                                                 
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.import_from.path.string&quot;,         
+                         &quot;module_type&quot;: &quot;file.import_from.local.file_path&quot;,     
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -762,7 +762,7 @@
                          &quot;input_links&quot;: {}                                      
                        },                                                       
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.import_from.path.string&quot;,         
+                         &quot;module_type&quot;: &quot;file.import_from.local.file_path&quot;,     
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -783,7 +783,7 @@
                            &quot;value_item&quot;: [                                      
                              {                                                  
                                &quot;step_id&quot;: &quot;read_edges_file&quot;,                    
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
+                               &quot;value_name&quot;: &quot;file&quot;,                            
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
@@ -801,7 +801,7 @@
                            &quot;value_item&quot;: [                                      
                              {                                                  
                                &quot;step_id&quot;: &quot;read_nodes_file&quot;,                    
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
+                               &quot;value_name&quot;: &quot;file&quot;,                            
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
@@ -872,10 +872,8 @@
                        }                                                        
                      ],                                                         
                      &quot;input_aliases&quot;: {                                         
-                       &quot;read_edges_file__source&quot;: &quot;edges_path&quot;,                 
-                       &quot;read_edges_file__aliases&quot;: &quot;edges_file_aliases&quot;,        
-                       &quot;read_nodes_file__source&quot;: &quot;nodes_path&quot;,                 
-                       &quot;read_nodes_file__aliases&quot;: &quot;nodes_file_aliases&quot;,        
+                       &quot;read_edges_file__file&quot;: &quot;edges_path&quot;,                   
+                       &quot;read_nodes_file__file&quot;: &quot;nodes_path&quot;,                   
                        &quot;create_graph__source_column&quot;: &quot;source_column&quot;,          
                        &quot;create_graph__target_column&quot;: &quot;target_column&quot;,          
                        &quot;create_graph__weight_column&quot;: &quot;weight_column&quot;,          
