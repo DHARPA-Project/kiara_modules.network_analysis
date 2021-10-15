@@ -1277,10 +1277,18 @@
                               if self.get_config_value(&quot;shortest_path&quot;):        
                                   # TODO: double check why the &#39;if&#39; was deem…   
                                   # TODO: rename config option to &#39;average_s…   
-                                  if nx.is_weakly_connected(graph):             
-                                      outputs.set_values(                       
-                                          average_shortest_path_length=nx.av…   
-                                      )                                         
+                                  if nx.is_directed(graph):                     
+                                      if nx.is_weakly_connected(graph):         
+                                          outputs.set_values(                   
+                                              average_shortest_path_length=n…   
+                                          )                                     
+                                  elif nx.is_directed(graph) != True:           
+                                      if nx.is_connected(graph):                
+                                          outputs.set_values(                   
+                                              average_shortest_path_length=n…   
+                                          )                                     
+                                  else:                                         
+                                      raise NetworkXError(&quot;Graph is disconne…   
 
                          ─────────────────────────────────────────────────────  
 </code></pre></div>
