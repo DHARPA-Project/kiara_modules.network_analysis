@@ -399,33 +399,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule" class="md-nav__link">
-    AddNodesToNetworkGraphModule
-  </a>
-  
-    <nav class="md-nav" aria-label="AddNodesToNetworkGraphModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_input_schema" class="md-nav__link">
-    create_input_schema()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_output_schema" class="md-nav__link">
-    create_output_schema()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="md-nav__link">
     AugmentNetworkGraphModule
   </a>
@@ -828,33 +801,6 @@
         
           <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_output_schema" class="md-nav__link">
-    create_output_schema()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule" class="md-nav__link">
-    AddNodesToNetworkGraphModule
-  </a>
-  
-    <nav class="md-nav" aria-label="AddNodesToNetworkGraphModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_input_schema" class="md-nav__link">
-    create_input_schema()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_output_schema" class="md-nav__link">
     create_output_schema()
   </a>
   
@@ -1348,136 +1294,6 @@
 
 
 
-<h2 id="kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule" class="doc doc-heading">
-        <code>AddNodesToNetworkGraphModule</code>
-
-
-
-<a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule" class="headerlink" title="Permanent link">&para;</a></h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Add nodes to an existing graph.</p>
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h3 id="kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_input_schema" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
-
-<a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
-<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
-<p>{
-  "[input_field_name]: {
-      "type": "[value_type]",
-      "doc<em>": "[a description of this input]",
-      "optional</em>': [boolean whether this input is optional or required (defaults to 'False')]
-  "[other_input_field_name]: {
-      "type: ...
-      ...
-  }</p>
-
-        <details class="quote">
-          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
-    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
-<span class="p">]:</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">},</span>
-        <span class="s2">&quot;node_attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The table containing node attributes.&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;index_column_name&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the column that contains the node index in the node attributes table.&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">}</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h3 id="kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_output_schema" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
-
-<a href="#kiara_modules.network_analysis.network_graph.AddNodesToNetworkGraphModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
-<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
-<p>{
-  "[output_field_name]: {
-      "type": "[value_type]",
-      "doc*": "[a description of this output]"
-  "[other_input_field_name]: {
-      "type: ...
-      ...
-  }</p>
-
-        <details class="quote">
-          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
-    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
-<span class="p">]:</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">}}</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-class">
-
-
-
 <h2 id="kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="doc doc-heading">
         <code>AugmentNetworkGraphModule</code>
 
@@ -1488,6 +1304,8 @@
     <div class="doc doc-contents ">
 
       <p>Augment an existing graph with node attributes.</p>
+<p>This module takes an existing graph object, and a table containing node attributes, and uses the latter to add attributes
+to existing graph nodes using one colum as the index to match table rows to graph nodes.</p>
 
 
 
@@ -1684,6 +1502,8 @@
     <div class="doc doc-contents ">
 
       <p>Create a network graph object from table data.</p>
+<p>The table data must have (at least) 2 columns, one that contains source items, and on for targets. Each row in that
+table indicates an edge in the network graph that is created.</p>
 
 
 

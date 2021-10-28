@@ -286,13 +286,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#network_graphadd_nodes" class="md-nav__link">
-    network_graph.add_nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#network_graphaugment" class="md-nav__link">
     network_graph.augment
   </a>
@@ -508,13 +501,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#network_graphadd_nodes" class="md-nav__link">
-    network_graph.add_nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#network_graphaugment" class="md-nav__link">
     network_graph.augment
   </a>
@@ -678,76 +664,15 @@
                          ─────────────────────────────────────────────────────  
 </code></pre></div>
 
-<h2 id="network_graphadd_nodes"><code>network_graph.add_nodes</code><a class="headerlink" href="#network_graphadd_nodes" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code> Documentation                                                                  
-                          Add nodes to an existing graph.                       
-
- Origin                                                                         
-                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
-
- Context                                                                        
-                          Tags         network_analysis                         
-                          Labels       package:                                 
-                                       kiara_modules.network_analysis           
-                          References   source_repo:                             
-                                       https://github.com/DHARPA-Project/kia…   
-                                       documentation:                           
-                                       https://dharpa.org/kiara_modules.netw…   
-                                       module_doc:                              
-                                       https://dharpa.org/kiara_modules.netw…   
-                                       source_url:                              
-                                       https://github.com/DHARPA-Project/kia…   
-
- Module config                                                                  
-                          Field       Type     Description           Required   
-                         ─────────────────────────────────────────────────────  
-                          constants   object   Value constants for   no         
-                                               this module.                     
-                          defaults    object   Value defaults for    no         
-                                               this module.                     
-
- Module config          -- no config --                                         
- Python class                                                                   
-                          class_name    AddNodesToNetworkGraphModule            
-                          module_name   kiara_modules.network_analysis.netwo…   
-                          full_name     kiara_modules.network_analysis.netwo…   
-
- Processing source code  ─────────────────────────────────────────────────────  
-                          def process(self, inputs: ValueSet, outputs: Value…   
-
-                              import pyarrow as pa                              
-
-                              nodes_table_value = inputs.get_value_obj(&quot;node…   
-
-                              if nodes_table_value.is_none:                     
-                                  # we return the graph as is                   
-                                  # we are using the &#39;get_value_obj&#39; method,…   
-                                  # actual data at all                          
-                                  outputs.set_value(&quot;graph&quot;, inputs.get_valu…   
-                                  return                                        
-
-                              input_graph: Graph = inputs.get_value_data(&quot;gr…   
-                              graph: Graph = copy.deepcopy(input_graph)         
-
-                              nodes_table_obj: pa.Table = nodes_table_value.…   
-                              nodes_table_index = inputs.get_value_data(&quot;ind…   
-
-                              attr_dict = (                                     
-                                  nodes_table_obj.to_pandas()                   
-                                  .set_index(nodes_table_index)                 
-                                  .to_dict(&quot;index&quot;)                             
-                                  .items()                                      
-                              )                                                 
-                              graph.add_nodes_from(attr_dict)                   
-
-                              outputs.set_value(&quot;graph&quot;, graph)                 
-
-                         ─────────────────────────────────────────────────────  
-</code></pre></div>
-
 <h2 id="network_graphaugment"><code>network_graph.augment</code><a class="headerlink" href="#network_graphaugment" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
                           Augment an existing graph with node attributes.       
+
+                          This module takes an existing graph object, and a     
+                          table containing node attributes, and uses the        
+                          latter to add attributes to existing graph nodes      
+                          using one colum as the index to match table rows to   
+                          graph nodes.                                          
 
  Origin                                                                         
                           Authors   Lena Jaskov (helena.jaskov@uni.lu)          
@@ -970,6 +895,11 @@
 <h2 id="network_graphfrom_edges_table"><code>network_graph.from_edges_table</code><a class="headerlink" href="#network_graphfrom_edges_table" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
                           Create a network graph object from table data.        
+
+                          The table data must have (at least) 2 columns, one    
+                          that contains source items, and on for targets.       
+                          Each row in that table indicates an edge in the       
+                          network graph that is created.                        
 
  Origin                                                                         
                           Authors   Lena Jaskov (helena.jaskov@uni.lu)          
