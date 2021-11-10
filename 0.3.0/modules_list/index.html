@@ -1,0 +1,1393 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Markus Binsteiner">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Included modules - kiara_modules.network_analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#available-module-types" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="kiara_modules.network_analysis" class="md-header__button md-logo" aria-label="kiara_modules.network_analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kiara_modules.network_analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Included modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/DHARPA-project/kiara_modules.network_analysis/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="kiara_modules.network_analysis" class="md-nav__button md-logo" aria-label="kiara_modules.network_analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    kiara_modules.network_analysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/DHARPA-project/kiara_modules.network_analysis/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Included modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Included modules
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
+    network_graph.add_centrality_calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphaugment" class="md-nav__link">
+    network_graph.augment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphcomponents" class="md-nav__link">
+    network_graph.components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfind_shortest_path" class="md-nav__link">
+    network_graph.find_shortest_path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfrom_edges_table" class="md-nav__link">
+    network_graph.from_edges_table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfrom_file" class="md-nav__link">
+    network_graph.from_file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphmetadata" class="md-nav__link">
+    network_graph.metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphproperties" class="md-nav__link">
+    network_graph.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphsave" class="md-nav__link">
+    network_graph.save
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipelines_list/" class="md-nav__link">
+        Included pipelines
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          API reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis/" class="md-nav__link">
+        kiara_modules.network_analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.metadata_schemas/" class="md-nav__link">
+        ➜ metadata_schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.network_graph/" class="md-nav__link">
+        ➜ network_graph
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.pipelines/" class="md-nav__link">
+        ➜ pipelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.value_types/" class="md-nav__link">
+        ➜ value_types
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
+    network_graph.add_centrality_calculations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphaugment" class="md-nav__link">
+    network_graph.augment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphcomponents" class="md-nav__link">
+    network_graph.components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfind_shortest_path" class="md-nav__link">
+    network_graph.find_shortest_path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfrom_edges_table" class="md-nav__link">
+    network_graph.from_edges_table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphfrom_file" class="md-nav__link">
+    network_graph.from_file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphmetadata" class="md-nav__link">
+    network_graph.metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphproperties" class="md-nav__link">
+    network_graph.properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_graphsave" class="md-nav__link">
+    network_graph.save
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="available-module-types">Available module types<a class="headerlink" href="#available-module-types" title="Permanent link">&para;</a></h1>
+<p>This page contains a list of all available <em>Kiara</em> module types, and their details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The formatting here will be improved later on, for now this should be enough to get the important details of each module type.</p>
+<h2 id="network_graphadd_centrality_calculations"><code>network_graph.add_centrality_calculations</code><a class="headerlink" href="#network_graphadd_centrality_calculations" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Add centrality properties to a graph.                 
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+                                    Roman Kalyakin (roman@kalyakin.com)         
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    AddCentralityCalculationsModule         
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              graph: Graph = inputs.get_value_data(&quot;graph&quot;)     
+                              graph = copy.deepcopy(graph)                      
+
+                              # degree                                          
+                              degree_dict = graph.degree()                      
+                              nx.set_node_attributes(                           
+                                  graph, dict(degree_dict), inputs.get_value…   
+                              )                                                 
+
+                              # isolated                                        
+                              isolated_flag_dict = {id: True for id in nx.is…   
+                              nx.set_node_attributes(                           
+                                  graph, isolated_flag_dict, inputs.get_valu…   
+                              )                                                 
+
+                              if nx.is_directed(graph):                         
+                                  graph = typing.cast(nx.DiGraph, graph)        
+
+                                  # indegree                                    
+                                  indegree_dict = graph.in_degree()             
+                                  nx.set_node_attributes(                       
+                                      graph,                                    
+                                      dict(indegree_dict),                      
+                                      inputs.get_value_data(&quot;indegree_proper…   
+                                  )                                             
+
+                                  # outdegree                                   
+                                  outdegree_dict = graph.out_degree()           
+                                  nx.set_node_attributes(                       
+                                      graph,                                    
+                                      dict(outdegree_dict),                     
+                                      inputs.get_value_data(&quot;outdegree_prope…   
+                                  )                                             
+
+                              # eigenvector                                     
+                              # betweenness                                     
+                              betweenness_dict = nx.betweenness_centrality(g…   
+                              eigenvector_dict = nx.eigenvector_centrality(g…   
+
+                              nx.set_node_attributes(                           
+                                  graph, betweenness_dict, inputs.get_value_…   
+                              )                                                 
+                              nx.set_node_attributes(                           
+                                  graph, eigenvector_dict, inputs.get_value_…   
+                              )                                                 
+
+                              outputs.set_value(&quot;graph&quot;, graph)                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphaugment"><code>network_graph.augment</code><a class="headerlink" href="#network_graphaugment" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Augment an existing graph with node attributes.       
+
+                          This module takes an existing graph object, and a     
+                          table containing node attributes, and uses the        
+                          latter to add attributes to existing graph nodes      
+                          using one colum as the index to match table rows to   
+                          graph nodes.                                          
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    AugmentNetworkGraphModule               
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              import pyarrow as pa                              
+
+                              nodes_table_value = inputs.get_value_obj(&quot;node…   
+
+                              if not nodes_table_value or nodes_table_value.…   
+                                  # we return the graph as is                   
+                                  # we are using the &#39;get_value_obj&#39; method,…   
+                                  # actual data at all                          
+                                  outputs.set_value(&quot;graph&quot;, inputs.get_valu…   
+                                  return                                        
+
+                              input_graph: Graph = inputs.get_value_data(&quot;gr…   
+                              graph: Graph = copy.deepcopy(input_graph)         
+
+                              nodes_table_obj: pa.Table = nodes_table_value.…   
+                              nodes_table_index = inputs.get_value_data(&quot;ind…   
+                              if nodes_table_index not in nodes_table_obj.co…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Node attribute table does not have a…   
+                                  )                                             
+
+                              attr_dict = (                                     
+                                  nodes_table_obj.to_pandas()                   
+                                  .set_index(nodes_table_index)                 
+                                  .to_dict(&quot;index&quot;)                             
+                                  .items()                                      
+                              )                                                 
+                              graph.add_nodes_from(attr_dict)                   
+
+                              outputs.set_value(&quot;graph&quot;, graph)                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphcomponents"><code>network_graph.components</code><a class="headerlink" href="#network_graphcomponents" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Extract component information from a graph.           
+
+                          In particular, this module can calculate the number   
+                          of components of a graph, and extract the largest     
+                          sub-component from it.                                
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field            Type      Description     Required   
+                         ─────────────────────────────────────────────────────  
+                          constants        object    Value           no         
+                                                     constants for              
+                                                     this module.               
+                          defaults         object    Value           no         
+                                                     defaults for               
+                                                     this module.               
+                          find_largest_…   boolean   Find the        no         
+                                                     largest                    
+                                                     component of               
+                                                     a graph.                   
+                          number_of_com…   boolean   Count the       no         
+                                                     number of                  
+                                                     components.                
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    GrpahComponentsModule                   
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              # TODO: check whether we need to deepcopy the …   
+
+                              input_graph: Graph = inputs.get_value_data(&quot;gr…   
+                              if self.get_config_value(&quot;find_largest_compone…   
+                                  undir_graph = nx.to_undirected(input_graph)   
+                                  undir_components = nx.connected_components…   
+                                  lg_component = max(undir_components, key=l…   
+                                  subgraph = input_graph.subgraph(lg_compone…   
+                                  outputs.set_values(largest_component=subgr…   
+
+                              if self.get_config_value(&quot;number_of_components…   
+                                  undir_graph = nx.to_undirected(input_graph)   
+                                  number_of_components = nx.number_connected…   
+
+                                  outputs.set_values(number_of_components=nu…   
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphfind_shortest_path"><code>network_graph.find_shortest_path</code><a class="headerlink" href="#network_graphfind_shortest_path" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Find the shortest path between two nodes in a         
+                          network graph.                                        
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+                          mode        string   Whether to            no         
+                                               calculate one                    
+                                               shortest path for                
+                                               only one pair                    
+                                               (&#39;single-pair&#39;), or              
+                                               use two node lists               
+                                               as input and select              
+                                               one of the                       
+                                               following                        
+                                               strategies:                      
+                                               shortest path for                
+                                               each pair                        
+                                               (&#39;one-to-one&#39;), the              
+                                               shortest path to                 
+                                               all targets                      
+                                               (&#39;one-to-many&#39;), or              
+                                               a matrix of all                  
+                                               possible                         
+                                               combinations                     
+                                               (&#39;many-to-many&#39;).                
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    FindShortestPathModule                  
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              mode = self.get_config_value(&quot;mode&quot;)              
+                              if mode != &quot;single-pair&quot;:                         
+                                  raise NotImplementedError()                   
+
+                              graph: Graph = inputs.get_value_data(&quot;graph&quot;)     
+                              source: typing.Any = inputs.get_value_data(&quot;so…   
+                              target: typing.Any = inputs.get_value_data(&quot;ta…   
+
+                              if source not in graph.nodes:                     
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t process shortest path, source …   
+                                  )                                             
+
+                              if target not in graph.nodes:                     
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t process shortest path, target …   
+                                  )                                             
+
+                              shortest_path = nx.shortest_path(graph, source…   
+                              outputs.set_value(&quot;path&quot;, shortest_path)          
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphfrom_edges_table"><code>network_graph.from_edges_table</code><a class="headerlink" href="#network_graphfrom_edges_table" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Create a network graph object from table data.        
+
+                          The table data must have (at least) 2 columns, one    
+                          that contains source items, and on for targets.       
+                          Each row in that table indicates an edge in the       
+                          network graph that is created.                        
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          graph_type   string   The type of the      no         
+                                                graph. If not                   
+                                                specified, a                    
+                                                &#39;graph_type&#39; input              
+                                                field will be                   
+                                                added which will                
+                                                default to                      
+                                                &#39;directed&#39;.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    CreateGraphFromEdgesTableModule         
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              import pyarrow as pa                              
+
+                              if self.get_config_value(&quot;graph_type&quot;) is not …   
+                                  _graph_type = self.get_config_value(&quot;graph…   
+                              else:                                             
+                                  _graph_type = inputs.get_value_data(&quot;graph…   
+                              graph_type = GraphTypesEnum[_graph_type]          
+
+                              edges_table_value = inputs.get_value_obj(&quot;edge…   
+                              edges_table_obj: pa.Table = edges_table_value.…   
+
+                              source_column = inputs.get_value_data(&quot;source_…   
+                              target_column = inputs.get_value_data(&quot;target_…   
+                              weight_column = inputs.get_value_data(&quot;weight_…   
+
+                              errors = []                                       
+                              if source_column not in edges_table_obj.column…   
+                                  errors.append(source_column)                  
+                              if target_column not in edges_table_obj.column…   
+                                  errors.append(target_column)                  
+                              if weight_column not in edges_table_obj.column…   
+                                  errors.append(weight_column)                  
+
+                              if errors:                                        
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t create network graph, source t…   
+                                  )                                             
+
+                              min_table = edges_table_obj.select(               
+                                  (source_column, target_column, weight_colu…   
+                              )                                                 
+                              pandas_table = min_table.to_pandas()              
+
+                              if graph_type is GraphTypesEnum.undirected:       
+                                  graph_cls = nx.Graph                          
+                              elif graph_type is GraphTypesEnum.directed:       
+                                  graph_cls = nx.DiGraph                        
+                              elif graph_type is GraphTypesEnum.multi_direct…   
+                                  graph_cls = nx.MultiDiGraph                   
+                              elif graph_type is GraphTypesEnum.multi_undire…   
+                                  graph_cls = nx.MultiGraph                     
+
+                              graph = nx.from_pandas_edgelist(                  
+                                  pandas_table,                                 
+                                  source_column,                                
+                                  target_column,                                
+                                  edge_attr=True,                               
+                                  create_using=graph_cls,                       
+                              )                                                 
+                              outputs.set_value(&quot;graph&quot;, graph)                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphfrom_file"><code>network_graph.from_file</code><a class="headerlink" href="#network_graphfrom_file" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Create a graph object from a file.                    
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    CreateGraphFromFileModule               
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              input_file_type = inputs.get_value_data(&quot;input…   
+                              input_file: KiaraFile = inputs.get_value_data(…   
+
+                              if input_file_type == &quot;auto&quot;:                     
+                                  if input_file.orig_filename.endswith(&quot;.gra…   
+                                      input_file_type = &quot;graphml&quot;               
+                                  else:                                         
+                                      input_file_type = &quot;graphml&quot;               
+                                      # raise NotImplementedError()             
+
+                              if input_file_type == &quot;graphml&quot;:                  
+                                  graph = nx.read_graphml(input_file.path)      
+                              else:                                             
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid input type &#39;{input_file_type…   
+                                  )                                             
+
+                              outputs.set_value(&quot;graph&quot;, graph)                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphmetadata"><code>network_graph.metadata</code><a class="headerlink" href="#network_graphmetadata" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Extract metadata from a network graph object.         
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          value_type   string   The data type this   yes        
+                                                module will be                  
+                                                used for.                       
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    GraphMetadataModule                     
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              input_name = self.value_type                      
+                              if input_name == &quot;any&quot;:                           
+                                  input_name = &quot;value_item&quot;                     
+
+                              value = inputs.get_value_obj(input_name)          
+                              if self.value_type != &quot;any&quot; and value.type_nam…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t extract metadata for value of …   
+                                  )                                             
+
+                              # TODO: if type &#39;any&#39;, validate that the data …   
+
+                              outputs.set_value(&quot;metadata_item_schema&quot;, self…   
+                              metadata = self.extract_metadata(value)           
+                              if isinstance(metadata, BaseModel):               
+                                  metadata = metadata.dict(exclude_none=True)   
+
+                              # TODO: validate metadata?                        
+                              outputs.set_value(&quot;metadata_item&quot;, metadata)      
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphproperties"><code>network_graph.properties</code><a class="headerlink" href="#network_graphproperties" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Extract inherent properties of a network graph.       
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field           Type      Description      Required   
+                         ─────────────────────────────────────────────────────  
+                          constants       object    Value            no         
+                                                    constants for               
+                                                    this module.                
+                          defaults        object    Value defaults   no         
+                                                    for this                    
+                                                    module.                     
+                          number_of_no…   boolean   Count the        no         
+                                                    number of                   
+                                                    nodes.                      
+                          number_of_ed…   boolean   Count the        no         
+                                                    number of                   
+                                                    edges                       
+                          density         boolean   Calculate the    no         
+                                                    graph density.              
+                          degrees         boolean   Calculate the    no         
+                                                    graph degrees               
+                                                    metrics.                    
+                          shortest_path   boolean   Calculate the    no         
+                                                    graph shortest              
+                                                    path.                       
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    ExtractGraphPropertiesModule            
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              graph: Graph = inputs.get_value_data(&quot;graph&quot;)     
+
+                              if self.get_config_value(&quot;number_of_nodes&quot;):      
+                                  outputs.set_values(number_of_nodes=len(gra…   
+
+                              if self.get_config_value(&quot;number_of_edges&quot;):      
+                                  outputs.set_values(number_of_edges=len(gra…   
+
+                              if self.get_config_value(&quot;density&quot;):              
+                                  density = nx.density(graph)                   
+                                  outputs.set_values(density=density)           
+
+                              # TODO: rename config value to &#39;average_degree…   
+                              if self.get_config_value(&quot;degrees&quot;):              
+
+                                  nodes_count: int = graph.number_of_nodes()    
+
+                                  if nx.is_directed(graph):                     
+                                      if nodes_count &gt; 0:                       
+                                          digraph = typing.cast(nx.DiGraph, …   
+                                          outputs.set_values(                   
+                                              average_in_degree=sum(d for _,…   
+                                              / float(nodes_count),             
+                                              average_out_degree=sum(d for _…   
+                                              / float(nodes_count),             
+                                          )                                     
+                                      else:                                     
+                                          outputs.set_values(average_in_degr…   
+                                  else:                                         
+                                      if nodes_count:                           
+                                          outputs.set_values(                   
+                                              average_degree=sum(d for _, d …   
+                                              / float(nodes_count)              
+                                          )                                     
+                                      else:                                     
+                                          outputs.set_values(average_degree=…   
+
+                              if self.get_config_value(&quot;shortest_path&quot;):        
+                                  # TODO: double check why the &#39;if&#39; was deem…   
+                                  # TODO: rename config option to &#39;average_s…   
+                                  if nx.is_directed(graph):                     
+                                      if nx.is_weakly_connected(graph):         
+                                          outputs.set_values(                   
+                                              average_shortest_path_length=n…   
+                                                  graph                         
+                                              )                                 
+                                          )                                     
+                                  elif nx.is_directed(graph) is not True:       
+                                      if nx.is_connected(graph):                
+                                          outputs.set_values(                   
+                                              average_shortest_path_length=n…   
+                                                  graph                         
+                                              )                                 
+                                          )                                     
+                                  else:                                         
+                                      raise NetworkXError(&quot;Graph is disconne…   
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_graphsave"><code>network_graph.save</code><a class="headerlink" href="#network_graphsave" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Save a network graph object.                          
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          value_type   string   The type of the      yes        
+                                                value to save.                  
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    SaveGraphDataTypeModule                 
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              value_id: str = inputs.get_value_data(&quot;value_i…   
+                              if not value_id:                                  
+                                  raise KiaraProcessingException(&quot;No value i…   
+
+                              field_name = self.get_config_value(&quot;value_type…   
+                              if field_name == &quot;any&quot;:                           
+                                  field_name = &quot;value_item&quot;                     
+
+                              value_obj: Value = inputs.get_value_obj(field_…   
+                              base_path: str = inputs.get_value_data(&quot;base_p…   
+
+                              result = self.store_value(value=value_obj, bas…   
+                              if isinstance(result, typing.Mapping):            
+                                  load_config = result                          
+                                  result_value = value_obj                      
+                              elif isinstance(result, tuple):                   
+                                  load_config = result[0]                       
+                                  if result[1]:                                 
+                                      result_value = result[1]                  
+                                  else:                                         
+                                      result_value = value_obj                  
+                              else:                                             
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid result type for &#39;store_value…   
+                                  )                                             
+
+                              load_config[&quot;value_id&quot;] = value_id                
+
+                              lc = LoadConfig(**load_config)                    
+
+                              if lc.base_path_input_name and lc.base_path_in…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid load config: base path &#39;{lc.…   
+                                  )                                             
+
+                              outputs.set_values(                               
+                                  metadata=None, lineage=None, **{&quot;load_conf…   
+                              )                                                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Usage
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../pipelines_list/" class="md-footer__link md-footer__link--next" aria-label="Next: Included pipelines" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Included pipelines
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>

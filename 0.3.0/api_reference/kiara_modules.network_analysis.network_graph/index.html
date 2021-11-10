@@ -1,0 +1,2832 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Markus Binsteiner">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>➜ network_graph - kiara_modules.network_analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kiara_modulesnetwork_analysisnetwork_graph" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="kiara_modules.network_analysis" class="md-header__button md-logo" aria-label="kiara_modules.network_analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            kiara_modules.network_analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ➜ network_graph
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/DHARPA-project/kiara_modules.network_analysis/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="kiara_modules.network_analysis" class="md-nav__button md-logo" aria-label="kiara_modules.network_analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    kiara_modules.network_analysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/DHARPA-project/kiara_modules.network_analysis/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules_list/" class="md-nav__link">
+        Included modules
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pipelines_list/" class="md-nav__link">
+        Included pipelines
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          API reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          API reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiara_modules.network_analysis/" class="md-nav__link">
+        kiara_modules.network_analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiara_modules.network_analysis.metadata_schemas/" class="md-nav__link">
+        ➜ metadata_schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ➜ network_graph
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ➜ network_graph
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph" class="md-nav__link">
+    kiara_modules.network_analysis.network_graph
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule" class="md-nav__link">
+    AddCentralityCalculationsModule
+  </a>
+  
+    <nav class="md-nav" aria-label="AddCentralityCalculationsModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="md-nav__link">
+    AugmentNetworkGraphModule
+  </a>
+  
+    <nav class="md-nav" aria-label="AugmentNetworkGraphModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig" class="md-nav__link">
+    CreateGraphConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig.graph_type" class="md-nav__link">
+    graph_type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule" class="md-nav__link">
+    CreateGraphFromEdgesTableModule
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphFromEdgesTableModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule" class="md-nav__link">
+    CreateGraphFromFileModule
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphFromFileModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule" class="md-nav__link">
+    ExtractGraphPropertiesModule
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtractGraphPropertiesModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig" class="md-nav__link">
+    ExtractGraphPropertiesModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtractGraphPropertiesModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.degrees" class="md-nav__link">
+    degrees
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.density" class="md-nav__link">
+    density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_edges" class="md-nav__link">
+    number_of_edges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_nodes" class="md-nav__link">
+    number_of_nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.shortest_path" class="md-nav__link">
+    shortest_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig" class="md-nav__link">
+    FindLargestComponentsModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="FindLargestComponentsModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.find_largest_component" class="md-nav__link">
+    find_largest_component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.number_of_components" class="md-nav__link">
+    number_of_components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule" class="md-nav__link">
+    FindShortestPathModule
+  </a>
+  
+    <nav class="md-nav" aria-label="FindShortestPathModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig" class="md-nav__link">
+    FindShortestPathModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="FindShortestPathModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig.mode" class="md-nav__link">
+    mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GraphMetadataModule" class="md-nav__link">
+    GraphMetadataModule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GraphTypesEnum" class="md-nav__link">
+    GraphTypesEnum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule" class="md-nav__link">
+    GrpahComponentsModule
+  </a>
+  
+    <nav class="md-nav" aria-label="GrpahComponentsModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="md-nav__link">
+    SaveGraphDataTypeModule
+  </a>
+  
+    <nav class="md-nav" aria-label="SaveGraphDataTypeModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="md-nav__link">
+    store_value()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiara_modules.network_analysis.pipelines/" class="md-nav__link">
+        ➜ pipelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kiara_modules.network_analysis.value_types/" class="md-nav__link">
+        ➜ value_types
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph" class="md-nav__link">
+    kiara_modules.network_analysis.network_graph
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule" class="md-nav__link">
+    AddCentralityCalculationsModule
+  </a>
+  
+    <nav class="md-nav" aria-label="AddCentralityCalculationsModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="md-nav__link">
+    AugmentNetworkGraphModule
+  </a>
+  
+    <nav class="md-nav" aria-label="AugmentNetworkGraphModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig" class="md-nav__link">
+    CreateGraphConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig.graph_type" class="md-nav__link">
+    graph_type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule" class="md-nav__link">
+    CreateGraphFromEdgesTableModule
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphFromEdgesTableModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule" class="md-nav__link">
+    CreateGraphFromFileModule
+  </a>
+  
+    <nav class="md-nav" aria-label="CreateGraphFromFileModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule" class="md-nav__link">
+    ExtractGraphPropertiesModule
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtractGraphPropertiesModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig" class="md-nav__link">
+    ExtractGraphPropertiesModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="ExtractGraphPropertiesModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.degrees" class="md-nav__link">
+    degrees
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.density" class="md-nav__link">
+    density
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_edges" class="md-nav__link">
+    number_of_edges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_nodes" class="md-nav__link">
+    number_of_nodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.shortest_path" class="md-nav__link">
+    shortest_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig" class="md-nav__link">
+    FindLargestComponentsModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="FindLargestComponentsModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.find_largest_component" class="md-nav__link">
+    find_largest_component
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.number_of_components" class="md-nav__link">
+    number_of_components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule" class="md-nav__link">
+    FindShortestPathModule
+  </a>
+  
+    <nav class="md-nav" aria-label="FindShortestPathModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig" class="md-nav__link">
+    FindShortestPathModuleConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="FindShortestPathModuleConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig.mode" class="md-nav__link">
+    mode
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GraphMetadataModule" class="md-nav__link">
+    GraphMetadataModule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GraphTypesEnum" class="md-nav__link">
+    GraphTypesEnum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule" class="md-nav__link">
+    GrpahComponentsModule
+  </a>
+  
+    <nav class="md-nav" aria-label="GrpahComponentsModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_input_schema" class="md-nav__link">
+    create_input_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_output_schema" class="md-nav__link">
+    create_output_schema()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="md-nav__link">
+    SaveGraphDataTypeModule
+  </a>
+  
+    <nav class="md-nav" aria-label="SaveGraphDataTypeModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="md-nav__link">
+    store_value()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/DHARPA-project/kiara_modules.network_analysis/edit/master/src/kiara_modules.network_analysis/network_graph.py" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="kiara_modulesnetwork_analysisnetwork_graph">kiara_modules.network_analysis.network_graph<a class="headerlink" href="#kiara_modulesnetwork_analysisnetwork_graph" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="kiara_modules.network_analysis.network_graph"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule" class="doc doc-heading">
+        <code>AddCentralityCalculationsModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Add centrality properties to a graph.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ValueSchema</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;network_graph&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;degree_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;indegree_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;indegree&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;outdegree_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;outdegree&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;isolated_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;isolated&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;betweenness_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;betweenness&quot;</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;eigenvector_property_name&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;eigenvector&quot;</span>
+        <span class="p">),</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AddCentralityCalculationsModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ValueSchema</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="n">ValueSchema</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;network_graph&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="doc doc-heading">
+        <code>AugmentNetworkGraphModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Augment an existing graph with node attributes.</p>
+<p>This module takes an existing graph object, and a table containing node attributes, and uses the latter to add attributes
+to existing graph nodes using one colum as the index to match table rows to graph nodes.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;node_attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The table containing node attributes.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;index_column_name&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the column that contains the node index in the node attributes table.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.AugmentNetworkGraphModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">}}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.CreateGraphConfig" class="doc doc-heading">
+        <code>CreateGraphConfig</code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.CreateGraphConfig.graph_type" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">graph_type</span><span class="p">:</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphConfig.graph_type" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>The type of the graph. If not specified, a 'graph_type' input field will be added which will default to 'directed'.</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule" class="doc doc-heading">
+        <code>CreateGraphFromEdgesTableModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a network graph object from table data.</p>
+<p>The table data must have (at least) 2 columns, one that contains source items, and on for targets. Each row in that
+table indicates an edge in the network graph that is created.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;edges_table&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The table to extract the edges from.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the edge source column.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;target_column&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the edge target column.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;weight_column&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The name of the weight column.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;graph_type&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;graph_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;undirected&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The type of the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">return</span> <span class="n">inputs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromEdgesTableModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The (networkx) graph object.&quot;</span><span class="p">},</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule" class="doc doc-heading">
+        <code>CreateGraphFromFileModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a graph object from a file.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">inputs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The file that contains the graph data.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;input_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;The input file type, supported: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SUPPORTED_INPUT_FILE_TYPES</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">inputs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.CreateGraphFromFileModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">outputs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">outputs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule" class="doc doc-heading">
+        <code>ExtractGraphPropertiesModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Extract inherent properties of a network graph.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">}}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">result</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;number_of_nodes&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_nodes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of nodes in the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;number_of_edges&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_edges&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of edges in the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;density&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The density of the graph.&quot;</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;degrees&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;average_degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Average degree of the graph if it is not directed.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;average_in_degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Average in degree of the graph if it is directed.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;average_out_degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Average out degree of the graph if it is directed.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;shortest_path&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;average_shortest_path_length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Average shortest path length (only computed when graph is weekly connected).&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig" class="doc doc-heading">
+        <code>ExtractGraphPropertiesModuleConfig</code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.degrees" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">degrees</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.degrees" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculate the graph degrees metrics.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.density" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">density</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.density" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculate the graph density.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_edges" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">number_of_edges</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_edges" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Count the number of edges</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_nodes" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">number_of_nodes</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.number_of_nodes" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Count the number of nodes.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.shortest_path" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">shortest_path</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.ExtractGraphPropertiesModuleConfig.shortest_path" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculate the graph shortest path.</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig" class="doc doc-heading">
+        <code>FindLargestComponentsModuleConfig</code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.find_largest_component" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">find_largest_component</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.find_largest_component" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Find the largest component of a graph.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.number_of_components" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">number_of_components</span><span class="p">:</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.FindLargestComponentsModuleConfig.number_of_components" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Count the number of components.</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.FindShortestPathModule" class="doc doc-heading">
+        <code>FindShortestPathModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Find the shortest path between two nodes in a network graph.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;single-pair&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;source_node&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The id of the source node.&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;target_node&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The id of the target node.&quot;</span><span class="p">},</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;source_nodes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The ids of the source nodes.&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;target_nodes&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The ids of the target nodes.&quot;</span><span class="p">},</span>
+        <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;single-pair&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The shortest path between two nodes.&quot;</span><span class="p">}</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;paths&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A table with &#39;source&#39;, &#39;target&#39; and &#39;path&#39; column.&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig" class="doc doc-heading">
+        <code>FindShortestPathModuleConfig</code>
+
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig.mode" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">mode</span><span class="p">:</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.network_graph.FindShortestPathModuleConfig.mode" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Whether to calculate one shortest path for only one pair ('single-pair'), or use two node lists as input and select one of the following strategies: shortest path for each pair ('one-to-one'), the shortest path to all targets ('one-to-many'), or a matrix of all possible combinations ('many-to-many').</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.GraphMetadataModule" class="doc doc-heading">
+        <code>GraphMetadataModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.GraphMetadataModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Extract metadata from a network graph object.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.GraphTypesEnum" class="doc doc-heading">
+        <code>GraphTypesEnum</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.GraphTypesEnum" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>An enumeration.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.GrpahComponentsModule" class="doc doc-heading">
+        <code>GrpahComponentsModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Extract component information from a graph.</p>
+<p>In particular, this module can calculate the number of components of a graph, and extract the largest sub-component
+from it.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_input_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_input_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_input_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the input schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[input_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this input]",
+          "optional*': [boolean whether this input is optional or required (defaults to 'False')]
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_input_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network graph.&quot;</span><span class="p">}}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_output_schema" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_output_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_output_schema" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Abstract method to implement by child classes, returns a description of the output schema of this module.</p>
+<p>If returning a dictionary of dictionaries, the format of the return value is as follows (items with '*' are optional):</p>
+<p><code>{
+      "[output_field_name]: {
+          "type": "[value_type]",
+          "doc*": "[a description of this output]"
+      "[other_input_field_name]: {
+          "type: ...
+          ...
+      }</code></p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_output_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span>
+    <span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">ValueSchema</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span>
+<span class="p">]:</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;find_largest_component&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;largest_component&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The largest connected component of the graph, as a new graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_value</span><span class="p">(</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">):</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of components in the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="doc doc-heading">
+        <code>SaveGraphDataTypeModule</code>
+
+
+
+<a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Save a network graph object.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">store_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Save the value, and return the load config needed to load it again.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">store_value</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
+    <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
+    <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
+<span class="p">]:</span>
+
+    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
+    <span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">feather</span>
+
+    <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">):</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_directed</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">):</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_undirected</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">):</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">directed</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">undirected</span>
+
+    <span class="n">input_values</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;base_path&quot;</span><span class="p">:</span> <span class="n">base_path</span><span class="p">,</span>
+        <span class="s2">&quot;edges_file_format&quot;</span><span class="p">:</span> <span class="s2">&quot;feather&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nodes_file_format&quot;</span><span class="p">:</span> <span class="s2">&quot;feather&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_SOURCE_COLUMN_NAME</span><span class="p">,</span>
+        <span class="s2">&quot;target_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_TARGET_COLUMN_NAME</span><span class="p">,</span>
+        <span class="s2">&quot;weight_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_WEIGHT_COLUMN_NAME</span><span class="p">,</span>
+        <span class="s2">&quot;nodes_table_index&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">,</span>
+        <span class="s2">&quot;graph_type&quot;</span><span class="p">:</span> <span class="n">graph_type</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">edges_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_SAVE_GRAPH_EDGES_TABLE_NAME</span><span class="si">}</span><span class="s2">.feather&quot;</span>
+    <span class="n">edges_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">edges_file_name</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_edgelist</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
+    <span class="n">edges_table</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">preserve_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># edge_attr_keys = set([k for n in graph.edges for k in graph.edges[n].keys()])</span>
+    <span class="c1"># edge_attr_keys.add(weight_column_name)</span>
+
+    <span class="n">feather</span><span class="o">.</span><span class="n">write_feather</span><span class="p">(</span><span class="n">edges_table</span><span class="p">,</span> <span class="n">edges_path</span><span class="p">)</span>
+    <span class="n">input_values</span><span class="p">[</span><span class="s2">&quot;edges_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_file_name</span>
+
+    <span class="n">nodes_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_NAME</span><span class="si">}</span><span class="s2">.feather&quot;</span>
+    <span class="n">nodes_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">nodes_file_name</span><span class="p">)</span>
+
+    <span class="n">node_attr_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+    <span class="k">if</span> <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
+        <span class="n">node_attr_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">)</span>
+
+    <span class="n">nodes_dict</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
+        <span class="n">nodes_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+        <span class="n">nodes_dict</span><span class="p">[</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
+            <span class="n">attr</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">nodes_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+
+    <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pydict</span><span class="p">(</span><span class="n">nodes_dict</span><span class="p">)</span>
+    <span class="n">feather</span><span class="o">.</span><span class="n">write_feather</span><span class="p">(</span><span class="n">nodes_table</span><span class="p">,</span> <span class="n">nodes_path</span><span class="p">)</span>
+    <span class="n">input_values</span><span class="p">[</span><span class="s2">&quot;nodes_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_file_name</span>
+
+    <span class="n">load_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;base_path_input_name&quot;</span><span class="p">:</span> <span class="s2">&quot;base_path&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;module_type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph.load&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="n">input_values</span><span class="p">,</span>
+        <span class="s2">&quot;output_name&quot;</span><span class="p">:</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">load_config</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../kiara_modules.network_analysis.metadata_schemas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ➜ metadata_schemas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ➜ metadata_schemas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../kiara_modules.network_analysis.pipelines/" class="md-footer__link md-footer__link--next" aria-label="Next: ➜ pipelines" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ➜ pipelines
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>
