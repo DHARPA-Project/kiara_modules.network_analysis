@@ -752,7 +752,7 @@
                      &quot;defaults&quot;: {},                                            
                      &quot;steps&quot;: [                                                 
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.import_from.local.file_path&quot;,     
+                         &quot;module_type&quot;: &quot;import.file.from.file_path&quot;,           
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -762,7 +762,7 @@
                          &quot;input_links&quot;: {}                                      
                        },                                                       
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.import_from.local.file_path&quot;,     
+                         &quot;module_type&quot;: &quot;import.file.from.file_path&quot;,           
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -772,7 +772,7 @@
                          &quot;input_links&quot;: {}                                      
                        },                                                       
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.convert_to.table&quot;,                
+                         &quot;module_type&quot;: &quot;create.table.from.csv_file&quot;,           
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -783,14 +783,14 @@
                            &quot;value_item&quot;: [                                      
                              {                                                  
                                &quot;step_id&quot;: &quot;read_edges_file&quot;,                    
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
+                               &quot;value_name&quot;: &quot;file&quot;,                            
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
                          }                                                      
                        },                                                       
                        {                                                        
-                         &quot;module_type&quot;: &quot;file.convert_to.table&quot;,                
+                         &quot;module_type&quot;: &quot;create.table.from.csv_file&quot;,           
                          &quot;module_config&quot;: {},                                   
                          &quot;doc&quot;: {                                               
                            &quot;description&quot;: &quot;-- n/a --&quot;,                          
@@ -801,7 +801,7 @@
                            &quot;value_item&quot;: [                                      
                              {                                                  
                                &quot;step_id&quot;: &quot;read_nodes_file&quot;,                    
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
+                               &quot;value_name&quot;: &quot;file&quot;,                            
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
@@ -819,7 +819,7 @@
                            &quot;edges_table&quot;: [                                     
                              {                                                  
                                &quot;step_id&quot;: &quot;load_edges_table&quot;,                   
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
+                               &quot;value_name&quot;: &quot;table&quot;,                           
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
@@ -844,27 +844,7 @@
                            &quot;node_attributes&quot;: [                                 
                              {                                                  
                                &quot;step_id&quot;: &quot;load_nodes_table&quot;,                   
-                               &quot;value_name&quot;: &quot;value_item&quot;,                      
-                               &quot;sub_value&quot;: null                                
-                             }                                                  
-                           ]                                                    
-                         }                                                      
-                       },                                                       
-                       {                                                        
-                         &quot;module_type&quot;: &quot;value.save&quot;,                           
-                         &quot;module_config&quot;: {                                     
-                           &quot;value_type&quot;: &quot;network_graph&quot;                        
-                         },                                                     
-                         &quot;doc&quot;: {                                               
-                           &quot;description&quot;: &quot;-- n/a --&quot;,                          
-                           &quot;doc&quot;: null                                          
-                         },                                                     
-                         &quot;step_id&quot;: &quot;save_graph&quot;,                               
-                         &quot;input_links&quot;: {                                       
-                           &quot;value_item&quot;: [                                      
-                             {                                                  
-                               &quot;step_id&quot;: &quot;augment_graph&quot;,                      
-                               &quot;value_name&quot;: &quot;graph&quot;,                           
+                               &quot;value_name&quot;: &quot;table&quot;,                           
                                &quot;sub_value&quot;: null                                
                              }                                                  
                            ]                                                    
@@ -872,8 +852,8 @@
                        }                                                        
                      ],                                                         
                      &quot;input_aliases&quot;: {                                         
-                       &quot;read_edges_file__file&quot;: &quot;edges_path&quot;,                   
-                       &quot;read_nodes_file__file&quot;: &quot;nodes_path&quot;,                   
+                       &quot;read_edges_file__file_path&quot;: &quot;edges_path&quot;,              
+                       &quot;read_nodes_file__file_path&quot;: &quot;nodes_path&quot;,              
                        &quot;create_graph__source_column&quot;: &quot;source_column&quot;,          
                        &quot;create_graph__target_column&quot;: &quot;target_column&quot;,          
                        &quot;create_graph__weight_column&quot;: &quot;weight_column&quot;,          
@@ -883,7 +863,6 @@
                        &quot;save_graph__aliases&quot;: &quot;aliases&quot;                         
                      },                                                         
                      &quot;output_aliases&quot;: {                                        
-                       &quot;save_graph__value_id&quot;: &quot;value_id&quot;,                      
                        &quot;augment_graph__graph&quot;: &quot;graph&quot;                          
                      },                                                         
                      &quot;documentation&quot;: &quot;Create a network graph from a a csv f…   
