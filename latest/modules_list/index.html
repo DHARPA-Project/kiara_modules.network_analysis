@@ -279,6 +279,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#network_datafrom_tables" class="md-nav__link">
+    network_data.from_tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datainfo" class="md-nav__link">
+    network_data.info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datametadata" class="md-nav__link">
+    network_data.metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datastore" class="md-nav__link">
+    network_data.store
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
     network_graph.add_centrality_calculations
   </a>
@@ -412,8 +440,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.defaults/" class="md-nav__link">
+        ➜ defaults
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../api_reference/kiara_modules.network_analysis.metadata_schemas/" class="md-nav__link">
         ➜ metadata_schemas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.network_data/" class="md-nav__link">
+        ➜ network_data
       </a>
     </li>
   
@@ -442,6 +498,20 @@
     <li class="md-nav__item">
       <a href="../api_reference/kiara_modules.network_analysis.pipelines/" class="md-nav__link">
         ➜ pipelines
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/kiara_modules.network_analysis.utils/" class="md-nav__link">
+        ➜ utils
       </a>
     </li>
   
@@ -492,6 +562,34 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network_datafrom_tables" class="md-nav__link">
+    network_data.from_tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datainfo" class="md-nav__link">
+    network_data.info
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datametadata" class="md-nav__link">
+    network_data.metadata
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network_datastore" class="md-nav__link">
+    network_data.store
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#network_graphadd_centrality_calculations" class="md-nav__link">
@@ -575,6 +673,422 @@
 <p class="admonition-title">Note</p>
 </div>
 <p>The formatting here will be improved later on, for now this should be enough to get the important details of each module type.</p>
+<h2 id="network_datafrom_tables"><code>network_data.from_tables</code><a class="headerlink" href="#network_datafrom_tables" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Create a graph object from a file.                    
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field       Type     Description           Required   
+                         ─────────────────────────────────────────────────────  
+                          constants   object   Value constants for   no         
+                                               this module.                     
+                          defaults    object   Value defaults for    no         
+                                               this module.                     
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    CreateGraphFromFilesModule              
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                              def process(self, inputs: ValueSet, outputs: V…   
+
+                                  edges = inputs.get_value_obj(&quot;edges&quot;)         
+                                  edges_source_column_name = inputs.get_valu…   
+                                  edges_target_column_name = inputs.get_valu…   
+
+                                  edges_columns = edges.get_metadata(&quot;table&quot;…   
+                                  if edges_source_column_name not in edges_c…   
+                                      raise KiaraProcessingException(           
+                                          f&quot;Edges table does not contain sou…   
+                                      )                                         
+                                  if edges_target_column_name not in edges_c…   
+                                      raise KiaraProcessingException(           
+                                          f&quot;Edges table does not contain tar…   
+                                      )                                         
+
+                                  nodes = inputs.get_value_obj(&quot;nodes&quot;)         
+
+                                  DEFAULT_DB_CHUNK_SIZE = 1024                  
+                                  network_data = NetworkData.create_in_temp_…   
+
+                                  added_node_ids = set()                        
+                                  edges_table: pa.Table = edges.get_value_da…   
+
+                                  id_column_name = inputs.get_value_data(&quot;id…   
+                                  label_column_name = inputs.get_value_data(…   
+                                  nodes_column_map: typing.Dict[str, str] = …   
+                                      &quot;nodes_column_map&quot;                        
+                                  )                                             
+                                  if nodes_column_map is None:                  
+                                      nodes_column_map = {}                     
+
+                                  nodes_table: typing.Optional[pa.Table] = N…   
+                                  if nodes.is_set:                              
+
+                                      if id_column_name in nodes_column_map.…   
+                                          raise KiaraProcessingException(       
+                                              &quot;The value of the &#39;id_column_n…   
+                                          )                                     
+
+                                      nodes_column_map[id_column_name] = ID_…   
+
+                                      nodes_table = nodes.get_value_data()      
+
+                                      extra_schema = []                         
+                                      if label_column_name is None:             
+                                          label_column_name = LABEL_COLUMN_N…   
+
+                                      for cn in nodes_table.column_names:       
+                                          if cn.lower() == LABEL_COLUMN_NAME…   
+                                              label_column_name = cn            
+                                              break                             
+
+                                      if LABEL_COLUMN_NAME in nodes_table.co…   
+                                          if label_column_name != LABEL_COLU…   
+                                              raise KiaraProcessingException(   
+                                                  f&quot;Can&#39;t create database fo…   
+                                              )                                 
+
+                                      if label_column_name in nodes_table.co…   
+                                          if label_column_name in nodes_colu…   
+                                              raise KiaraProcessingException(   
+                                                  &quot;The value of the &#39;label_c…   
+                                              )                                 
+                                      else:                                     
+                                          extra_schema.append(&quot;    label    …   
+
+                                      nodes_column_map[label_column_name] = …   
+                                      schema_sql = (                            
+                                          create_sqlite_schema_from_arrow_ta…   
+                                              table=nodes_table,                
+                                              table_name=&quot;nodes&quot;,               
+                                              index_columns=[&quot;id&quot;],             
+                                              column_map=nodes_column_map,      
+                                              extra_column_info={&quot;id&quot;: &quot;NOT …   
+                                              extra_schema=extra_schema,        
+                                          )                                     
+                                          + &quot;\n&quot;                                
+                                      )                                         
+
+                                  else:                                         
+                                      schema_sql = &quot;&quot;&quot;CREATE TABLE IF NOT EX…   
+                              id    INTEGER    NOT NULL UNIQUE,                 
+                              label    TEXT                                     
+                          );                                                    
+                          CREATE INDEX IF NOT EXISTS id_idx ON nodes(id);       
+                          &quot;&quot;&quot;                                                   
+
+                                  edges_column_map: typing.Dict[str, str] = …   
+                                      &quot;edges_column_map&quot;                        
+                                  )                                             
+                                  if edges_column_map is None:                  
+                                      edges_column_map = {}                     
+                                  if edges_source_column_name in edges_colum…   
+                                      raise KiaraProcessingException(           
+                                          &quot;The value of the &#39;source_column_n…   
+                                      )                                         
+                                  if edges_target_column_name in edges_colum…   
+                                      raise KiaraProcessingException(           
+                                          &quot;The value of the &#39;source_column_n…   
+                                      )                                         
+
+                                  edges_column_map[edges_source_column_name]…   
+                                  edges_column_map[edges_target_column_name]…   
+
+                                  edges_sql = create_sqlite_schema_from_arro…   
+                                      table=edges_table,                        
+                                      table_name=&quot;edges&quot;,                       
+                                      index_columns=[&quot;source&quot;, &quot;target&quot;],       
+                                      column_map=edges_column_map,              
+                                      extra_schema=[                            
+                                          &quot;    FOREIGN KEY(source) REFERENCE…   
+                                          &quot;    FOREIGN KEY(target) REFERENCE…   
+                                      ],                                        
+                                  )                                             
+
+                                  schema_sql = f&quot;{schema_sql}{edges_sql}&quot;       
+
+                                  network_data = NetworkData.create_in_temp_…   
+
+                                  # create table schema                         
+                                  network_data.execute_sql(schema_sql)          
+
+                                  # ========================================…   
+                                  # import data                                 
+
+                                  if nodes_table is not None:                   
+                                      for batch in nodes_table.to_batches(DE…   
+                                          batch_dict = batch.to_pydict()        
+
+                                          for k, v in nodes_column_map.items…   
+                                              if k in batch_dict.keys():        
+                                                  if k == ID_COLUMN_NAME and…   
+                                                      _data = batch_dict.get…   
+                                                  else:                         
+                                                      _data = batch_dict.pop…   
+                                                      if v in batch_dict.key…   
+                                                          raise Exception(      
+                                                              &quot;Duplicate nod…   
+                                                          )                     
+                                                  batch_dict[v] = _data         
+
+                                          ids = batch_dict[ID_COLUMN_NAME]      
+                                          data = [dict(zip(batch_dict, t)) f…   
+                                          network_data.insert_nodes(*data)      
+
+                                          added_node_ids.update(ids)            
+
+                                  for batch in edges_table.to_batches(DEFAUL…   
+
+                                      batch_dict = batch.to_pydict()            
+                                      for k, v in edges_column_map.items():     
+                                          if k in batch_dict.keys():            
+                                              _data = batch_dict.pop(k)         
+                                              if v in batch_dict.keys():        
+                                                  raise Exception(              
+                                                      &quot;Duplicate edges colum…   
+                                                  )                             
+                                              batch_dict[v] = _data             
+
+                                      data = [dict(zip(batch_dict, t)) for t…   
+
+                                      all_node_ids = network_data.insert_edg…   
+                                          *data,                                
+                                          existing_node_ids=added_node_ids,     
+                                      )                                         
+                                      added_node_ids.update(all_node_ids)       
+
+                                  outputs.set_value(&quot;network_data&quot;, network_…   
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_datainfo"><code>network_data.info</code><a class="headerlink" href="#network_datainfo" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Extract extended metadata (like tables, schemas)      
+                          from a database object.                               
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          value_type   string   The data type this   yes        
+                                                module will be                  
+                                                used for.                       
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    DatabaseInfoMetadataModule              
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              input_name = self.value_type                      
+                              if input_name == &quot;any&quot;:                           
+                                  input_name = &quot;value_item&quot;                     
+
+                              value = inputs.get_value_obj(input_name)          
+                              if self.value_type != &quot;any&quot; and value.type_nam…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t extract metadata for value of …   
+                                  )                                             
+
+                              # TODO: if type &#39;any&#39;, validate that the data …   
+
+                              outputs.set_value(&quot;metadata_item_schema&quot;, self…   
+                              metadata = self.extract_metadata(value)           
+                              if isinstance(metadata, BaseModel):               
+                                  metadata = metadata.dict(exclude_none=True)   
+
+                              # TODO: validate metadata?                        
+                              outputs.set_value(&quot;metadata_item&quot;, metadata)      
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_datametadata"><code>network_data.metadata</code><a class="headerlink" href="#network_datametadata" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Extract basic metadata from a database object.        
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          value_type   string   The data type this   yes        
+                                                module will be                  
+                                                used for.                       
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    DatabaseMetadataModule                  
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              input_name = self.value_type                      
+                              if input_name == &quot;any&quot;:                           
+                                  input_name = &quot;value_item&quot;                     
+
+                              value = inputs.get_value_obj(input_name)          
+                              if self.value_type != &quot;any&quot; and value.type_nam…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Can&#39;t extract metadata for value of …   
+                                  )                                             
+
+                              # TODO: if type &#39;any&#39;, validate that the data …   
+
+                              outputs.set_value(&quot;metadata_item_schema&quot;, self…   
+                              metadata = self.extract_metadata(value)           
+                              if isinstance(metadata, BaseModel):               
+                                  metadata = metadata.dict(exclude_none=True)   
+
+                              # TODO: validate metadata?                        
+                              outputs.set_value(&quot;metadata_item&quot;, metadata)      
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_datastore"><code>network_data.store</code><a class="headerlink" href="#network_datastore" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          Save network data a sqlite database file.             
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field        Type     Description          Required   
+                         ─────────────────────────────────────────────────────  
+                          constants    object   Value constants      no         
+                                                for this module.                
+                          defaults     object   Value defaults for   no         
+                                                this module.                    
+                          value_type   string   The type of the      yes        
+                                                value to save.                  
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    StoreNetworkDataTypeModule              
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              value_id: str = inputs.get_value_data(&quot;value_i…   
+                              if not value_id:                                  
+                                  raise KiaraProcessingException(&quot;No value i…   
+
+                              field_name = self.get_config_value(&quot;value_type…   
+                              if field_name == &quot;any&quot;:                           
+                                  field_name = &quot;value_item&quot;                     
+
+                              value_obj: Value = inputs.get_value_obj(field_…   
+                              base_path: str = inputs.get_value_data(&quot;base_p…   
+
+                              result = self.store_value(value=value_obj, bas…   
+                              if isinstance(result, typing.Mapping):            
+                                  load_config = result                          
+                                  result_value = value_obj                      
+                              elif isinstance(result, tuple):                   
+                                  load_config = result[0]                       
+                                  if result[1]:                                 
+                                      result_value = result[1]                  
+                                  else:                                         
+                                      result_value = value_obj                  
+                              else:                                             
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid result type for &#39;store_value…   
+                                  )                                             
+
+                              load_config[&quot;value_id&quot;] = value_id                
+
+                              lc = LoadConfig(**load_config)                    
+
+                              if lc.base_path_input_name and lc.base_path_in…   
+                                  raise KiaraProcessingException(               
+                                      f&quot;Invalid load config: base path &#39;{lc.…   
+                                  )                                             
+
+                              outputs.set_values(                               
+                                  metadata=None, lineage=None, **{&quot;load_conf…   
+                              )                                                 
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
 <h2 id="network_graphadd_centrality_calculations"><code>network_graph.add_centrality_calculations</code><a class="headerlink" href="#network_graphadd_centrality_calculations" title="Permanent link">&para;</a></h2>
 <div class="codehilite"><pre><span></span><code> Documentation                                                                  
                           Add centrality properties to a graph.                 
