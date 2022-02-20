@@ -710,26 +710,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="md-nav__link">
-    SaveGraphDataTypeModule
-  </a>
-  
-    <nav class="md-nav" aria-label="SaveGraphDataTypeModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="md-nav__link">
-    store_value()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1121,26 +1101,6 @@
           <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.network_graph.GrpahComponentsModule.create_output_schema" class="md-nav__link">
     create_output_schema()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="md-nav__link">
-    SaveGraphDataTypeModule
-  </a>
-  
-    <nav class="md-nav" aria-label="SaveGraphDataTypeModule">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="md-nav__link">
-    store_value()
   </a>
   
 </li>
@@ -2573,145 +2533,6 @@ from it.</p>
 
   </div>
 
-
-
-
-
-
-  </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-class">
-
-
-
-<h2 id="kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="doc doc-heading">
-        <code>SaveGraphDataTypeModule</code>
-
-
-
-<a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule" class="headerlink" title="Permanent link">&para;</a></h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Save a network graph object.</p>
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h3 id="kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">store_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">)</span></code>
-
-
-<a href="#kiara_modules.network_analysis.network_graph.SaveGraphDataTypeModule.store_value" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Save the value, and return the load config needed to load it again.</p>
-
-        <details class="quote">
-          <summary>Source code in <code>network_analysis/network_graph.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">store_value</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
-    <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
-    <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
-<span class="p">]:</span>
-
-    <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-    <span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">feather</span>
-
-    <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_directed</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">multi_undirected</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">directed</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">GraphTypesEnum</span><span class="o">.</span><span class="n">undirected</span>
-
-    <span class="n">input_values</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;base_path&quot;</span><span class="p">:</span> <span class="n">base_path</span><span class="p">,</span>
-        <span class="s2">&quot;edges_file_format&quot;</span><span class="p">:</span> <span class="s2">&quot;feather&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;nodes_file_format&quot;</span><span class="p">:</span> <span class="s2">&quot;feather&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;source_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_SOURCE_COLUMN_NAME</span><span class="p">,</span>
-        <span class="s2">&quot;target_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_TARGET_COLUMN_NAME</span><span class="p">,</span>
-        <span class="s2">&quot;weight_column&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_WEIGHT_COLUMN_NAME</span><span class="p">,</span>
-        <span class="s2">&quot;nodes_table_index&quot;</span><span class="p">:</span> <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">,</span>
-        <span class="s2">&quot;graph_type&quot;</span><span class="p">:</span> <span class="n">graph_type</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="n">edges_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_SAVE_GRAPH_EDGES_TABLE_NAME</span><span class="si">}</span><span class="s2">.feather&quot;</span>
-    <span class="n">edges_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">edges_file_name</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_edgelist</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">)</span>
-    <span class="n">edges_table</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">preserve_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># edge_attr_keys = set([k for n in graph.edges for k in graph.edges[n].keys()])</span>
-    <span class="c1"># edge_attr_keys.add(weight_column_name)</span>
-
-    <span class="n">feather</span><span class="o">.</span><span class="n">write_feather</span><span class="p">(</span><span class="n">edges_table</span><span class="p">,</span> <span class="n">edges_path</span><span class="p">)</span>
-    <span class="n">input_values</span><span class="p">[</span><span class="s2">&quot;edges_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_file_name</span>
-
-    <span class="n">nodes_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_NAME</span><span class="si">}</span><span class="s2">.feather&quot;</span>
-    <span class="n">nodes_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">nodes_file_name</span><span class="p">)</span>
-
-    <span class="n">node_attr_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
-
-    <span class="k">if</span> <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
-        <span class="n">node_attr_keys</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">)</span>
-
-    <span class="n">nodes_dict</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">List</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">:</span> <span class="p">[]</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
-        <span class="n">nodes_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-        <span class="n">nodes_dict</span><span class="p">[</span><span class="n">DEFAULT_SAVE_GRAPH_NODES_TABLE_INDEX_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">node_attr_keys</span><span class="p">:</span>
-            <span class="n">attr</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-            <span class="n">nodes_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
-
-    <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pydict</span><span class="p">(</span><span class="n">nodes_dict</span><span class="p">)</span>
-    <span class="n">feather</span><span class="o">.</span><span class="n">write_feather</span><span class="p">(</span><span class="n">nodes_table</span><span class="p">,</span> <span class="n">nodes_path</span><span class="p">)</span>
-    <span class="n">input_values</span><span class="p">[</span><span class="s2">&quot;nodes_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_file_name</span>
-
-    <span class="n">load_config</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;base_path_input_name&quot;</span><span class="p">:</span> <span class="s2">&quot;base_path&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;module_type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_graph.load&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="n">input_values</span><span class="p">,</span>
-        <span class="s2">&quot;output_name&quot;</span><span class="p">:</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">load_config</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
 
 
 

@@ -434,6 +434,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.utils.parse_graphml_file" class="md-nav__link">
+    parse_graphml_file()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -498,6 +505,13 @@
         <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.utils.GraphTypesEnum" class="md-nav__link">
     GraphTypesEnum
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.utils.parse_graphml_file" class="md-nav__link">
+    parse_graphml_file()
   </a>
   
 </li>
@@ -579,6 +593,113 @@
   </div>
 
 
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="kiara_modules.network_analysis.utils.parse_graphml_file" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">parse_graphml_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.utils.parse_graphml_file" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Adapted from the pygrahml Python library.</p>
+<p>Authors:
+  - Hadrien Mary hadrien.mary@gmail.com
+  - Nick Hamilton n.hamilton@imb.uq.edu.au</p>
+<p>Copyright (c) 2011, Hadrien Mary
+License: BSD 3-Clause</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/utils.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_graphml_file</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adapted from the pygrahml Python library.</span>
+
+<span class="sd">    Authors:</span>
+<span class="sd">      - Hadrien Mary hadrien.mary@gmail.com</span>
+<span class="sd">      - Nick Hamilton n.hamilton@imb.uq.edu.au</span>
+
+<span class="sd">    Copyright (c) 2011, Hadrien Mary</span>
+<span class="sd">    License: BSD 3-Clause</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">dom</span> <span class="o">=</span> <span class="n">minidom</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">dom</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;graphml&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;graph&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">pygraphml</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+        <span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="c1"># Get attributes</span>
+        <span class="n">edge_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">node_map</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">edge_props</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">node_props</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">):</span>
+            <span class="n">n_id</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;attr.name&quot;</span><span class="p">)</span>
+            <span class="n">for_type</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;for&quot;</span><span class="p">)</span>
+            <span class="n">attr_type</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;attr.type&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">for_type</span> <span class="o">==</span> <span class="s2">&quot;edge&quot;</span><span class="p">:</span>
+                <span class="n">edge_map</span><span class="p">[</span><span class="n">n_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+                <span class="n">edge_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">node_map</span><span class="p">[</span><span class="n">n_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+                <span class="n">node_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)}</span>
+
+        <span class="n">node_props_sorted</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">node_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">node_props_sorted</span><span class="p">[</span><span class="n">node_map</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span> <span class="o">=</span> <span class="n">node_props</span><span class="p">[</span><span class="n">node_map</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
+        <span class="n">edge_props_sorted</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">edge_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">edge_props_sorted</span><span class="p">[</span><span class="n">edge_map</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span> <span class="o">=</span> <span class="n">edge_props</span><span class="p">[</span><span class="n">edge_map</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
+
+        <span class="c1"># Get nodes</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">):</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span>
+                <span class="n">mapped</span> <span class="o">=</span> <span class="n">node_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">firstChild</span><span class="p">:</span>
+                    <span class="n">n</span><span class="p">[</span><span class="n">mapped</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">firstChild</span><span class="o">.</span><span class="n">data</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">n</span><span class="p">[</span><span class="n">mapped</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="c1"># Get edges</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;edge&quot;</span><span class="p">):</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">)</span>
+            <span class="n">dest</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>
+
+            <span class="c1"># source/target attributes refer to IDs: http://graphml.graphdrawing.org/xmlns/1.1/graphml-structure.xsd</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">add_edge_by_id</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">edge</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">):</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">)</span>
+                <span class="n">mapped</span> <span class="o">=</span> <span class="n">edge_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">firstChild</span><span class="p">:</span>
+                    <span class="n">e</span><span class="p">[</span><span class="n">mapped</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">firstChild</span><span class="o">.</span><span class="n">data</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">e</span><span class="p">[</span><span class="n">mapped</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">edge_props_sorted</span><span class="p">,</span> <span class="n">node_props_sorted</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
