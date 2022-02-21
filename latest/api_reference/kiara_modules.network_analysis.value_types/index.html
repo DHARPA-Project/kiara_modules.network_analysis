@@ -360,6 +360,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../kiara_modules.network_analysis.network_data.find/" class="md-nav__link">
+        ➜ network_data.find
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../kiara_modules.network_analysis.network_graph/" class="md-nav__link">
         ➜ network_graph
       </a>
@@ -468,33 +482,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType" class="md-nav__link">
-    NetworkGraphType
-  </a>
-  
-    <nav class="md-nav" aria-label="NetworkGraphType">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.check_data" class="md-nav__link">
-    check_data()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.validate" class="md-nav__link">
-    validate()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -559,33 +546,6 @@
         
           <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.value_types.NetworkDataType.validate" class="md-nav__link">
-    validate()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType" class="md-nav__link">
-    NetworkGraphType
-  </a>
-  
-    <nav class="md-nav" aria-label="NetworkGraphType">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.check_data" class="md-nav__link">
-    check_data()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.validate" class="md-nav__link">
     validate()
   </a>
   
@@ -787,110 +747,6 @@ avoid adding or removing information from the data (e.g. by changing the resolut
             <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;nodes&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">value</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-
-
-  </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-class">
-
-
-
-<h2 id="kiara_modules.network_analysis.value_types.NetworkGraphType" class="doc doc-heading">
-        <code>NetworkGraphType</code>
-
-
-
-<a href="#kiara_modules.network_analysis.value_types.NetworkGraphType" class="headerlink" title="Permanent link">&para;</a></h2>
-
-    <div class="doc doc-contents ">
-
-      <p>A network graph object.</p>
-<p>Internally, this is backed by a <code>Graph</code> object of the <a href="https://networkx.org/">networkx</a> Python library.</p>
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h3 id="kiara_modules.network_analysis.value_types.NetworkGraphType.check_data" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">check_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
-  </span>
-
-<a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.check_data" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Check whether the provided input matches this value type.</p>
-<p>If it does, return a ValueType object (with the appropriate type configuration).</p>
-
-        <details class="quote">
-          <summary>Source code in <code>network_analysis/value_types.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">check_data</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ValueType&quot;</span><span class="p">]:</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">NetworkGraphType</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span>
-</code></pre></div>
-        </details>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-method">
-
-
-
-<h3 id="kiara_modules.network_analysis.value_types.NetworkGraphType.validate" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">validate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
-
-
-<a href="#kiara_modules.network_analysis.value_types.NetworkGraphType.validate" class="headerlink" title="Permanent link">&para;</a></h3>
-
-    <div class="doc doc-contents ">
-
-      <p>Validate the value. This expects an instance of the defined Python class (from 'backing_python_type).</p>
-
-        <details class="quote">
-          <summary>Source code in <code>network_analysis/value_types.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid type &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; for graph: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">value</span>
 </code></pre></div>
         </details>
