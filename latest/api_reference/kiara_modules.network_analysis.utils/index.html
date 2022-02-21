@@ -428,13 +428,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.utils.GraphTypesEnum" class="md-nav__link">
-    GraphTypesEnum
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.utils.parse_graphml_file" class="md-nav__link">
     parse_graphml_file()
   </a>
@@ -503,13 +496,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_modules.network_analysis.utils.GraphTypesEnum" class="md-nav__link">
-    GraphTypesEnum
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.utils.parse_graphml_file" class="md-nav__link">
     parse_graphml_file()
   </a>
@@ -552,45 +538,6 @@
 
 
 
-  <div class="doc doc-object doc-class">
-
-
-
-<h2 id="kiara_modules.network_analysis.utils.GraphTypesEnum" class="doc doc-heading">
-        <code>GraphTypesEnum</code>
-
-
-
-<a href="#kiara_modules.network_analysis.utils.GraphTypesEnum" class="headerlink" title="Permanent link">&para;</a></h2>
-
-    <div class="doc doc-contents ">
-
-      <p>An enumeration.</p>
-
-
-
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-    </div>
-
-  </div>
 
 
 
@@ -654,10 +601,14 @@ License: BSD 3-Clause</p>
             <span class="n">attr_type</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s2">&quot;attr.type&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">for_type</span> <span class="o">==</span> <span class="s2">&quot;edge&quot;</span><span class="p">:</span>
                 <span class="n">edge_map</span><span class="p">[</span><span class="n">n_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-                <span class="n">edge_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)}</span>
+                <span class="n">edge_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;data_type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)</span>
+                <span class="p">}</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">node_map</span><span class="p">[</span><span class="n">n_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-                <span class="n">node_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)}</span>
+                <span class="n">node_props</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;data_type&quot;</span><span class="p">:</span> <span class="n">convert_graphml_type_to_sqlite</span><span class="p">(</span><span class="n">attr_type</span><span class="p">)</span>
+                <span class="p">}</span>
 
         <span class="n">node_props_sorted</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">node_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>

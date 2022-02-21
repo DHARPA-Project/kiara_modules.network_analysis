@@ -787,9 +787,6 @@
 
                               nodes = inputs.get_value_obj(&quot;nodes&quot;)             
 
-                              DEFAULT_DB_CHUNK_SIZE = 1024                      
-
-                              added_node_ids = set()                            
                               edges_table: pa.Table = edges.get_value_data()    
 
                               id_column_name = inputs.get_value_data(&quot;id_col…   
@@ -863,61 +860,24 @@
                                       table=nodes_table,                        
                                       index_columns=[ID_COLUMN_NAME],           
                                       column_map=nodes_column_map,              
-                                      extra_column_info={ID_COLUMN_NAME: &quot;NO…   
+                                      extra_column_info={ID_COLUMN_NAME: [&quot;N…   
                                   )                                             
 
                               else:                                             
                                   nodes_data = None                             
 
-                              init_sql = NetworkData.create_network_data_ini…   
-                                  edge_attrs=edges_data, node_attrs=nodes_da…   
-                              )                                                 
+                              nd_schema = NetworkDataSchema(edges_schema=edg…   
+                              init_sql = nd_schema.create_init_sql()            
+
                               network_data = NetworkData.create_in_temp_dir(…   
-
-                              # =============================================   
-                              # import data                                     
-
-                              if nodes_table is not None:                       
-                                  for batch in nodes_table.to_batches(DEFAUL…   
-                                      batch_dict = batch.to_pydict()            
-
-                                      for k, v in nodes_column_map.items():     
-                                          if k in batch_dict.keys():            
-                                              if k == ID_COLUMN_NAME and v =…   
-                                                  _data = batch_dict.get(k)     
-                                              else:                             
-                                                  _data = batch_dict.pop(k)     
-                                                  if v in batch_dict.keys():    
-                                                      raise Exception(          
-                                                          &quot;Duplicate nodes c…   
-                                                      )                         
-                                              batch_dict[v] = _data             
-
-                                      ids = batch_dict[ID_COLUMN_NAME]          
-                                      data = [dict(zip(batch_dict, t)) for t…   
-                                      network_data.insert_nodes(*data)          
-
-                                      added_node_ids.update(ids)                
-
-                              for batch in edges_table.to_batches(DEFAULT_DB…   
-
-                                  batch_dict = batch.to_pydict()                
-                                  for k, v in edges_column_map.items():         
-                                      if k in batch_dict.keys():                
-                                          _data = batch_dict.pop(k)             
-                                          if v in batch_dict.keys():            
-                                              raise Exception(                  
-                                                  &quot;Duplicate edges column na…   
-                                              )                                 
-                                          batch_dict[v] = _data                 
-
-                                  data = [dict(zip(batch_dict, t)) for t in …   
-
-                                  all_node_ids = network_data.insert_edges(     
-                                      *data,                                    
-                                      existing_node_ids=added_node_ids,         
-                                  )                                             
-                                  added_node_ids.update(all_node_ids)           
+                              insert_table_data_into_network_graph(             
+                                  network_data=network_data,                    
+                                  edges_table=edges_table,                      
+                                  edges_schema=edges_data,                      
+                                  nodes_table=nodes_table,                      
+                                  nodes_schema=nodes_data,                      
+                                  chunk_size=DEFAULT_DB_CHUNK_SIZE,             
+                              )                                                 
 
                               outputs.set_value(&quot;network_data&quot;, network_data)   
 
