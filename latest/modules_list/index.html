@@ -286,6 +286,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network_dataexport_network_data" class="md-nav__link">
+    network_data.export_network_data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#network_datafrom_tables" class="md-nav__link">
     network_data.from_tables
   </a>
@@ -557,6 +564,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network_dataexport_network_data" class="md-nav__link">
+    network_data.export_network_data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#network_datafrom_tables" class="md-nav__link">
     network_data.from_tables
   </a>
@@ -730,6 +744,87 @@
 
                               converted = func(source)                          
                               outputs.set_value(target_type, converted)         
+
+                         ─────────────────────────────────────────────────────  
+</code></pre></div>
+
+<h2 id="network_dataexport_network_data"><code>network_data.export_network_data</code><a class="headerlink" href="#network_dataexport_network_data" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code> Documentation                                                                  
+                          -- n/a --                                             
+
+ Origin                                                                         
+                          Authors   Lena Jaskov (helena.jaskov@uni.lu)          
+
+ Context                                                                        
+                          Tags         network_analysis                         
+                          Labels       package:                                 
+                                       kiara_modules.network_analysis           
+                          References   source_repo:                             
+                                       https://github.com/DHARPA-Project/kia…   
+                                       documentation:                           
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       module_doc:                              
+                                       https://dharpa.org/kiara_modules.netw…   
+                                       source_url:                              
+                                       https://github.com/DHARPA-Project/kia…   
+
+ Module config                                                                  
+                          Field            Type     Description      Required   
+                         ─────────────────────────────────────────────────────  
+                          constants        object   Value            no         
+                                                    constants for               
+                                                    this module.                
+                          defaults         object   Value defaults   no         
+                                                    for this                    
+                                                    module.                     
+                          target_profile   string   The name of      yes        
+                                                    the target                  
+                                                    profile. Used               
+                                                    to distinguish              
+                                                    different                   
+                                                    target formats              
+                                                    for the same                
+                                                    data type.                  
+                          source_type      string   The type of      yes        
+                                                    the source                  
+                                                    data that is                
+                                                    going to be                 
+                                                    exported.                   
+
+ Module config          -- no config --                                         
+ Python class                                                                   
+                          class_name    ExportNetworkDataModule                 
+                          module_name   kiara_modules.network_analysis.netwo…   
+                          full_name     kiara_modules.network_analysis.netwo…   
+
+ Processing source code  ─────────────────────────────────────────────────────  
+                          def process(self, inputs: ValueSet, outputs: Value…   
+
+                              target_profile: str = self.get_config_value(&quot;t…   
+                              source_type: str = self.get_config_value(&quot;sour…   
+
+                              source = inputs.get_value_data(source_type)       
+
+                              func_name = f&quot;export_as__{target_profile}&quot;        
+                              if not hasattr(self, func_name):                  
+                                  raise Exception(                              
+                                      f&quot;Can&#39;t export &#39;{source_type}&#39; value: …   
+                                  )                                             
+
+                              func = getattr(self, func_name)                   
+                              # TODO: check signature?                          
+
+                              result = func(source)                             
+                              # schema = ValueSchema(type=self.get_target_va…   
+
+                              # value_lineage = ValueLineage.from_module_and…   
+                              #     module=self, output_name=output_key, inp…   
+                              # )                                               
+                              # value: Value = self._kiara.data_registry.reg…   
+                              #     value_data=result, value_schema=schema, …   
+                              # )                                               
+
+                              outputs.set_value(&quot;export_details&quot;, result)       
 
                          ─────────────────────────────────────────────────────  
 </code></pre></div>
