@@ -811,10 +811,17 @@
                                       f&quot;Can&#39;t export &#39;{source_type}&#39; value: …   
                                   )                                             
 
+                              base_path = inputs.get_value_data(&quot;base_path&quot;)    
+                              if base_path is None:                             
+                                  base_path = os.getcwd()                       
+                              name = inputs.get_value_data(&quot;name&quot;)              
+
                               func = getattr(self, func_name)                   
                               # TODO: check signature?                          
 
-                              result = func(source)                             
+                              base_path = os.path.abspath(base_path)            
+                              os.makedirs(base_path, exist_ok=True)             
+                              result = func(value=source, base_path=base_pat…   
                               # schema = ValueSchema(type=self.get_target_va…   
 
                               # value_lineage = ValueLineage.from_module_and…   
