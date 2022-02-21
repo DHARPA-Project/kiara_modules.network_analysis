@@ -387,6 +387,41 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.as_networkx_graph" class="md-nav__link">
+    as_networkx_graph()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.create_from_networkx_graph" class="md-nav__link">
+    create_from_networkx_graph()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_edges_table" class="md-nav__link">
+    get_sqlalchemy_edges_table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_metadata" class="md-nav__link">
+    get_sqlalchemy_metadata()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_nodes_table" class="md-nav__link">
+    get_sqlalchemy_nodes_table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.insert_edges" class="md-nav__link">
     insert_edges()
   </a>
@@ -437,6 +472,27 @@
           <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.nodes_schema" class="md-nav__link">
     nodes_schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_edges_init_sql" class="md-nav__link">
+    create_edges_init_sql()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_init_sql" class="md-nav__link">
+    create_init_sql()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_nodes_init_sql" class="md-nav__link">
+    create_nodes_init_sql()
   </a>
   
 </li>
@@ -593,6 +649,41 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.as_networkx_graph" class="md-nav__link">
+    as_networkx_graph()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.create_from_networkx_graph" class="md-nav__link">
+    create_from_networkx_graph()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_edges_table" class="md-nav__link">
+    get_sqlalchemy_edges_table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_metadata" class="md-nav__link">
+    get_sqlalchemy_metadata()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_nodes_table" class="md-nav__link">
+    get_sqlalchemy_nodes_table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.metadata_models.NetworkData.insert_edges" class="md-nav__link">
     insert_edges()
   </a>
@@ -643,6 +734,27 @@
           <li class="md-nav__item">
   <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.nodes_schema" class="md-nav__link">
     nodes_schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_edges_init_sql" class="md-nav__link">
+    create_edges_init_sql()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_init_sql" class="md-nav__link">
+    create_init_sql()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_nodes_init_sql" class="md-nav__link">
+    create_nodes_init_sql()
   </a>
   
 </li>
@@ -752,6 +864,10 @@ sub-class a pydantic BaseModel or implement custom base classes.</p>
 
     <div class="doc doc-contents ">
 
+      <p>A helper class to access and query network datasets.</p>
+<p>This class provides different ways to access the underlying network data, most notably via sql and as networkx Graph object.</p>
+<p>Internally, network data is stored in a sqlite database with the edges stored in a table called 'edges' and the nodes, well,
+in a table aptly called 'nodes'.</p>
 
 
 
@@ -769,8 +885,245 @@ sub-class a pydantic BaseModel or implement custom base classes.</p>
 
 
 
+  <div class="doc doc-object doc-method">
 
 
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkData.as_networkx_graph" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">as_networkx_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_type</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkData.as_networkx_graph" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the network data as a networkx graph object.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>graph_type</code></td>
+        <td><code>Type[nx.Graph]</code></td>
+        <td><p>the networkx Graph class to use</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">as_networkx_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_type</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Type</span><span class="p">[</span><span class="s2">&quot;nx.Graph&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;nx.Graph&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the network data as a networkx graph object.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        graph_type: the networkx Graph class to use</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">graph_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nx_graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nx_graph</span><span class="p">[</span><span class="n">graph_type</span><span class="p">]</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">graph_type</span><span class="p">()</span>
+
+    <span class="n">engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_nodes_table</span><span class="p">()</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_edges_table</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                <span class="n">node_id</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">)</span>
+                <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">)</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">)</span>
+                <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_nx_graph</span><span class="p">[</span><span class="n">graph_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">graph</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nx_graph</span><span class="p">[</span><span class="n">graph_type</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkData.create_from_networkx_graph" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkData.create_from_networkx_graph" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create a <code>NetworkData</code> instance from a networkx Graph object.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">create_from_networkx_graph</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">graph</span><span class="p">:</span> <span class="s2">&quot;nx.Graph&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;NetworkData&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create a `NetworkData` instance from a networkx Graph object.&quot;&quot;&quot;</span>
+
+    <span class="n">edges_table</span> <span class="o">=</span> <span class="n">extract_edges_as_table</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">create_sqlite_schema_data_from_arrow_table</span><span class="p">(</span><span class="n">edges_table</span><span class="p">)</span>
+
+    <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">extract_nodes_as_table</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">create_sqlite_schema_data_from_arrow_table</span><span class="p">(</span><span class="n">nodes_table</span><span class="p">)</span>
+
+    <span class="n">nd_schema</span> <span class="o">=</span> <span class="n">NetworkDataSchema</span><span class="p">(</span>
+        <span class="n">edges_schema</span><span class="o">=</span><span class="n">edges_schema</span><span class="p">,</span> <span class="n">nodes_schema</span><span class="o">=</span><span class="n">nodes_schema</span>
+    <span class="p">)</span>
+    <span class="n">init_sql</span> <span class="o">=</span> <span class="n">nd_schema</span><span class="o">.</span><span class="n">create_init_sql</span><span class="p">()</span>
+
+    <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_in_temp_dir</span><span class="p">(</span><span class="n">init_sql</span><span class="o">=</span><span class="n">init_sql</span><span class="p">)</span>
+    <span class="n">insert_table_data_into_network_graph</span><span class="p">(</span>
+        <span class="n">network_data</span><span class="o">=</span><span class="n">network_data</span><span class="p">,</span>
+        <span class="n">edges_table</span><span class="o">=</span><span class="n">edges_table</span><span class="p">,</span>
+        <span class="n">edges_schema</span><span class="o">=</span><span class="n">edges_schema</span><span class="p">,</span>
+        <span class="n">nodes_table</span><span class="o">=</span><span class="n">nodes_table</span><span class="p">,</span>
+        <span class="n">nodes_schema</span><span class="o">=</span><span class="n">nodes_schema</span><span class="p">,</span>
+        <span class="n">chunk_size</span><span class="o">=</span><span class="n">DEFAULT_DB_CHUNK_SIZE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">network_data</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_edges_table" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_sqlalchemy_edges_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_edges_table" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the sqlalchemy edges table instance for this network datab.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sqlalchemy_edges_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Table&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the sqlalchemy edges table instance for this network datab.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edges_table_obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edges_table_obj</span>
+
+    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Table</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_edges_table_obj</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+        <span class="n">TableType</span><span class="o">.</span><span class="n">EDGES</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_metadata</span><span class="p">(),</span>
+        <span class="n">autoload_with</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edges_table_obj</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_metadata" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_sqlalchemy_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_metadata" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the sqlalchemy Metadtaa object for the underlying database.</p>
+<p>This is used internally, you typically don't need to access this attribute.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sqlalchemy_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Metadata&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the sqlalchemy Metadtaa object for the underlying database.</span>
+
+<span class="sd">    This is used internally, you typically don&#39;t need to access this attribute.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">MetaData</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_obj</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_obj</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_nodes_table" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">get_sqlalchemy_nodes_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkData.get_sqlalchemy_nodes_table" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the sqlalchemy nodes table instance for this network datab.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sqlalchemy_nodes_table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Table&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the sqlalchemy nodes table instance for this network datab.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes_table_obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes_table_obj</span>
+
+    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Table</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_nodes_table_obj</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+        <span class="n">TableType</span><span class="o">.</span><span class="n">NODES</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_metadata</span><span class="p">(),</span>
+        <span class="n">autoload_with</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes_table_obj</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
@@ -963,6 +1316,9 @@ sub-class a pydantic BaseModel or implement custom base classes.</p>
 
     <div class="doc doc-contents ">
 
+      <p>A model containing basic information for a network data instance.</p>
+<p>This is mostly used internally to make sure the network_data object to be created and underlying database adhere to
+some expected format. Most notably, that it contains two tables ('edges', 'nodes'), as well as a few required columns in each table.</p>
 
 
 
@@ -1070,6 +1426,105 @@ sub-class a pydantic BaseModel or implement custom base classes.</p>
 
 
 
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_edges_init_sql" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_edges_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_template_str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_edges_init_sql" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create sql that will initialize the edges table in a new database.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_edges_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_template_str</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create sql that will initialize the edges table in a new database.&quot;&quot;&quot;</span>
+
+    <span class="n">edges_sql</span> <span class="o">=</span> <span class="n">create_table_init_sql</span><span class="p">(</span>
+        <span class="n">table_name</span><span class="o">=</span><span class="n">TableType</span><span class="o">.</span><span class="n">EDGES</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">table_schema</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">edges_schema_final</span><span class="p">,</span>
+        <span class="n">schema_template_str</span><span class="o">=</span><span class="n">schema_template_str</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">edges_sql</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_init_sql" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_init_sql" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create sql that will initialize both edges and nodes table in a new database.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create sql that will initialize both edges and nodes table in a new database.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">extra_schema</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">extra_schema</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_schema</span><span class="p">)</span>
+
+    <span class="n">extra_schema_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extra_schema</span><span class="p">)</span>
+
+    <span class="n">init_sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">create_nodes_init_sql</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">create_edges_init_sql</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">extra_schema_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">init_sql</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_nodes_init_sql" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">create_nodes_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_template_str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#kiara_modules.network_analysis.metadata_models.NetworkDataSchema.create_nodes_init_sql" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Create sql that will initialize the nodes table in a new database.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>network_analysis/metadata_models.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">create_nodes_init_sql</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema_template_str</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create sql that will initialize the nodes table in a new database.&quot;&quot;&quot;</span>
+
+    <span class="n">nodes_sql</span> <span class="o">=</span> <span class="n">create_table_init_sql</span><span class="p">(</span>
+        <span class="n">table_name</span><span class="o">=</span><span class="n">TableType</span><span class="o">.</span><span class="n">NODES</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+        <span class="n">table_schema</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes_schema_final</span><span class="p">,</span>
+        <span class="n">schema_template_str</span><span class="o">=</span><span class="n">schema_template_str</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">nodes_sql</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
