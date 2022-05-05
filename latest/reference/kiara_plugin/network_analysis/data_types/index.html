@@ -304,6 +304,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../info/metadata_types/" class="md-nav__link">
+        metadata_types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../info/operations/" class="md-nav__link">
         operations
       </a>
@@ -805,24 +819,24 @@ NetworkDataType            (<span title="kiara_plugin.tabular.data_types.db.Data
                 <span class="s2">&quot;Invalid &#39;network_data&#39; value: database does not contain table &#39;nodes&#39;&quot;</span>
             <span class="p">)</span>
 
-        <span class="n">schema</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_schema_for_table</span><span class="p">(</span><span class="s2">&quot;edges&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">SOURCE_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">edges_columns</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">if</span> <span class="n">SOURCE_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edges_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;edges&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">SOURCE_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;edges&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">SOURCE_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="n">TARGET_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">TARGET_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edges_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;edges&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">TARGET_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;edges&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">TARGET_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
-        <span class="n">schema</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_schema_for_table</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">nodes_columns</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span>
+        <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;nodes&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;nodes&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nodes_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;nodes&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid &#39;network_data&#39; value: &#39;nodes&#39; table does not contain a &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column. Available columns: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nodes_columns</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render_as__terminal_renderable</span><span class="p">(</span>
