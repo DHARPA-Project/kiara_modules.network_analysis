@@ -588,6 +588,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule-methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
     export__network_data__as__csv_files()
   </a>
@@ -612,6 +620,11 @@
   <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export_as__graphml_file" class="md-nav__link">
     export_as__graphml_file()
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -777,6 +790,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule-methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
     export__network_data__as__csv_files()
   </a>
@@ -801,6 +822,11 @@
   <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export_as__graphml_file" class="md-nav__link">
     export_as__graphml_file()
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -866,11 +892,19 @@ CreateGraphFromTablesModule            (<a class="autorefs autorefs-external" ti
     <div class="doc doc-contents ">
 
       <p>Create a graph object from one or two tables.</p>
+<p>This module needs at least one table as input, providing the edges of the resulting network data set.
+If no further table is created, basic node information will be automatically created by using unique values from
+the edges source and target columns.</p>
 
         <details class="quote">
           <summary>Source code in <code>network_analysis/modules/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CreateGraphFromTablesModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create a graph object from one or two tables.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Create a graph object from one or two tables.</span>
+
+<span class="sd">    This module needs at least one table as input, providing the edges of the resulting network data set.</span>
+<span class="sd">    If no further table is created, basic node information will be automatically created by using unique values from</span>
+<span class="sd">    the edges source and target columns.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;create.network_data.from.tables&quot;</span>
 
@@ -1347,6 +1381,7 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
     <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;export.network_data&quot;</span>
 
     <span class="k">def</span> <span class="nf">export_as__graphml_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export network data as graphml file.&quot;&quot;&quot;</span>
 
         <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
@@ -1361,6 +1396,7 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
     <span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export network data as a sqlite database file.&quot;&quot;&quot;</span>
 
         <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sqlite&quot;</span><span class="p">))</span>
         <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
@@ -1370,6 +1406,7 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
     <span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export network data as a sql dump file.&quot;&quot;&quot;</span>
 
         <span class="kn">import</span> <span class="nn">sqlite_utils</span>
 
@@ -1384,6 +1421,7 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
     <span class="k">def</span> <span class="nf">export__network_data__as__csv_files</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export network data as 2 csv files (one for edges, one for nodes.&quot;&quot;&quot;</span>
 
         <span class="kn">import</span> <span class="nn">sqlite3</span>
 
@@ -1424,7 +1462,7 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
 
 
 
-
+<h4 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule-methods">Methods<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule-methods" class="headerlink" title="Permanent link">&para;</a></h4>
 
   <div class="doc doc-object doc-method">
 
@@ -1438,12 +1476,14 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
 
     <div class="doc doc-contents ">
 
+      <p>Export network data as 2 csv files (one for edges, one for nodes.</p>
 
         <details class="quote">
           <summary>Source code in <code>network_analysis/modules/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__csv_files</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Export network data as 2 csv files (one for edges, one for nodes.&quot;&quot;&quot;</span>
 
     <span class="kn">import</span> <span class="nn">sqlite3</span>
 
@@ -1491,12 +1531,14 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
 
     <div class="doc doc-contents ">
 
+      <p>Export network data as a sql dump file.</p>
 
         <details class="quote">
           <summary>Source code in <code>network_analysis/modules/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Export network data as a sql dump file.&quot;&quot;&quot;</span>
 
     <span class="kn">import</span> <span class="nn">sqlite_utils</span>
 
@@ -1527,12 +1569,14 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
 
     <div class="doc doc-contents ">
 
+      <p>Export network data as a sqlite database file.</p>
 
         <details class="quote">
           <summary>Source code in <code>network_analysis/modules/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Export network data as a sqlite database file.&quot;&quot;&quot;</span>
 
     <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sqlite&quot;</span><span class="p">))</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
@@ -1558,10 +1602,12 @@ ExportNetworkDataModule            (<a class="autorefs autorefs-external" title=
 
     <div class="doc doc-contents ">
 
+      <p>Export network data as graphml file.</p>
 
         <details class="quote">
           <summary>Source code in <code>network_analysis/modules/__init__.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">export_as__graphml_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Export network data as graphml file.&quot;&quot;&quot;</span>
 
     <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
