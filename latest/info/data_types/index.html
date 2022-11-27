@@ -11,7 +11,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
       
       
@@ -58,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
   
     
     
@@ -620,148 +620,46 @@
   <h1>data_types</h1>
 
 <h3 id="kiara_info.data_types.network_data"><code>network_data</code><a class="headerlink" href="#kiara_info.data_types.network_data" title="Permanent link">&para;</a></h3>
-<table>
-  <tr>
-    <td>type_name</td>
-    <td>network_data</td>
-    <td>The registered name for this item type.</td>
-  </tr>
-  <tr>
-    <td>documentation</td>
-    <td><p>Data that can be assembled into a graph.</p>
-<p>This data type extends the 'database' type from the <a href="https://github.com/DHARPA-Project/kiara_plugin.tabular">kiara_plugin.tabular</a> plugin, restricting the allowed tables to one called 'edges',
-and one called 'nodes'.</p>
-</td>
-    <td>Documentation for the item.</td>
-  </tr>
-  <tr>
-    <td>authors</td>
-    <td><ul>
-
-    <li>Markus Binsteiner ( <a href="mailto:markus@frkl.io">markus@frkl.io</a> )</li>
-
-</ul></td>
-    <td>Information about authorship for the item.</td>
-  </tr>
-  <tr>
-    <td>context</td>
-    <td><table xmlns="http://www.w3.org/1999/html">
-    <tbody>
-    <tr>
-    <td>tags</td>
-    <td>network_analysis</td>
-    </tr>
-    <tr>
-        <td>labels</td>
-        <td>
-            <ul>
-        
-        <li>package: kiara_plugin.network_analysis</li>
-        
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>references</td>
-        <td>
-        <ul>
-            
-            <li><a href="https://github.com/DHARPA-Project/kiara_plugin.network_analysis">source_repo</a>: The module package git repository.</li>
-            
-            <li><a href="https://DHARPA-Project.github.io/kiara_plugin.network_analysis/">documentation</a>: The url for the module package documentation.</li>
-            
-        </ul>
-        </td>
-    </tr>
-    </tbody>
-</table></td>
-    <td>Generic properties of this item (description, tags, labels, references, ...).</td>
-  </tr>
-  <tr>
-    <td>python_class</td>
-    <td><table>
-  <tr>
-    <td>python_class_name</td>
-    <td>NetworkDataType</td>
-    <td>The name of the Python class.</td>
-  </tr>
-  <tr>
-    <td>python_module_name</td>
-    <td>kiara_plugin.network_analysis.data_types</td>
-    <td>The name of the Python module this class lives in.</td>
-  </tr>
-  <tr>
-    <td>full_name</td>
-    <td>kiara_plugin.network_analysis.data_types.NetworkDataType</td>
-    <td>The full class namespace.</td>
-  </tr>
-</table></td>
-    <td>The python class that implements this module type.</td>
-  </tr>
-  <tr>
-    <td>value_cls</td>
-    <td><table>
-  <tr>
-    <td>python_class_name</td>
-    <td>NetworkData</td>
-    <td>The name of the Python class.</td>
-  </tr>
-  <tr>
-    <td>python_module_name</td>
-    <td>kiara_plugin.network_analysis.models</td>
-    <td>The name of the Python module this class lives in.</td>
-  </tr>
-  <tr>
-    <td>full_name</td>
-    <td>kiara_plugin.network_analysis.models.NetworkData</td>
-    <td>The full class namespace.</td>
-  </tr>
-</table></td>
-    <td>The python class of the value itself.</td>
-  </tr>
-  <tr>
-    <td>data_type_config_cls</td>
-    <td><table>
-  <tr>
-    <td>python_class_name</td>
-    <td>DataTypeConfig</td>
-    <td>The name of the Python class.</td>
-  </tr>
-  <tr>
-    <td>python_module_name</td>
-    <td>kiara.data_types</td>
-    <td>The name of the Python module this class lives in.</td>
-  </tr>
-  <tr>
-    <td>full_name</td>
-    <td>kiara.data_types.DataTypeConfig</td>
-    <td>The full class namespace.</td>
-  </tr>
-</table></td>
-    <td>The python class holding the schema for configuring this type.</td>
-  </tr>
-  <tr>
-    <td>lineage</td>
-    <td><ul>
-  <li>
-    network_data
-  </li>
-  <li>
-    database
-  </li>
-  <li>
-    any
-  </li>
-</ul></td>
-    <td>This types lineage.</td>
-  </tr>
-  <tr>
-    <td>qualifier_profiles</td>
-    <td><table>
-</table></td>
-    <td>A map of qualifier profiles for this data types.</td>
-  </tr>
-</table>
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">                                                                                
+ <span style="font-style: italic">lineage             </span> network_data                                              
+ <span style="font-style: italic">                    </span> database                                                  
+ <span style="font-style: italic">                    </span> any                                                       
+ <span style="font-style: italic">qualifier profile(s)</span> -- n/a --                                                 
+ <span style="font-style: italic">Documentation       </span>                                                           
+ <span style="font-style: italic">                    </span>   Data that can be assembled into a graph.                
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">                    </span>   This data type extends the 'database' type from the     
+ <span style="font-style: italic">                    </span>   <a href="https://github.com/DHARPA-Project/kiara_plugin.tabular" target="_blank"><span style="color: #0000ff; text-decoration-color: #0000ff">kiara_plugin.tabular</span></a> plugin, restricting the allowed    
+ <span style="font-style: italic">                    </span>   tables to one called 'edges', and one called 'nodes'.   
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">Author(s)           </span>                                                           
+ <span style="font-style: italic">                    </span>   Markus Binsteiner  <span style="font-style: italic"> markus@frkl.io </span>                     
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">Context             </span>                                                           
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> Tags       </span>  network_analysis                           
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> Labels     </span>  <span style="font-style: italic">package</span>: kiara_plugin.network_analysis     
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> References </span>  <span style="font-style: italic">source_repo</span>:                               
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic">            </span>  <a href="https://github.com/DHARPA-Project/kiara_plugin.network_analysis" target="_blank">https://github.com/DHARPA-Project/kiara…</a>   
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic">            </span>  <span style="font-style: italic">documentation</span>:                             
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic">            </span>  <a href="https://DHARPA-Project.github.io/kiara_plugin.network_analysis/" target="_blank">https://DHARPA-Project.github.io/kiara_…</a>   
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">Python class        </span>                                                           
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_class_name  </span>  NetworkDataType                    
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_module_name </span>  kiara_plugin.network_analysis.d…   
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> full_name          </span>  kiara_plugin.network_analysis.d…   
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">Config class        </span>                                                           
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_class_name  </span>  DataTypeConfig                     
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_module_name </span>  kiara.data_types                   
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> full_name          </span>  kiara.data_types.DataTypeConfig    
+ <span style="font-style: italic">                    </span>                                                           
+ <span style="font-style: italic">Value class         </span>                                                           
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_class_name  </span>  NetworkData                        
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> python_module_name </span>  kiara_plugin.network_analysis.m…   
+ <span style="font-style: italic">                    </span>  <span style="font-style: italic"> full_name          </span>  kiara_plugin.network_analysis.m…   
+ <span style="font-style: italic">                    </span>                                                           
+                                                                                
+</pre>
 
 
 
@@ -835,10 +733,10 @@ and one called 'nodes'.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>
