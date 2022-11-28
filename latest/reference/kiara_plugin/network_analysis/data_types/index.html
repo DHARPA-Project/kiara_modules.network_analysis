@@ -803,9 +803,9 @@ and one called 'nodes'.</p>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="c1"># TODO: check path exists</span>
-            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">KiaraDatabase</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
         <span class="k">return</span> <span class="n">data</span>
 
@@ -856,7 +856,7 @@ and one called 'nodes'.</p>
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">render_as__terminal_renderable</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">manifest</span><span class="p">:</span> <span class="n">Manifest</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 
         <span class="n">max_rows</span> <span class="o">=</span> <span class="n">render_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -869,7 +869,7 @@ and one called 'nodes'.</p>
             <span class="s2">&quot;max_cell_length&quot;</span><span class="p">,</span> <span class="n">DEFAULT_PRETTY_PRINT_CONFIG</span><span class="p">[</span><span class="s2">&quot;max_cell_length&quot;</span><span class="p">]</span>
         <span class="p">)</span>
 
-        <span class="n">half_lines</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">half_lines</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">max_rows</span><span class="p">:</span>
             <span class="n">half_lines</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_rows</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -877,7 +877,7 @@ and one called 'nodes'.</p>
 
         <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
         <span class="n">atw</span> <span class="o">=</span> <span class="n">NetworkDataTabularWrap</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">table_type</span><span class="o">=</span><span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">EDGES</span><span class="p">)</span>
-        <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span>
+        <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">as_terminal_renderable</span><span class="p">(</span>
             <span class="n">rows_head</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
             <span class="n">rows_tail</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
             <span class="n">max_row_height</span><span class="o">=</span><span class="n">max_row_height</span><span class="p">,</span>
@@ -887,7 +887,7 @@ and one called 'nodes'.</p>
         <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pretty</span><span class="p">)</span>
 
         <span class="n">atw</span> <span class="o">=</span> <span class="n">NetworkDataTabularWrap</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">table_type</span><span class="o">=</span><span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">NODES</span><span class="p">)</span>
-        <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span>
+        <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">as_terminal_renderable</span><span class="p">(</span>
             <span class="n">rows_head</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
             <span class="n">rows_tail</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
             <span class="n">max_row_height</span><span class="o">=</span><span class="n">max_row_height</span><span class="p">,</span>
@@ -968,9 +968,9 @@ avoid adding or removing information from the data (e.g. by changing the resolut
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="c1"># TODO: check path exists</span>
-        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">KiaraDatabase</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
@@ -1015,7 +1015,7 @@ avoid adding or removing information from the data (e.g. by changing the resolut
 
 
 <h5 id="kiara_plugin.network_analysis.data_types.NetworkDataType.render_as__terminal_renderable" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">render_as__terminal_renderable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">render_as__terminal_renderable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">,</span> <span class="n">manifest</span><span class="p">)</span></code>
 
 
 <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.render_as__terminal_renderable" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -1026,7 +1026,7 @@ avoid adding or removing information from the data (e.g. by changing the resolut
         <details class="quote">
           <summary>Source code in <code>network_analysis/data_types.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">render_as__terminal_renderable</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">manifest</span><span class="p">:</span> <span class="n">Manifest</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 
     <span class="n">max_rows</span> <span class="o">=</span> <span class="n">render_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
@@ -1039,7 +1039,7 @@ avoid adding or removing information from the data (e.g. by changing the resolut
         <span class="s2">&quot;max_cell_length&quot;</span><span class="p">,</span> <span class="n">DEFAULT_PRETTY_PRINT_CONFIG</span><span class="p">[</span><span class="s2">&quot;max_cell_length&quot;</span><span class="p">]</span>
     <span class="p">)</span>
 
-    <span class="n">half_lines</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">half_lines</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">max_rows</span><span class="p">:</span>
         <span class="n">half_lines</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_rows</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -1047,7 +1047,7 @@ avoid adding or removing information from the data (e.g. by changing the resolut
 
     <span class="n">result</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
     <span class="n">atw</span> <span class="o">=</span> <span class="n">NetworkDataTabularWrap</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">table_type</span><span class="o">=</span><span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">EDGES</span><span class="p">)</span>
-    <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span>
+    <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">as_terminal_renderable</span><span class="p">(</span>
         <span class="n">rows_head</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
         <span class="n">rows_tail</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
         <span class="n">max_row_height</span><span class="o">=</span><span class="n">max_row_height</span><span class="p">,</span>
@@ -1057,7 +1057,7 @@ avoid adding or removing information from the data (e.g. by changing the resolut
     <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pretty</span><span class="p">)</span>
 
     <span class="n">atw</span> <span class="o">=</span> <span class="n">NetworkDataTabularWrap</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">table_type</span><span class="o">=</span><span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">NODES</span><span class="p">)</span>
-    <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">(</span>
+    <span class="n">pretty</span> <span class="o">=</span> <span class="n">atw</span><span class="o">.</span><span class="n">as_terminal_renderable</span><span class="p">(</span>
         <span class="n">rows_head</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
         <span class="n">rows_tail</span><span class="o">=</span><span class="n">half_lines</span><span class="p">,</span>
         <span class="n">max_row_height</span><span class="o">=</span><span class="n">max_row_height</span><span class="p">,</span>

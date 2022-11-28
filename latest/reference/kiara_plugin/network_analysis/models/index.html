@@ -652,8 +652,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.models.NetworkData.create_in_temp_dir" class="md-nav__link">
-    create_in_temp_dir()
+  <a href="#kiara_plugin.network_analysis.models.NetworkData.create_network_data_in_temp_dir" class="md-nav__link">
+    create_network_data_in_temp_dir()
   </a>
   
 </li>
@@ -1052,8 +1052,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.models.NetworkData.create_in_temp_dir" class="md-nav__link">
-    create_in_temp_dir()
+  <a href="#kiara_plugin.network_analysis.models.NetworkData.create_network_data_in_temp_dir" class="md-nav__link">
+    create_network_data_in_temp_dir()
   </a>
   
 </li>
@@ -1537,7 +1537,7 @@ in a table aptly called 'nodes'.</p>
         <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">extract_nodes_as_table</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
         <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">create_sqlite_schema_data_from_arrow_table</span><span class="p">(</span><span class="n">nodes_table</span><span class="p">)</span>
 
-        <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_in_temp_dir</span><span class="p">(</span>
+        <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_in_temp_dir</span><span class="p">(</span>
             <span class="n">edges_schema</span><span class="o">=</span><span class="n">edges_schema</span><span class="p">,</span> <span class="n">nodes_schema</span><span class="o">=</span><span class="n">nodes_schema</span><span class="p">,</span> <span class="n">keep_unlocked</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
         <span class="n">insert_table_data_into_network_graph</span><span class="p">(</span>
@@ -1551,7 +1551,7 @@ in a table aptly called 'nodes'.</p>
         <span class="k">return</span> <span class="n">network_data</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">create_in_temp_dir</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">create_network_data_in_temp_dir</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">edges_schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">nodes_schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1596,87 +1596,113 @@ in a table aptly called 'nodes'.</p>
 
         <span class="n">_edges_schema</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-            <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
-            <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                    <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
-                    <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                        <span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span>
-                    <span class="p">)</span>
-
-            <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
-                <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                    <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-                    <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-                <span class="p">}</span>
-            <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_edges_schema</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+        <span class="n">_path</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_file_path&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">db</span> <span class="o">=</span> <span class="n">KiaraDatabase</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Invalid data type for edges schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;Can&#39;t initialize network data with both &#39;db_file_path&#39; and &#39;edges_schema&#39;.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Can&#39;t initialize network data with both &#39;db_file_path&#39; and &#39;nodes_schema&#39;.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">md</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">create_metadata</span><span class="p">()</span>
+            <span class="n">edges_col_schema</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">EDGES</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">column_schema</span>
+            <span class="n">nodes_col_schema</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">NODES</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">column_schema</span>
+            <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">edges_col_schema</span><span class="p">)</span>
+            <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">nodes_col_schema</span><span class="p">)</span>
+
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+                <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
+                <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                        <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+                        <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                            <span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span>
+                        <span class="p">)</span>
+
+                <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                        <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                        <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                    <span class="p">}</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">_edges_schema</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                    <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_edges_schema</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Invalid data type for edges schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">_edges_schema</span>
 
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
-            <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-            <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
-                <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                    <span class="n">ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">],</span>
-                    <span class="n">LABEL_COLUMN_NAME</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
-                <span class="p">}</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_nodes_schema</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
-            <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">_nodes_schema</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid data type for nodes schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema: missing &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column.&quot;</span>
-            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
+                <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
+            <span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column must be of type &#39;TEXT&#39;, not &#39;</span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="p">)</span>
 
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span>
-            <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
-        <span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, id column has different type to edges source/target columns: </span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
-        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
+                <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                        <span class="n">ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">],</span>
+                        <span class="n">LABEL_COLUMN_NAME</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_nodes_schema</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+                <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">_nodes_schema</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid data type for nodes schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema: missing &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column must be of type &#39;TEXT&#39;, not &#39;</span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                    <span class="p">)</span>
+
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span>
+                <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, id column has different type to edges source/target columns: </span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
+            <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
 
         <span class="k">return</span> <span class="n">values</span>
 
-    <span class="n">_nodes_table_obj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Table</span><span class="p">]</span> <span class="o">=</span> <span class="n">PrivateAttr</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-    <span class="n">_edges_table_obj</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Table</span><span class="p">]</span> <span class="o">=</span> <span class="n">PrivateAttr</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="c1"># _nodes_table_obj: Optional[Table] = PrivateAttr(default=None)</span>
+    <span class="c1"># _edges_table_obj: Optional[Table] = PrivateAttr(default=None)</span>
 
     <span class="n">_nx_graph</span> <span class="o">=</span> <span class="n">PrivateAttr</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="p">{})</span>
 
@@ -1728,7 +1754,7 @@ in a table aptly called 'nodes'.</p>
     <span class="k">def</span> <span class="nf">insert_edges</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">*</span><span class="n">edges</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-        <span class="n">existing_node_ids</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">existing_node_ids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
         <span class="sd">&quot;&quot;&quot;Add edges to a network data item.</span>
 
@@ -1967,7 +1993,7 @@ in a table aptly called 'nodes'.</p>
     <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">extract_nodes_as_table</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
     <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">create_sqlite_schema_data_from_arrow_table</span><span class="p">(</span><span class="n">nodes_table</span><span class="p">)</span>
 
-    <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_in_temp_dir</span><span class="p">(</span>
+    <span class="n">network_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_in_temp_dir</span><span class="p">(</span>
         <span class="n">edges_schema</span><span class="o">=</span><span class="n">edges_schema</span><span class="p">,</span> <span class="n">nodes_schema</span><span class="o">=</span><span class="n">nodes_schema</span><span class="p">,</span> <span class="n">keep_unlocked</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
     <span class="n">insert_table_data_into_network_graph</span><span class="p">(</span>
@@ -1991,14 +2017,14 @@ in a table aptly called 'nodes'.</p>
 
 
 
-<h5 id="kiara_plugin.network_analysis.models.NetworkData.create_in_temp_dir" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_in_temp_dir</span><span class="p">(</span><span class="n">edges_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_unlocked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<h5 id="kiara_plugin.network_analysis.models.NetworkData.create_network_data_in_temp_dir" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_network_data_in_temp_dir</span><span class="p">(</span><span class="n">edges_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nodes_schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_unlocked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
   </span>
 
-<a href="#kiara_plugin.network_analysis.models.NetworkData.create_in_temp_dir" class="headerlink" title="Permanent link">&para;</a></h5>
+<a href="#kiara_plugin.network_analysis.models.NetworkData.create_network_data_in_temp_dir" class="headerlink" title="Permanent link">&para;</a></h5>
 
     <div class="doc doc-contents ">
 
@@ -2006,7 +2032,7 @@ in a table aptly called 'nodes'.</p>
         <details class="quote">
           <summary>Source code in <code>network_analysis/models.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">create_in_temp_dir</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">create_network_data_in_temp_dir</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">edges_schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">nodes_schema</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -2152,7 +2178,7 @@ in a table aptly called 'nodes'.</p>
       </tr>
       <tr>
         <td><code>existing_node_ids</code></td>
-        <td><code>Iterable[int]</code></td>
+        <td><code>Optional[Iterable[int]]</code></td>
         <td><p>a set of ids that can be assumed to already exist, this is mainly for performance reasons</p></td>
         <td><code>None</code></td>
       </tr>
@@ -2178,7 +2204,7 @@ in a table aptly called 'nodes'.</p>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">insert_edges</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="n">edges</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
-    <span class="n">existing_node_ids</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">existing_node_ids</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Add edges to a network data item.</span>
 
@@ -2304,82 +2330,108 @@ in a table aptly called 'nodes'.</p>
 
     <span class="n">_edges_schema</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-        <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
-        <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-                <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
-                <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                    <span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span>
-                <span class="p">)</span>
-
-        <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
-            <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-                <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-            <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_edges_schema</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+    <span class="n">_path</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;db_file_path&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">KiaraDatabase</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid data type for edges schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;Can&#39;t initialize network data with both &#39;db_file_path&#39; and &#39;edges_schema&#39;.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Can&#39;t initialize network data with both &#39;db_file_path&#39; and &#39;nodes_schema&#39;.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">md</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">create_metadata</span><span class="p">()</span>
+        <span class="n">edges_col_schema</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">EDGES</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">column_schema</span>
+        <span class="n">nodes_col_schema</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">NetworkDataTableType</span><span class="o">.</span><span class="n">NODES</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">column_schema</span>
+        <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">edges_col_schema</span><span class="p">)</span>
+        <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">nodes_col_schema</span><span class="p">)</span>
+
+        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
+        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">_edges_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
+            <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                    <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+                    <span class="n">suggested_id_type</span> <span class="o">=</span> <span class="n">_nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                        <span class="n">ID_COLUMN_NAME</span><span class="p">,</span> <span class="s2">&quot;TEXT&quot;</span>
+                    <span class="p">)</span>
+
+            <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                    <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                    <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                <span class="p">}</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">_edges_schema</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+                <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_edges_schema</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid data type for edges schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">_edges_schema</span>
 
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
-        <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
-    <span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-        <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
-            <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                <span class="n">ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">],</span>
-                <span class="n">LABEL_COLUMN_NAME</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
-        <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_nodes_schema</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
-        <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">_nodes_schema</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid data type for nodes schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema: missing &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column.&quot;</span>
-        <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
+            <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
+        <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column must be of type &#39;TEXT&#39;, not &#39;</span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span>
-        <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
-    <span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, id column has different type to edges source/target columns: </span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">_nodes_schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-    <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
-    <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
+            <span class="n">_nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
+                <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                    <span class="n">ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">],</span>
+                    <span class="n">LABEL_COLUMN_NAME</span><span class="p">:</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+            <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="p">(</span><span class="o">**</span><span class="n">_nodes_schema</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_nodes_schema</span><span class="p">,</span> <span class="n">SqliteTableSchema</span><span class="p">):</span>
+            <span class="n">nodes_schema</span> <span class="o">=</span> <span class="n">_nodes_schema</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid data type for nodes schema: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">_edges_schema</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema: missing &#39;</span><span class="si">{</span><span class="n">ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">LABEL_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TEXT&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;TEXT&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, &#39;</span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">&#39; column must be of type &#39;TEXT&#39;, not &#39;</span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span>
+            <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid nodes schema, id column has different type to edges source/target columns: </span><span class="si">{</span><span class="n">nodes_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">ID_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;edges_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges_schema</span>
+        <span class="n">values</span><span class="p">[</span><span class="s2">&quot;nodes_schema&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes_schema</span>
 
     <span class="k">return</span> <span class="n">values</span>
 </code></pre></div>
