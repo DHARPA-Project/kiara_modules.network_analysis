@@ -803,9 +803,9 @@ and one called 'nodes'.</p>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="c1"># TODO: check path exists</span>
-            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_from_sqlite</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">KiaraDatabase</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_from_database</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">data</span>
 
@@ -968,9 +968,9 @@ avoid adding or removing information from the data (e.g. by changing the resolut
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="c1"># TODO: check path exists</span>
-        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_from_sqlite</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">KiaraDatabase</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">NetworkData</span><span class="p">(</span><span class="n">db_file_path</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_from_database</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
