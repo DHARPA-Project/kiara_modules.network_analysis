@@ -1580,7 +1580,7 @@ in a table aptly called 'nodes'.</p>
         <span class="n">edg_nullables</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">e_cols</span><span class="p">:</span>
             <span class="n">d_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
-            <span class="n">edges_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>
+            <span class="n">edges_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>  <span class="c1"># type: ignore</span>
             <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;nullable&quot;</span><span class="p">]:</span>
                 <span class="n">edg_nullables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
@@ -1593,7 +1593,7 @@ in a table aptly called 'nodes'.</p>
         <span class="n">nd_nullables</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">n_cols</span><span class="p">:</span>
             <span class="n">d_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
-            <span class="n">node_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>
+            <span class="n">node_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>  <span class="c1"># type: ignore</span>
             <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;nullable&quot;</span><span class="p">]:</span>
                 <span class="n">nd_nullables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
@@ -1637,8 +1637,8 @@ in a table aptly called 'nodes'.</p>
 
             <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
                 <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                    <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-                    <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                    <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+                    <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
                 <span class="p">}</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1656,7 +1656,7 @@ in a table aptly called 'nodes'.</p>
             <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
         <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">schema_nodes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2094,7 +2094,7 @@ in a table aptly called 'nodes'.</p>
     <span class="n">edg_nullables</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">e_cols</span><span class="p">:</span>
         <span class="n">d_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
-        <span class="n">edges_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>
+        <span class="n">edges_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>  <span class="c1"># type: ignore</span>
         <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;nullable&quot;</span><span class="p">]:</span>
             <span class="n">edg_nullables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
@@ -2107,7 +2107,7 @@ in a table aptly called 'nodes'.</p>
     <span class="n">nd_nullables</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">n_cols</span><span class="p">:</span>
         <span class="n">d_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])</span>
-        <span class="n">node_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>
+        <span class="n">node_columns</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">d_type</span>  <span class="c1"># type: ignore</span>
         <span class="k">if</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;nullable&quot;</span><span class="p">]:</span>
             <span class="n">nd_nullables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
@@ -2208,8 +2208,8 @@ in a table aptly called 'nodes'.</p>
 
         <span class="n">edges_schema</span> <span class="o">=</span> <span class="n">SqliteTableSchema</span><span class="o">.</span><span class="n">construct</span><span class="p">(</span>
             <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-                <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
-                <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>
+                <span class="n">SOURCE_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+                <span class="n">TARGET_COLUMN_NAME</span><span class="p">:</span> <span class="n">suggested_id_type</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
             <span class="p">}</span>
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2227,7 +2227,7 @@ in a table aptly called 'nodes'.</p>
         <span class="o">!=</span> <span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
     <span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Invalid edges schema, source and edges columns have different type: </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">edges_schema</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">schema_nodes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
