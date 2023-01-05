@@ -513,15 +513,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="md-nav__link">
-    parse_python_obj()
+  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="md-nav__link">
+    python_class()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="md-nav__link">
-    python_class()
+  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="md-nav__link">
+    parse_python_obj()
   </a>
   
 </li>
@@ -703,15 +703,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="md-nav__link">
-    parse_python_obj()
+  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="md-nav__link">
+    python_class()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="md-nav__link">
-    python_class()
+  <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="md-nav__link">
+    parse_python_obj()
   </a>
   
 </li>
@@ -784,7 +784,7 @@
 
   <div class="doc doc-contents ">
       <p class="doc doc-class-bases">
-        Bases: <code><span title="kiara_plugin.tabular.data_types.db.DatabaseType">DatabaseType</span></code></p>
+        Bases: <code><a class="autorefs autorefs-external" title="kiara_plugin.tabular.data_types.db.DatabaseType" href="https://dharpa.org/kiara_plugin.tabular/latest/reference/kiara_plugin/tabular/data_types/db/#kiara_plugin.tabular.data_types.db.DatabaseType">DatabaseType</a></code></p>
 
   
       <p>Data that can be assembled into a graph.</p>
@@ -948,8 +948,37 @@ and one called 'nodes'.</p>
 
 
 
+<h5 id="kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">python_class</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Type</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/data_types.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">python_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">NetworkData</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
 <h5 id="kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">parse_python_obj</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">parse_python_obj</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NetworkData</span></code>
 
 <a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.parse_python_obj" class="headerlink" title="Permanent link">&para;</a></h5>
 
@@ -975,35 +1004,6 @@ and one called 'nodes'.</p>
         <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data_from_database</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h5 id="kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">python_class</span><span class="p">()</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
-  </span>
-
-<a href="#kiara_plugin.network_analysis.data_types.NetworkDataType.python_class" class="headerlink" title="Permanent link">&para;</a></h5>
-
-
-  <div class="doc doc-contents ">
-
-      <details class="quote">
-        <summary>Source code in <code>kiara_plugin/network_analysis/data_types.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">python_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">NetworkData</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>

@@ -602,15 +602,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
-    export__network_data__as__csv_files()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="md-nav__link">
+    export__network_data__as__graphml_file()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="md-nav__link">
-    export__network_data__as__graphml_file()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="md-nav__link">
+    export__network_data__as__sqlite_db()
   </a>
   
 </li>
@@ -623,8 +623,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="md-nav__link">
-    export__network_data__as__sqlite_db()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
+    export__network_data__as__csv_files()
   </a>
   
 </li>
@@ -851,15 +851,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
-    export__network_data__as__csv_files()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="md-nav__link">
+    export__network_data__as__graphml_file()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="md-nav__link">
-    export__network_data__as__graphml_file()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="md-nav__link">
+    export__network_data__as__sqlite_db()
   </a>
   
 </li>
@@ -872,8 +872,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="md-nav__link">
-    export__network_data__as__sqlite_db()
+  <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="md-nav__link">
+    export__network_data__as__csv_files()
   </a>
   
 </li>
@@ -1388,7 +1388,7 @@ the edges source and target columns.</p>
 
 
 <h5 id="kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.create_inputs_schema" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_inputs_schema</span><span class="p">()</span></code>
+<code class="highlight language-python"><span class="n">create_inputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
 
 <a href="#kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.create_inputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
 
@@ -1501,7 +1501,7 @@ the edges source and target columns.</p>
 
 
 <h5 id="kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.create_outputs_schema" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">create_outputs_schema</span><span class="p">()</span></code>
+<code class="highlight language-python"><span class="n">create_outputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
 
 <a href="#kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.create_outputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
 
@@ -1536,7 +1536,7 @@ the edges source and target columns.</p>
 
 
 <h5 id="kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.process" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
 
 <a href="#kiara_plugin.network_analysis.modules.CreateGraphFromTablesModule.process" class="headerlink" title="Permanent link">&para;</a></h5>
 
@@ -1983,8 +1983,145 @@ the edges source and target columns.</p>
 
 
 
+<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">export__network_data__as__graphml_file</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Export network data as graphml file.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__graphml_file</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as graphml file.&quot;&quot;&quot;</span>
+
+    <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.graphml&quot;</span><span class="p">)</span>
+
+    <span class="c1"># TODO: can&#39;t just assume digraph</span>
+    <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">export__network_data__as__sqlite_db</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Export network data as a sqlite database file.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sqlite database file.&quot;&quot;&quot;</span>
+
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sqlite&quot;</span><span class="p">))</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sql_dump" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">export__network_data__as__sql_dump</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sql_dump" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Export network data as a sql dump file.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sql dump file.&quot;&quot;&quot;</span>
+
+    <span class="kn">import</span> <span class="nn">sqlite_utils</span>
+
+    <span class="n">db</span> <span class="o">=</span> <span class="n">sqlite_utils</span><span class="o">.</span><span class="n">Database</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sql&quot;</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">target_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">iterdump</span><span class="p">():</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
 <h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">export__network_data__as__csv_files</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">export__network_data__as__csv_files</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span></code>
 
 <a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__csv_files" class="headerlink" title="Permanent link">&para;</a></h5>
 
@@ -2056,143 +2193,6 @@ the edges source and target columns.</p>
 
 </div>
 
-<div class="doc doc-object doc-function">
-
-
-
-<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">export__network_data__as__graphml_file</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
-
-<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__graphml_file" class="headerlink" title="Permanent link">&para;</a></h5>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Export network data as graphml file.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__graphml_file</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as graphml file.&quot;&quot;&quot;</span>
-
-    <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-
-    <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.graphml&quot;</span><span class="p">)</span>
-
-    <span class="c1"># TODO: can&#39;t just assume digraph</span>
-    <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sql_dump" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">export__network_data__as__sql_dump</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
-
-<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sql_dump" class="headerlink" title="Permanent link">&para;</a></h5>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Export network data as a sql dump file.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sql dump file.&quot;&quot;&quot;</span>
-
-    <span class="kn">import</span> <span class="nn">sqlite_utils</span>
-
-    <span class="n">db</span> <span class="o">=</span> <span class="n">sqlite_utils</span><span class="o">.</span><span class="n">Database</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">)</span>
-    <span class="n">target_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sql&quot;</span><span class="p">))</span>
-    <span class="k">with</span> <span class="n">target_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">iterdump</span><span class="p">():</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h5 id="kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">export__network_data__as__sqlite_db</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">base_path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
-
-<a href="#kiara_plugin.network_analysis.modules.ExportNetworkDataModule.export__network_data__as__sqlite_db" class="headerlink" title="Permanent link">&para;</a></h5>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Export network data as a sqlite database file.</p>
-
-      <details class="quote">
-        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sqlite database file.&quot;&quot;&quot;</span>
-
-    <span class="n">target_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.sqlite&quot;</span><span class="p">))</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">db_file_path</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
-
 
 
   </div>
@@ -2214,7 +2214,7 @@ the edges source and target columns.</p>
 
   <div class="doc doc-contents ">
       <p class="doc doc-class-bases">
-        Bases: <code><span title="kiara_plugin.tabular.modules.db.RenderDatabaseModuleBase">RenderDatabaseModuleBase</span></code></p>
+        Bases: <code><a class="autorefs autorefs-external" title="kiara_plugin.tabular.modules.db.RenderDatabaseModuleBase" href="https://dharpa.org/kiara_plugin.tabular/latest/reference/kiara_plugin/tabular/modules/db/__init__/#kiara_plugin.tabular.modules.db.RenderDatabaseModuleBase">RenderDatabaseModuleBase</a></code></p>
 
 
 
@@ -2295,7 +2295,7 @@ the edges source and target columns.</p>
 
 
 <h5 id="kiara_plugin.network_analysis.modules.RenderNetworkModule.render__network_data__as__html" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">render__network_data__as__html</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">render__network_data__as__html</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span></code>
 
 <a href="#kiara_plugin.network_analysis.modules.RenderNetworkModule.render__network_data__as__html" class="headerlink" title="Permanent link">&para;</a></h5>
 
