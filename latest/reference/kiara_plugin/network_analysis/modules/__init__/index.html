@@ -1262,7 +1262,7 @@ the edges source and target columns.</p>
             <span class="p">)</span>
         <span class="k">if</span> <span class="n">edges_target_column_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edges_columns</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">KiaraProcessingException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Edges table does not contain target column &#39;</span><span class="si">{</span><span class="n">edges_source_column_name</span><span class="si">}</span><span class="s2">&#39;. Choose one of: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Edges table does not contain target column &#39;</span><span class="si">{</span><span class="n">edges_target_column_name</span><span class="si">}</span><span class="s2">&#39;. Choose one of: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
 
         <span class="n">nodes</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">)</span>
@@ -1678,7 +1678,7 @@ the edges source and target columns.</p>
         <span class="p">)</span>
     <span class="k">if</span> <span class="n">edges_target_column_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edges_columns</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">KiaraProcessingException</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Edges table does not contain target column &#39;</span><span class="si">{</span><span class="n">edges_source_column_name</span><span class="si">}</span><span class="s2">&#39;. Choose one of: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Edges table does not contain target column &#39;</span><span class="si">{</span><span class="n">edges_target_column_name</span><span class="si">}</span><span class="s2">&#39;. Choose one of: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">edges_columns</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span>
 
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">)</span>
