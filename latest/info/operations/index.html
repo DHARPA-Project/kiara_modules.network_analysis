@@ -17,7 +17,7 @@
         <link rel="next" href="../../reference/kiara_plugin/network_analysis/__init__/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b71719e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9c788c91.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kiara_info.operations.create.network_data.from.tables" class="md-skip">
+        <a href="#kiara_info.operations.create.network_data.from.files" class="md-skip">
           Skip to content
         </a>
       
@@ -366,6 +366,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.create.network_data.from.files" class="md-nav__link">
+    create.network_data.from.files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.network_data.from.tables" class="md-nav__link">
     create.network_data.from.tables
   </a>
@@ -396,6 +403,13 @@
         <li class="md-nav__item">
   <a href="#kiara_info.operations.export.network_data.as.sqlite_db" class="md-nav__link">
     export.network_data.as.sqlite_db
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.import.network_data.from.local_file_paths" class="md-nav__link">
+    import.network_data.from.local_file_paths
   </a>
   
 </li>
@@ -633,6 +647,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.create.network_data.from.files" class="md-nav__link">
+    create.network_data.from.files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.create.network_data.from.tables" class="md-nav__link">
     create.network_data.from.tables
   </a>
@@ -667,6 +688,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.import.network_data.from.local_file_paths" class="md-nav__link">
+    import.network_data.from.local_file_paths
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -685,7 +713,119 @@
 
   <h1>operations</h1>
 
-<h3 id="kiara_info.operations.create.network_data.from.tables"><code>create.network_data.from.tables</code><a class="headerlink" href="#kiara_info.operations.create.network_data.from.tables" title="Permanent link">&para;</a></h3>
+<h3 id="kiara_info.operations.create.network_data.from.files"><code>create.network_data.from.files</code><a class="headerlink" href="#kiara_info.operations.create.network_data.from.files" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Create table values from files containing edges and node data, then assemble those to the network_data result.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>edges_file</td>
+<td>file</td>
+<td>The source value (of type &#39;file&#39;).</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>nodes_file</td>
+<td>file</td>
+<td>The source value (of type &#39;file&#39;).</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>source_column_name</td>
+<td>string</td>
+<td>The name of the source column name in the edges table.</td>
+<td>no</td>
+<td>source</td>
+    </tr>
+
+<td>target_column_name</td>
+<td>string</td>
+<td>The name of the target column name in the edges table.</td>
+<td>no</td>
+<td>target</td>
+    </tr>
+
+<td>edges_column_map</td>
+<td>dict</td>
+<td>An optional map of original column name to desired.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>id_column_name</td>
+<td>string</td>
+<td>The name (before any potential column mapping) of the node-table column that contains the node identifier (used in the edges table).</td>
+<td>no</td>
+<td>id</td>
+    </tr>
+
+<td>label_column_name</td>
+<td>string</td>
+<td>The name of a column that contains the node label (before any potential column name mapping). If not specified, the value of the id value will be used as label.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>nodes_column_map</td>
+<td>dict</td>
+<td>An optional map of original column name to desired.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network/graph data.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.create.network_data.from.tables"><code>create.network_data.from.tables</code><a class="headerlink" href="#kiara_info.operations.create.network_data.from.tables" title="Permanent link">&para;</a></h3>
 
 
 <table>
@@ -1128,6 +1268,118 @@ the edges source and target columns.</p>
 <td>export_details</td>
 <td>dict</td>
 <td>Details about the exported files/folders.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.import.network_data.from.local_file_paths"><code>import.network_data.from.local_file_paths</code><a class="headerlink" href="#kiara_info.operations.import.network_data.from.local_file_paths" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Onboard the edges and nodes from local files, create table values from them, then assemble those to the network_data result.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>edges_path</td>
+<td>string</td>
+<td>The local path to the file.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>nodes_path</td>
+<td>string</td>
+<td>The local path to the file.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>source_column_name</td>
+<td>string</td>
+<td>The name of the source column name in the edges table.</td>
+<td>no</td>
+<td>source</td>
+    </tr>
+
+<td>target_column_name</td>
+<td>string</td>
+<td>The name of the target column name in the edges table.</td>
+<td>no</td>
+<td>target</td>
+    </tr>
+
+<td>edges_column_map</td>
+<td>dict</td>
+<td>An optional map of original column name to desired.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>id_column_name</td>
+<td>string</td>
+<td>The name (before any potential column mapping) of the node-table column that contains the node identifier (used in the edges table).</td>
+<td>no</td>
+<td>id</td>
+    </tr>
+
+<td>label_column_name</td>
+<td>string</td>
+<td>The name of a column that contains the node label (before any potential column name mapping). If not specified, the value of the id value will be used as label.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+<td>nodes_column_map</td>
+<td>dict</td>
+<td>An optional map of original column name to desired.</td>
+<td>no</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network/graph data.</td>
 <td>yes</td>
 <td></td>
     </tr>
