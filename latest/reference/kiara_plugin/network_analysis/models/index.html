@@ -17,7 +17,7 @@
         <link rel="next" href="../modules/__init__/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.12">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.558e4712.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0d440cfe.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.2505c338.min.css">
@@ -270,16 +270,16 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           Package contents
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Package contents" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Package contents
@@ -363,16 +363,16 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="true">
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
           API reference
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="API reference" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           API reference
@@ -392,16 +392,16 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_5_1" tabindex="0" aria-expanded="true">
+        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
           kiara_plugin
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="kiara_plugin" data-md-level="2">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1">
           <span class="md-nav__icon md-icon"></span>
           kiara_plugin
@@ -421,7 +421,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5_1_1" type="checkbox" id="__nav_5_1_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" checked>
       
       
       
@@ -436,7 +436,7 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="network_analysis" data-md-level="3">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5_1_1">
           <span class="md-nav__icon md-icon"></span>
           network_analysis
@@ -480,7 +480,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
@@ -2218,13 +2218,13 @@ in a table aptly called 'nodes'.</p>
             <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
                 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-                    <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                    <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">_mapping</span><span class="p">)</span>
                     <span class="n">node_id</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">)</span>
                     <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
 
                 <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
                 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-                    <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                    <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">_mapping</span><span class="p">)</span>
                     <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">)</span>
                     <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">)</span>
                     <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
@@ -3131,13 +3131,13 @@ in a table aptly called 'nodes'.</p>
         <span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin</span><span class="p">():</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
             <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">_mapping</span><span class="p">)</span>
                 <span class="n">node_id</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">ID_COLUMN_NAME</span><span class="p">)</span>
                 <span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
 
             <span class="n">result</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">select</span><span class="p">())</span>
             <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">_mapping</span><span class="p">)</span>
                 <span class="n">source</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">SOURCE_COLUMN_NAME</span><span class="p">)</span>
                 <span class="n">target</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">TARGET_COLUMN_NAME</span><span class="p">)</span>
                 <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">row</span><span class="p">)</span>
@@ -3760,10 +3760,10 @@ in a table aptly called 'nodes'.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.4b2c34cd.min.js"></script>
       
     
   </body>
