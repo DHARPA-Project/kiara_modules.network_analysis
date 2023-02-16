@@ -676,6 +676,53 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="md-nav__link">
+    NetworkClustersModule
+  </a>
+  
+    <nav class="md-nav" aria-label="NetworkClustersModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="md-nav__link">
+    create_inputs_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="md-nav__link">
+    create_outputs_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="md-nav__link">
+    process()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -911,6 +958,53 @@
           <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.modules.RenderNetworkModule.render__network_data__as__html" class="md-nav__link">
     render__network_data__as__html()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="md-nav__link">
+    NetworkClustersModule
+  </a>
+  
+    <nav class="md-nav" aria-label="NetworkClustersModule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="md-nav__link">
+    create_inputs_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="md-nav__link">
+    create_outputs_schema()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="md-nav__link">
+    process()
   </a>
   
 </li>
@@ -1938,7 +2032,7 @@ the edges source and target columns.</p>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">iterdump</span><span class="p">():</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()}</span>
 
     <span class="k">def</span> <span class="nf">export__network_data__as__csv_files</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
@@ -2113,7 +2207,7 @@ the edges source and target columns.</p>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">iterdump</span><span class="p">():</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;files&quot;</span><span class="p">:</span> <span class="n">target_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()}</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -2357,6 +2451,320 @@ the edges source and target columns.</p>
         <span class="n">related_scenes</span><span class="o">=</span><span class="n">data_related_scenes</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="kiara_plugin.network_analysis.modules.NetworkClustersModule" class="doc doc-heading">
+        <code>NetworkClustersModule</code>
+
+
+<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+      <p class="doc doc-class-bases">
+        Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
+
+
+
+        <details class="quote">
+          <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkClustersModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+
+    <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;network_data.check_clusters&quot;</span>
+
+    <span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;network_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network data to analyze.&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;largest_component&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the largest component of the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of components in the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;is_connected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Whether the graph is connected or not.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">):</span>
+
+        <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+        <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+
+        <span class="n">undir_graph</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+        <span class="n">undir_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
+        <span class="n">lg_component</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+        <span class="n">subgraph</span> <span class="o">=</span> <span class="n">undir_graph</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">lg_component</span><span class="p">)</span>
+
+        <span class="n">subgraph_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">subgraph</span><span class="p">)</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">largest_component</span><span class="o">=</span><span class="n">subgraph_data</span><span class="p">)</span>
+
+        <span class="n">number_of_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span><span class="p">)</span>
+
+        <span class="n">is_connected</span> <span class="o">=</span> <span class="n">number_of_components</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<h4 id="kiara_plugin.network_analysis.modules.NetworkClustersModule-functions">Functions<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="headerlink" title="Permanent link">&para;</a></h4>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_inputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;network_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The network data to analyze.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_outputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;largest_component&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the largest component of the graph.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;The number of components in the graph.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;is_connected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;Whether the graph is connected or not.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">)</span></code>
+
+<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+
+      <details class="quote">
+        <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">):</span>
+
+    <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+    <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+
+    <span class="n">undir_graph</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
+    <span class="n">undir_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
+    <span class="n">lg_component</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+    <span class="n">subgraph</span> <span class="o">=</span> <span class="n">undir_graph</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">lg_component</span><span class="p">)</span>
+
+    <span class="n">subgraph_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">subgraph</span><span class="p">)</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">largest_component</span><span class="o">=</span><span class="n">subgraph_data</span><span class="p">)</span>
+
+    <span class="n">number_of_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span><span class="p">)</span>
+
+    <span class="n">is_connected</span> <span class="o">=</span> <span class="n">number_of_components</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>

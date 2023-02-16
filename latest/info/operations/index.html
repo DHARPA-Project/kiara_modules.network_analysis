@@ -414,6 +414,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data.check_clusters" class="md-nav__link">
+    network_data.check_clusters
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -691,6 +698,13 @@
         <li class="md-nav__item">
   <a href="#kiara_info.operations.import.network_data.from.local_file_paths" class="md-nav__link">
     import.network_data.from.local_file_paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data.check_clusters" class="md-nav__link">
+    network_data.check_clusters
   </a>
   
 </li>
@@ -1380,6 +1394,83 @@ the edges source and target columns.</p>
 <td>network_data</td>
 <td>network_data</td>
 <td>The network/graph data.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.network_data.check_clusters"><code>network_data.check_clusters</code><a class="headerlink" href="#kiara_info.operations.network_data.check_clusters" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>-- n/a --</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network data to analyze.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>largest_component</td>
+<td>network_data</td>
+<td>A sub-graph of the largest component of the graph.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>number_of_components</td>
+<td>integer</td>
+<td>The number of components in the graph.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>is_connected</td>
+<td>boolean</td>
+<td>Whether the graph is connected or not.</td>
 <td>yes</td>
 <td></td>
     </tr>

@@ -822,6 +822,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_self_loops" class="md-nav__link">
+    number_of_self_loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_parallel_edges" class="md-nav__link">
+    number_of_parallel_edges
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1278,6 +1292,20 @@
           <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.properties_by_graph_type" class="md-nav__link">
     properties_by_graph_type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_self_loops" class="md-nav__link">
+    number_of_self_loops
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_parallel_edges" class="md-nav__link">
+    number_of_parallel_edges
   </a>
   
 </li>
@@ -3459,7 +3487,25 @@ in a table aptly called 'nodes'.</p>
 <span class="normal">475</span>
 <span class="normal">476</span>
 <span class="normal">477</span>
-<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkGraphProperties</span><span class="p">(</span><span class="n">ValueMetadata</span><span class="p">):</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkGraphProperties</span><span class="p">(</span><span class="n">ValueMetadata</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;File stats.&quot;&quot;&quot;</span>
 
     <span class="n">_metadata_key</span> <span class="o">=</span> <span class="s2">&quot;graph_properties&quot;</span>
@@ -3468,6 +3514,10 @@ in a table aptly called 'nodes'.</p>
     <span class="n">properties_by_graph_type</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PropertiesByGraphType</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Properties of the network data, by graph type.&quot;</span>
     <span class="p">)</span>
+    <span class="n">number_of_self_loops</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Number of edges where source and target point to the same node.&quot;</span>
+    <span class="p">)</span>
+    <span class="n">number_of_parallel_edges</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Number of parallel edges.&quot;</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">retrieve_supported_data_types</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -3494,6 +3544,18 @@ in a table aptly called 'nodes'.</p>
             <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
             <span class="n">num_edges_undirected</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
+            <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;SELECT COUNT(*) FROM edges GROUP BY source, target HAVING COUNT(*) &gt; 1&quot;</span>
+            <span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+            <span class="n">num_parallel_edges</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">duplicates</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+                <span class="n">num_parallel_edges</span> <span class="o">+=</span> <span class="n">duplicates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+            <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT count(*) FROM edges WHERE source = target&quot;</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+            <span class="n">num_self_loops</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
         <span class="n">directed</span> <span class="o">=</span> <span class="n">PropertiesByGraphType</span><span class="p">(</span>
             <span class="n">graph_type</span><span class="o">=</span><span class="n">GraphType</span><span class="o">.</span><span class="n">DIRECTED</span><span class="p">,</span> <span class="n">number_of_edges</span><span class="o">=</span><span class="n">num_edges_directed</span>
         <span class="p">)</span>
@@ -3515,6 +3577,8 @@ in a table aptly called 'nodes'.</p>
                 <span class="n">directed_multi</span><span class="p">,</span>
                 <span class="n">undirected_multi</span><span class="p">,</span>
             <span class="p">],</span>
+            <span class="n">number_of_self_loops</span><span class="o">=</span><span class="n">num_self_loops</span><span class="p">,</span>
+            <span class="n">number_of_parallel_edges</span><span class="o">=</span><span class="n">num_parallel_edges</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
@@ -3567,6 +3631,44 @@ in a table aptly called 'nodes'.</p>
 
 </div>
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h5 id="kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_self_loops" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">number_of_self_loops</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of edges where source and target point to the same node.&#39;</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+  </span>
+
+<a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_self_loops" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h5 id="kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_parallel_edges" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">number_of_parallel_edges</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of parallel edges.&#39;</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+  </span>
+
+<a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_parallel_edges" class="headerlink" title="Permanent link">&para;</a></h5>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
 <h4 id="kiara_plugin.network_analysis.models.NetworkGraphProperties-functions">Functions<a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties-functions" class="headerlink" title="Permanent link">&para;</a></h4>
 
 <div class="doc doc-object doc-function">
@@ -3587,9 +3689,9 @@ in a table aptly called 'nodes'.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/models.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">retrieve_supported_data_types</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
     <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;network_data&quot;</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
@@ -3616,11 +3718,7 @@ in a table aptly called 'nodes'.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/models.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">436</span>
-<span class="normal">437</span>
-<span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">440</span>
 <span class="normal">441</span>
 <span class="normal">442</span>
 <span class="normal">443</span>
@@ -3658,7 +3756,25 @@ in a table aptly called 'nodes'.</p>
 <span class="normal">475</span>
 <span class="normal">476</span>
 <span class="normal">477</span>
-<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">create_value_metadata</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;NetworkGraphProperties&quot;</span><span class="p">:</span>
 
     <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span>
@@ -3678,6 +3794,18 @@ in a table aptly called 'nodes'.</p>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
         <span class="n">num_edges_undirected</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;SELECT COUNT(*) FROM edges GROUP BY source, target HAVING COUNT(*) &gt; 1&quot;</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+        <span class="n">num_parallel_edges</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">duplicates</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+            <span class="n">num_parallel_edges</span> <span class="o">+=</span> <span class="n">duplicates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT count(*) FROM edges WHERE source = target&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+        <span class="n">num_self_loops</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">directed</span> <span class="o">=</span> <span class="n">PropertiesByGraphType</span><span class="p">(</span>
         <span class="n">graph_type</span><span class="o">=</span><span class="n">GraphType</span><span class="o">.</span><span class="n">DIRECTED</span><span class="p">,</span> <span class="n">number_of_edges</span><span class="o">=</span><span class="n">num_edges_directed</span>
@@ -3700,6 +3828,8 @@ in a table aptly called 'nodes'.</p>
             <span class="n">directed_multi</span><span class="p">,</span>
             <span class="n">undirected_multi</span><span class="p">,</span>
         <span class="p">],</span>
+        <span class="n">number_of_self_loops</span><span class="o">=</span><span class="n">num_self_loops</span><span class="p">,</span>
+        <span class="n">number_of_parallel_edges</span><span class="o">=</span><span class="n">num_parallel_edges</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
