@@ -415,8 +415,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.network_data.check_clusters" class="md-nav__link">
-    network_data.check_clusters
+  <a href="#kiara_info.operations.network_data.extract_largest_component" class="md-nav__link">
+    network_data.extract_largest_component
   </a>
   
 </li>
@@ -703,8 +703,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kiara_info.operations.network_data.check_clusters" class="md-nav__link">
-    network_data.check_clusters
+  <a href="#kiara_info.operations.network_data.extract_largest_component" class="md-nav__link">
+    network_data.extract_largest_component
   </a>
   
 </li>
@@ -1402,15 +1402,18 @@ the edges source and target columns.</p>
 </table>
 </td>
     </tr>
-</table><h3 id="kiara_info.operations.network_data.check_clusters"><code>network_data.check_clusters</code><a class="headerlink" href="#kiara_info.operations.network_data.check_clusters" title="Permanent link">&para;</a></h3>
+</table><h3 id="kiara_info.operations.network_data.extract_largest_component"><code>network_data.extract_largest_component</code><a class="headerlink" href="#kiara_info.operations.network_data.extract_largest_component" title="Permanent link">&para;</a></h3>
 
 
 <table>
     <tr>
         <td>Documentation</td>
-        <td><p>Analyse clustering in network data.</p>
-<p>This module analyses network data and checks if it contains clusters, and if so, how many.
-It also extracts the largest component of the graph.</p>
+        <td><p>Extract the largest connected component from this network data.</p>
+<p>This module analyses network data and checks if it contains clusters, and if so, how many. If all nodes are connected
+to each other, the input data will be returned as largest component and the 'other_components' output will be unset.</p>
+<p>Otherwise, the dataset will be split up into nodes of the largest component, and nodes that are not part of that.
+Then this module will create 2 new network data items, one for the largest component, and one for the other components that excludes
+the nodes and edges that are part of the largest component.</p>
 </td>
     </tr>
     <tr>
@@ -1460,6 +1463,13 @@ It also extracts the largest component of the graph.</p>
 <td>network_data</td>
 <td>A sub-graph of the largest component of the graph.</td>
 <td>yes</td>
+<td></td>
+    </tr>
+
+<td>other_components</td>
+<td>network_data</td>
+<td>A sub-graph of the other components of the graph, excluding the nodes (and edges referencing those nodes) contained in the largest component.</td>
+<td>no</td>
 <td></td>
     </tr>
 

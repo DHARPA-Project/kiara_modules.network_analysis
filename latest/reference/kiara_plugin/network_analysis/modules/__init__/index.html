@@ -690,15 +690,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="md-nav__link">
-    NetworkClustersModule
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule" class="md-nav__link">
+    ExtractLargestComponentModule
   </a>
   
-    <nav class="md-nav" aria-label="NetworkClustersModule">
+    <nav class="md-nav" aria-label="ExtractLargestComponentModule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule-functions" class="md-nav__link">
     Functions
   </a>
   
@@ -706,21 +706,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_inputs_schema" class="md-nav__link">
     create_inputs_schema()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_outputs_schema" class="md-nav__link">
     create_outputs_schema()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.process" class="md-nav__link">
     process()
   </a>
   
@@ -999,15 +999,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="md-nav__link">
-    NetworkClustersModule
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule" class="md-nav__link">
+    ExtractLargestComponentModule
   </a>
   
-    <nav class="md-nav" aria-label="NetworkClustersModule">
+    <nav class="md-nav" aria-label="ExtractLargestComponentModule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule-functions" class="md-nav__link">
     Functions
   </a>
   
@@ -1015,21 +1015,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_inputs_schema" class="md-nav__link">
     create_inputs_schema()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_outputs_schema" class="md-nav__link">
     create_outputs_schema()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="md-nav__link">
+  <a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.process" class="md-nav__link">
     process()
   </a>
   
@@ -1138,9 +1138,7 @@ the edges source and target columns.</p>
 
         <details class="quote">
           <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 34</span>
-<span class="normal"> 35</span>
-<span class="normal"> 36</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 36</span>
 <span class="normal"> 37</span>
 <span class="normal"> 38</span>
 <span class="normal"> 39</span>
@@ -1324,7 +1322,9 @@ the edges source and target columns.</p>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
-<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateGraphFromTablesModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateGraphFromTablesModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a graph object from one or two tables.</span>
 
 <span class="sd">    This module needs at least one table as input, providing the edges of the resulting network data set.</span>
@@ -1540,9 +1540,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
@@ -1586,7 +1584,9 @@ the edges source and target columns.</p>
 <span class="normal">87</span>
 <span class="normal">88</span>
 <span class="normal">89</span>
-<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
@@ -1653,14 +1653,14 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span>
-<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
@@ -1688,9 +1688,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">103</span>
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
@@ -1807,7 +1805,9 @@ the edges source and target columns.</p>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
-<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="n">edges</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;edges&quot;</span><span class="p">)</span>
     <span class="n">edges_table</span><span class="p">:</span> <span class="n">KiaraTable</span> <span class="o">=</span> <span class="n">edges</span><span class="o">.</span><span class="n">data</span>
@@ -1962,9 +1962,7 @@ the edges source and target columns.</p>
 
         <details class="quote">
           <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
 <span class="normal">226</span>
 <span class="normal">227</span>
 <span class="normal">228</span>
@@ -2034,7 +2032,9 @@ the edges source and target columns.</p>
 <span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
-<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ExportNetworkDataModule</span><span class="p">(</span><span class="n">DataExportModule</span><span class="p">):</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ExportNetworkDataModule</span><span class="p">(</span><span class="n">DataExportModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data items.&quot;&quot;&quot;</span>
 
     <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;export.network_data&quot;</span>
@@ -2138,9 +2138,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span>
@@ -2151,7 +2149,9 @@ the edges source and target columns.</p>
 <span class="normal">238</span>
 <span class="normal">239</span>
 <span class="normal">240</span>
-<span class="normal">241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__graphml_file</span><span class="p">(</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__graphml_file</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as graphml file.&quot;&quot;&quot;</span>
@@ -2187,15 +2187,15 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
-<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sqlite_db</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sqlite database file.&quot;&quot;&quot;</span>
@@ -2226,9 +2226,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
 <span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
@@ -2239,7 +2237,9 @@ the edges source and target columns.</p>
 <span class="normal">263</span>
 <span class="normal">264</span>
 <span class="normal">265</span>
-<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__sql_dump</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as a sql dump file.&quot;&quot;&quot;</span>
@@ -2275,9 +2275,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
@@ -2302,7 +2300,9 @@ the edges source and target columns.</p>
 <span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
-<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__csv_files</span><span class="p">(</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">export__network_data__as__csv_files</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">NetworkData</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Export network data as 2 csv files (one for edges, one for nodes.&quot;&quot;&quot;</span>
@@ -2363,9 +2363,7 @@ the edges source and target columns.</p>
 
         <details class="quote">
           <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">300</span>
 <span class="normal">301</span>
 <span class="normal">302</span>
 <span class="normal">303</span>
@@ -2390,7 +2388,9 @@ the edges source and target columns.</p>
 <span class="normal">322</span>
 <span class="normal">323</span>
 <span class="normal">324</span>
-<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">RenderNetworkModule</span><span class="p">(</span><span class="n">RenderDatabaseModuleBase</span><span class="p">):</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">RenderNetworkModule</span><span class="p">(</span><span class="n">RenderDatabaseModuleBase</span><span class="p">):</span>
     <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;render.network_data.for.web&quot;</span>
 
     <span class="k">def</span> <span class="nf">render__network_data__as__html</span><span class="p">(</span>
@@ -2447,9 +2447,7 @@ the edges source and target columns.</p>
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
@@ -2471,7 +2469,9 @@ the edges source and target columns.</p>
 <span class="normal">322</span>
 <span class="normal">323</span>
 <span class="normal">324</span>
-<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">render__network_data__as__html</span><span class="p">(</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">render__network_data__as__html</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
 <span class="p">):</span>
 
@@ -2514,11 +2514,11 @@ the edges source and target columns.</p>
 
 
 
-<h3 id="kiara_plugin.network_analysis.modules.NetworkClustersModule" class="doc doc-heading">
-        <code>NetworkClustersModule</code>
+<h3 id="kiara_plugin.network_analysis.modules.ExtractLargestComponentModule" class="doc doc-heading">
+        <code>ExtractLargestComponentModule</code>
 
 
-<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -2526,16 +2526,17 @@ the edges source and target columns.</p>
         Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
 
   
-      <p>Analyse clustering in network data.</p>
-<p>This module analyses network data and checks if it contains clusters, and if so, how many.
-It also extracts the largest component of the graph.</p>
+      <p>Extract the largest connected component from this network data.</p>
+<p>This module analyses network data and checks if it contains clusters, and if so, how many. If all nodes are connected
+to each other, the input data will be returned as largest component and the 'other_components' output will be unset.</p>
+<p>Otherwise, the dataset will be split up into nodes of the largest component, and nodes that are not part of that.
+Then this module will create 2 new network data items, one for the largest component, and one for the other components that excludes
+the nodes and edges that are part of the largest component.</p>
 
 
         <details class="quote">
           <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">330</span>
 <span class="normal">331</span>
 <span class="normal">332</span>
 <span class="normal">333</span>
@@ -2594,14 +2595,89 @@ It also extracts the largest component of the graph.</p>
 <span class="normal">386</span>
 <span class="normal">387</span>
 <span class="normal">388</span>
-<span class="normal">389</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkClustersModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyse clustering in network data.</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ExtractLargestComponentModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the largest connected component from this network data.</span>
 
-<span class="sd">    This module analyses network data and checks if it contains clusters, and if so, how many.</span>
-<span class="sd">    It also extracts the largest component of the graph.</span>
+<span class="sd">    This module analyses network data and checks if it contains clusters, and if so, how many. If all nodes are connected</span>
+<span class="sd">    to each other, the input data will be returned as largest component and the &#39;other_components&#39; output will be unset.</span>
+
+<span class="sd">    Otherwise, the dataset will be split up into nodes of the largest component, and nodes that are not part of that.</span>
+<span class="sd">    Then this module will create 2 new network data items, one for the largest component, and one for the other components that excludes</span>
+<span class="sd">    the nodes and edges that are part of the largest component.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;network_data.check_clusters&quot;</span>
+    <span class="n">_module_type_name</span> <span class="o">=</span> <span class="s2">&quot;network_data.extract_largest_component&quot;</span>
 
     <span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -2619,11 +2695,17 @@ It also extracts the largest component of the graph.</p>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
-        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">result</span><span class="p">[</span><span class="s2">&quot;largest_component&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
             <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the largest component of the graph.&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;other_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the other components of the graph, excluding the nodes (and edges referencing those nodes) contained in the largest component.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="p">}</span>
 
         <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -2641,21 +2723,80 @@ It also extracts the largest component of the graph.</p>
 
         <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-        <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+        <span class="n">network_value</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+        <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">network_value</span><span class="o">.</span><span class="n">data</span>
 
+        <span class="c1"># TODO: maybe this can be done directly in sql, without networx, which would be faster and better</span>
+        <span class="c1"># for memory usage</span>
         <span class="n">undir_graph</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
-        <span class="n">undir_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
-        <span class="n">lg_component</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
-        <span class="n">subgraph</span> <span class="o">=</span> <span class="n">undir_graph</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">lg_component</span><span class="p">)</span>
+        <span class="n">undir_components</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">))</span>
 
-        <span class="n">subgraph_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">subgraph</span><span class="p">)</span>
-        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">largest_component</span><span class="o">=</span><span class="n">subgraph_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">undir_components</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
+                <span class="n">largest_component</span><span class="o">=</span><span class="n">network_value</span><span class="p">,</span>
+                <span class="n">number_of_components</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">is_connected</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">other_components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">nodes_largest_component</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">largest_component</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">largest_component</span><span class="o">.</span><span class="n">_unlock_db</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="n">largest_component</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+
+            <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM nodes WHERE id NOT IN :nodes&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">delete_from_nodes</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_nodes</span><span class="p">)</span>
+
+            <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;DELETE FROM edges WHERE source NOT IN :nodes AND target NOT IN :nodes&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+            <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">delete_from_edges</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_edges</span><span class="p">)</span>
+            <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="n">largest_component</span><span class="o">.</span><span class="n">_lock_db</span><span class="p">()</span>
+        <span class="n">largest_component</span><span class="o">.</span><span class="n">_invalidate</span><span class="p">()</span>
+
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;largest_component&quot;</span><span class="p">,</span> <span class="n">largest_component</span><span class="p">)</span>
+
+        <span class="n">other_components</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">other_components</span><span class="o">.</span><span class="n">_unlock_db</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">other_components</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+
+            <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM nodes WHERE id IN :nodes&quot;&quot;&quot;</span><span class="p">)</span>
+            <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">delete_from_nodes</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_nodes</span><span class="p">)</span>
+
+            <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;DELETE FROM edges WHERE source IN :nodes OR target IN :nodes&quot;&quot;&quot;</span>
+            <span class="p">)</span>
+            <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">delete_from_edges</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+                <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_edges</span><span class="p">)</span>
+
+            <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="n">other_components</span><span class="o">.</span><span class="n">_lock_db</span><span class="p">()</span>
+        <span class="n">other_components</span><span class="o">.</span><span class="n">_invalidate</span><span class="p">()</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;other_components&quot;</span><span class="p">,</span> <span class="n">other_components</span><span class="p">)</span>
 
         <span class="n">number_of_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
-        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span><span class="p">)</span>
-
         <span class="n">is_connected</span> <span class="o">=</span> <span class="n">number_of_components</span> <span class="o">==</span> <span class="mi">1</span>
-        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">)</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
+            <span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">,</span> <span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span>
+        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -2669,33 +2810,33 @@ It also extracts the largest component of the graph.</p>
 
 
 
-<h4 id="kiara_plugin.network_analysis.modules.NetworkClustersModule-functions">Functions<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule-functions" class="headerlink" title="Permanent link">&para;</a></h4>
+<h4 id="kiara_plugin.network_analysis.modules.ExtractLargestComponentModule-functions">Functions<a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule-functions" class="headerlink" title="Permanent link">&para;</a></h4>
 
 <div class="doc doc-object doc-function">
 
 
 
-<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="doc doc-heading">
+<h5 id="kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_inputs_schema" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">create_inputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
 
-<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_inputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
+<a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_inputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
 
 
   <div class="doc doc-contents ">
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">343</span>
 <span class="normal">344</span>
 <span class="normal">345</span>
 <span class="normal">346</span>
-<span class="normal">347</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
@@ -2716,23 +2857,17 @@ It also extracts the largest component of the graph.</p>
 
 
 
-<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="doc doc-heading">
+<h5 id="kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_outputs_schema" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">create_outputs_schema</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span></code>
 
-<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.create_outputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
+<a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.create_outputs_schema" class="headerlink" title="Permanent link">&para;</a></h5>
 
 
   <div class="doc doc-contents ">
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">355</span>
 <span class="normal">356</span>
 <span class="normal">357</span>
 <span class="normal">358</span>
@@ -2746,15 +2881,33 @@ It also extracts the largest component of the graph.</p>
 <span class="normal">366</span>
 <span class="normal">367</span>
 <span class="normal">368</span>
-<span class="normal">369</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="n">result</span><span class="p">[</span><span class="s2">&quot;largest_component&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
         <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the largest component of the graph.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;other_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="s2">&quot;A sub-graph of the other components of the graph, excluding the nodes (and edges referencing those nodes) contained in the largest component.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;optional&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 
     <span class="n">result</span><span class="p">[</span><span class="s2">&quot;number_of_components&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
@@ -2777,53 +2930,171 @@ It also extracts the largest component of the graph.</p>
 
 
 
-<h5 id="kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="doc doc-heading">
+<h5 id="kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.process" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">process</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">)</span></code>
 
-<a href="#kiara_plugin.network_analysis.modules.NetworkClustersModule.process" class="headerlink" title="Permanent link">&para;</a></h5>
+<a href="#kiara_plugin.network_analysis.modules.ExtractLargestComponentModule.process" class="headerlink" title="Permanent link">&para;</a></h5>
 
 
   <div class="doc doc-contents ">
 
       <details class="quote">
         <summary>Source code in <code>kiara_plugin/network_analysis/modules/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">383</span>
 <span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
 <span class="normal">387</span>
 <span class="normal">388</span>
-<span class="normal">389</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">):</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">):</span>
 
     <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-    <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_data</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+    <span class="n">network_value</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get_value_obj</span><span class="p">(</span><span class="s2">&quot;network_data&quot;</span><span class="p">)</span>
+    <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">network_value</span><span class="o">.</span><span class="n">data</span>
 
+    <span class="c1"># TODO: maybe this can be done directly in sql, without networx, which would be faster and better</span>
+    <span class="c1"># for memory usage</span>
     <span class="n">undir_graph</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">as_networkx_graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">)</span>
-    <span class="n">undir_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
-    <span class="n">lg_component</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
-    <span class="n">subgraph</span> <span class="o">=</span> <span class="n">undir_graph</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">lg_component</span><span class="p">)</span>
+    <span class="n">undir_components</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">))</span>
 
-    <span class="n">subgraph_data</span> <span class="o">=</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_from_networkx_graph</span><span class="p">(</span><span class="n">subgraph</span><span class="p">)</span>
-    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">largest_component</span><span class="o">=</span><span class="n">subgraph_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">undir_components</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
+            <span class="n">largest_component</span><span class="o">=</span><span class="n">network_value</span><span class="p">,</span>
+            <span class="n">number_of_components</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">is_connected</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">other_components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">nodes_largest_component</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">undir_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+
+    <span class="n">largest_component</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">largest_component</span><span class="o">.</span><span class="n">_unlock_db</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">largest_component</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+
+        <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM nodes WHERE id NOT IN :nodes&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">delete_from_nodes</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+            <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_nodes</span><span class="p">)</span>
+
+        <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;DELETE FROM edges WHERE source NOT IN :nodes AND target NOT IN :nodes&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">delete_from_edges</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+            <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_edges</span><span class="p">)</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="n">largest_component</span><span class="o">.</span><span class="n">_lock_db</span><span class="p">()</span>
+    <span class="n">largest_component</span><span class="o">.</span><span class="n">_invalidate</span><span class="p">()</span>
+
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;largest_component&quot;</span><span class="p">,</span> <span class="n">largest_component</span><span class="p">)</span>
+
+    <span class="n">other_components</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">other_components</span><span class="o">.</span><span class="n">_unlock_db</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">other_components</span><span class="o">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+
+        <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;DELETE FROM nodes WHERE id IN :nodes&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">delete_from_nodes</span> <span class="o">=</span> <span class="n">delete_from_nodes</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+            <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_nodes</span><span class="p">)</span>
+
+        <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">text</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;DELETE FROM edges WHERE source IN :nodes OR target IN :nodes&quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">delete_from_edges</span> <span class="o">=</span> <span class="n">delete_from_edges</span><span class="o">.</span><span class="n">bindparams</span><span class="p">(</span>
+            <span class="n">bindparam</span><span class="p">(</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="n">expanding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">nodes_largest_component</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete_from_edges</span><span class="p">)</span>
+
+        <span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="n">other_components</span><span class="o">.</span><span class="n">_lock_db</span><span class="p">()</span>
+    <span class="n">other_components</span><span class="o">.</span><span class="n">_invalidate</span><span class="p">()</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="s2">&quot;other_components&quot;</span><span class="p">,</span> <span class="n">other_components</span><span class="p">)</span>
 
     <span class="n">number_of_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">undir_graph</span><span class="p">)</span>
-    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span><span class="p">)</span>
-
     <span class="n">is_connected</span> <span class="o">=</span> <span class="n">number_of_components</span> <span class="o">==</span> <span class="mi">1</span>
-    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">)</span>
+    <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span>
+        <span class="n">is_connected</span><span class="o">=</span><span class="n">is_connected</span><span class="p">,</span> <span class="n">number_of_components</span><span class="o">=</span><span class="n">number_of_components</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
