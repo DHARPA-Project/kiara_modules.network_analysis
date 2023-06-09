@@ -706,6 +706,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../modules/filters/" class="md-nav__link">
+        filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../modules/rendering/" class="md-nav__link">
         rendering
       </a>
@@ -1044,7 +1058,13 @@ and one called 'nodes'.</p>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
-<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataType</span><span class="p">(</span><span class="n">TablesType</span><span class="p">):</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataType</span><span class="p">(</span><span class="n">TablesType</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Data that can be assembled into a graph.</span>
 
 <span class="sd">    This data type extends the &#39;database&#39; type from the [kiara_plugin.tabular](https://github.com/DHARPA-Project/kiara_plugin.tabular) plugin, restricting the allowed tables to one called &#39;edges&#39;,</span>
@@ -1070,11 +1090,17 @@ and one called 'nodes'.</p>
                     <span class="sa">f</span><span class="s2">&quot;Can&#39;t import network data: no &#39;</span><span class="si">{</span><span class="n">NODES_TABLE_NAME</span><span class="si">}</span><span class="s2">&#39; table found&quot;</span>
                 <span class="p">)</span>
 
-            <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_tables</span><span class="p">(</span>
-                <span class="p">{</span>
-                    <span class="n">EDGES_TABLE_NAME</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">EDGES_TABLE_NAME</span><span class="p">],</span>
-                    <span class="n">NODES_TABLE_NAME</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">NODES_TABLE_NAME</span><span class="p">],</span>
-                <span class="p">}</span>
+            <span class="c1"># return NetworkData(</span>
+            <span class="c1">#     tables={</span>
+            <span class="c1">#         EDGES_TABLE_NAME: data.tables[EDGES_TABLE_NAME],</span>
+            <span class="c1">#         NODES_TABLE_NAME: data.tables[NODES_TABLE_NAME],</span>
+            <span class="c1">#     },</span>
+            <span class="c1">#</span>
+            <span class="c1"># )</span>
+            <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data</span><span class="p">(</span>
+                <span class="n">edges_table</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">EDGES_TABLE_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">arrow_table</span><span class="p">,</span>
+                <span class="n">nodes_table</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">NODES_TABLE_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">arrow_table</span><span class="p">,</span>
+                <span class="n">augment_tables</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">data</span>
@@ -1238,7 +1264,13 @@ and one called 'nodes'.</p>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_python_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NetworkData</span><span class="p">:</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_python_obj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NetworkData</span><span class="p">:</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">KiaraTables</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">EDGES_TABLE_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -1251,11 +1283,17 @@ and one called 'nodes'.</p>
                 <span class="sa">f</span><span class="s2">&quot;Can&#39;t import network data: no &#39;</span><span class="si">{</span><span class="n">NODES_TABLE_NAME</span><span class="si">}</span><span class="s2">&#39; table found&quot;</span>
             <span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_tables</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="n">EDGES_TABLE_NAME</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">EDGES_TABLE_NAME</span><span class="p">],</span>
-                <span class="n">NODES_TABLE_NAME</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">NODES_TABLE_NAME</span><span class="p">],</span>
-            <span class="p">}</span>
+        <span class="c1"># return NetworkData(</span>
+        <span class="c1">#     tables={</span>
+        <span class="c1">#         EDGES_TABLE_NAME: data.tables[EDGES_TABLE_NAME],</span>
+        <span class="c1">#         NODES_TABLE_NAME: data.tables[NODES_TABLE_NAME],</span>
+        <span class="c1">#     },</span>
+        <span class="c1">#</span>
+        <span class="c1"># )</span>
+        <span class="k">return</span> <span class="n">NetworkData</span><span class="o">.</span><span class="n">create_network_data</span><span class="p">(</span>
+            <span class="n">edges_table</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">EDGES_TABLE_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">arrow_table</span><span class="p">,</span>
+            <span class="n">nodes_table</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="n">NODES_TABLE_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">arrow_table</span><span class="p">,</span>
+            <span class="n">augment_tables</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span>
@@ -1279,13 +1317,7 @@ and one called 'nodes'.</p>
 
       <details class="quote">
         <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/data_types.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -1321,7 +1353,13 @@ and one called 'nodes'.</p>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
-<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pretty_print_as__terminal_renderable</span><span class="p">(</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pretty_print_as__terminal_renderable</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Value</span><span class="p">,</span> <span class="n">render_config</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 

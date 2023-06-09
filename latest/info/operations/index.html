@@ -394,6 +394,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data_filter.component" class="md-nav__link">
+    network_data_filter.component
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -691,6 +698,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/kiara_plugin/network_analysis/modules/filters/" class="md-nav__link">
+        filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/kiara_plugin/network_analysis/modules/rendering/" class="md-nav__link">
         rendering
       </a>
@@ -837,6 +858,13 @@
         <li class="md-nav__item">
   <a href="#kiara_info.operations.network_data.extract_components" class="md-nav__link">
     network_data.extract_components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data_filter.component" class="md-nav__link">
+    network_data_filter.component
   </a>
   
 </li>
@@ -1621,6 +1649,83 @@ If no further table is created, basic node information will be automatically cre
 <td>is_connected</td>
 <td>boolean</td>
 <td>Whether the graph is connected or not.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.network_data_filter.component"><code>network_data_filter.component</code><a class="headerlink" href="#kiara_info.operations.network_data_filter.component" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Retrieve a single sub-component from a network data object.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>value</td>
+<td>network_data</td>
+<td>A value of type &#39;network_data&#39;.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+<td>component_id</td>
+<td>string</td>
+<td>The id of the component to extract.</td>
+<td>no</td>
+<td>0</td>
+    </tr>
+
+<td>component_column</td>
+<td>string</td>
+<td>The name of the colum that contains the component id.</td>
+<td>no</td>
+<td>component_id</td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>value</td>
+<td>network_data</td>
+<td>The filtered value.</td>
 <td>yes</td>
 <td></td>
     </tr>
