@@ -2308,7 +2308,9 @@ If no further table is created, basic node information will be automatically cre
 <span class="normal">468</span>
 <span class="normal">469</span>
 <span class="normal">470</span>
-<span class="normal">471</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssembleGraphFromTablesModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AssembleGraphFromTablesModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a &#39;network_data&#39; instance from one or two tables.</span>
 
 <span class="sd">    This module needs at least one table as input, providing the edges of the resulting network data set.</span>
@@ -2551,10 +2553,11 @@ If no further table is created, basic node information will be automatically cre
 
         <span class="k">if</span> <span class="n">nodes_arrow_dataframe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">new_node_ids</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">))</span>
-            <span class="n">node_id_map</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="n">node_id</span><span class="p">:</span> <span class="n">new_node_id</span>
-                <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">new_node_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">)</span>
-            <span class="p">}</span>
+            <span class="n">node_id_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">))</span>
+            <span class="c1"># node_id_map = {</span>
+            <span class="c1">#     node_id: new_node_id</span>
+            <span class="c1">#     for node_id, new_node_id in</span>
+            <span class="c1"># }</span>
 
             <span class="n">nodes_arrow_dataframe</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
                 <span class="p">{</span>
@@ -2571,10 +2574,11 @@ If no further table is created, basic node information will be automatically cre
                 <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">new_node_ids</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">))</span>
-                <span class="n">node_id_map</span> <span class="o">=</span> <span class="p">{</span>
-                    <span class="n">node_id</span><span class="p">:</span> <span class="n">new_node_id</span>
-                    <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">new_node_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">)</span>
-                <span class="p">}</span>
+                <span class="n">node_id_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">))</span>
+                <span class="c1"># node_id_map = {</span>
+                <span class="c1">#     node_id: new_node_id</span>
+                <span class="c1">#     for node_id, new_node_id in</span>
+                <span class="c1"># }</span>
                 <span class="n">new_idx_series</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
                     <span class="n">name</span><span class="o">=</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">new_node_ids</span>
                 <span class="p">)</span>
@@ -3093,7 +3097,9 @@ If no further table is created, basic node information will be automatically cre
 <span class="normal">468</span>
 <span class="normal">469</span>
 <span class="normal">470</span>
-<span class="normal">471</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">job_log</span><span class="p">:</span> <span class="n">JobLog</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">ValueMap</span><span class="p">,</span> <span class="n">job_log</span><span class="p">:</span> <span class="n">JobLog</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
     <span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
 
@@ -3269,10 +3275,11 @@ If no further table is created, basic node information will be automatically cre
 
     <span class="k">if</span> <span class="n">nodes_arrow_dataframe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">new_node_ids</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">))</span>
-        <span class="n">node_id_map</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">node_id</span><span class="p">:</span> <span class="n">new_node_id</span>
-            <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">new_node_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">)</span>
-        <span class="p">}</span>
+        <span class="n">node_id_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_node_ids_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">))</span>
+        <span class="c1"># node_id_map = {</span>
+        <span class="c1">#     node_id: new_node_id</span>
+        <span class="c1">#     for node_id, new_node_id in</span>
+        <span class="c1"># }</span>
 
         <span class="n">nodes_arrow_dataframe</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="p">{</span>
@@ -3289,10 +3296,11 @@ If no further table is created, basic node information will be automatically cre
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">new_node_ids</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">))</span>
-            <span class="n">node_id_map</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="n">node_id</span><span class="p">:</span> <span class="n">new_node_id</span>
-                <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">new_node_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">)</span>
-            <span class="p">}</span>
+            <span class="n">node_id_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">id_column_old</span><span class="p">,</span> <span class="n">new_node_ids</span><span class="p">))</span>
+            <span class="c1"># node_id_map = {</span>
+            <span class="c1">#     node_id: new_node_id</span>
+            <span class="c1">#     for node_id, new_node_id in</span>
+            <span class="c1"># }</span>
             <span class="n">new_idx_series</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
                 <span class="n">name</span><span class="o">=</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">new_node_ids</span>
             <span class="p">)</span>
@@ -3391,9 +3399,7 @@ If no further table is created, basic node information will be automatically cre
 
         <details class="quote">
           <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/create.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">476</span>
 <span class="normal">477</span>
 <span class="normal">478</span>
 <span class="normal">479</span>
@@ -3402,7 +3408,9 @@ If no further table is created, basic node information will be automatically cre
 <span class="normal">482</span>
 <span class="normal">483</span>
 <span class="normal">484</span>
-<span class="normal">485</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">FilteredNetworkDataModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">FilteredNetworkDataModule</span><span class="p">(</span><span class="n">KiaraModule</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new network_data instance from an existing one, using only a sub-set of nodes and/or edges.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
@@ -3443,10 +3451,10 @@ If no further table is created, basic node information will be automatically cre
 
       <details class="quote">
         <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/create.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">477</span>
-<span class="normal">478</span>
-<span class="normal">479</span>
-<span class="normal">480</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_inputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
     <span class="k">return</span> <span class="p">{}</span>
@@ -3470,10 +3478,10 @@ If no further table is created, basic node information will be automatically cre
 
       <details class="quote">
         <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/create.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span>
-<span class="normal">485</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_outputs_schema</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValueMapSchema</span><span class="p">:</span>
     <span class="k">return</span> <span class="p">{}</span>
