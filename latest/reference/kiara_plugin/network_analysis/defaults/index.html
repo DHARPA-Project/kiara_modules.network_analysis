@@ -546,6 +546,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.defaults.IS_CUTPOINT_COLUMN_NAME" class="md-nav__link">
+    IS_CUTPOINT_COLUMN_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.defaults.EDGES_TABLE_NAME" class="md-nav__link">
     EDGES_TABLE_NAME
   </a>
@@ -1226,6 +1233,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.defaults.IS_CUTPOINT_COLUMN_NAME" class="md-nav__link">
+    IS_CUTPOINT_COLUMN_NAME
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.defaults.EDGES_TABLE_NAME" class="md-nav__link">
     EDGES_TABLE_NAME
   </a>
@@ -1746,6 +1760,25 @@
   </span>
 
 <a href="#kiara_plugin.network_analysis.defaults.COMPONENT_ID_COLUMN_NAME" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_plugin.network_analysis.defaults.IS_CUTPOINT_COLUMN_NAME" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">IS_CUTPOINT_COLUMN_NAME</span> <span class="o">=</span> <span class="s1">&#39;is_cut_point&#39;</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#kiara_plugin.network_analysis.defaults.IS_CUTPOINT_COLUMN_NAME" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
@@ -2495,9 +2528,9 @@
 
         <details class="quote">
           <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/defaults.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataTableType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataTableType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">EDGES</span> <span class="o">=</span> <span class="n">EDGES_TABLE_NAME</span>
     <span class="n">NODES</span> <span class="o">=</span> <span class="n">NODES_TABLE_NAME</span>
 </code></pre></div></td></tr></table></div>
@@ -2582,11 +2615,11 @@
 
         <details class="quote">
           <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/defaults.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">82</span>
-<span class="normal">83</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">GraphType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">GraphType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">UNDIRECTED</span> <span class="o">=</span> <span class="s2">&quot;undirected&quot;</span>
     <span class="n">DIRECTED</span> <span class="o">=</span> <span class="s2">&quot;directed&quot;</span>
     <span class="n">DIRECTED_MULTI</span> <span class="o">=</span> <span class="s2">&quot;directed_multi&quot;</span>

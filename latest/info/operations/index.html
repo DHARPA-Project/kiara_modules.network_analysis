@@ -395,6 +395,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data.extract_cut_points" class="md-nav__link">
+    network_data.extract_cut_points
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kiara_info.operations.network_data_filter.component" class="md-nav__link">
     network_data_filter.component
   </a>
@@ -858,6 +865,13 @@
         <li class="md-nav__item">
   <a href="#kiara_info.operations.network_data.extract_components" class="md-nav__link">
     network_data.extract_components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiara_info.operations.network_data.extract_cut_points" class="md-nav__link">
+    network_data.extract_cut_points
   </a>
   
 </li>
@@ -1649,6 +1663,71 @@ If no further table is created, basic node information will be automatically cre
 <td>is_connected</td>
 <td>boolean</td>
 <td>Whether the graph is connected or not.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+</table><h3 id="kiara_info.operations.network_data.extract_cut_points"><code>network_data.extract_cut_points</code><a class="headerlink" href="#kiara_info.operations.network_data.extract_cut_points" title="Permanent link">&para;</a></h3>
+
+
+<table>
+    <tr>
+        <td>Documentation</td>
+        <td><p>Create a list of nodes that are cut-points.</p>
+<p>Cut-points are any node in a network whose removal disconnects members of the network, creating one or more new distinct components.</p>
+<p>Uses the <a href="https://qiskit.org/documentation/retworkx/dev/apiref/rustworkx.articulation_points.html#rustworkx-articulation-points">rustworkx.articulation_points</a> function.</p>
+</td>
+    </tr>
+    <tr>
+        <td>Inputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network graph being queried.</td>
+<td>yes</td>
+<td></td>
+    </tr>
+
+    </tbody>
+</table>
+</td>
+    </tr>
+    <tr>
+        <td>Outputs</td>
+        <td>
+<table>
+    <thead>
+    <tr>
+        <th>field name</th>
+        <th>type</th>
+        <th>description</th>
+        <th>required</th>
+        <th>default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+<td>network_data</td>
+<td>network_data</td>
+<td>The network_data, with a new column added to the nodes table, indicating whether the node is a cut-point or not. The column is named &#39;is_cut_point&#39; and is of type &#39;boolean&#39;.</td>
 <td>yes</td>
 <td></td>
     </tr>
