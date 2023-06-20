@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
@@ -504,6 +504,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../models/inputs/" class="md-nav__link">
+        inputs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../models/metadata/" class="md-nav__link">
         metadata
       </a>
@@ -972,7 +986,7 @@
   </table>
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 42</span>
 <span class="normal"> 43</span>
 <span class="normal"> 44</span>
@@ -1166,7 +1180,7 @@
   </table>
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
@@ -1289,7 +1303,7 @@
   <div class="doc doc-contents ">
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -1359,12 +1373,12 @@
 <span class="s2">    SELECT</span>
 <span class="s2">         </span><span class="si">{</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
 <span class="s2">         </span><span class="si">{</span><span class="n">LABEL_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) + COALESCE(</span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">CONNECTIONS_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) + COALESCE(</span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">CONNECTIONS_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
-<span class="s2">         COALESCE(</span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span>
+<span class="s2">         COALESCE(e1.</span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) + COALESCE(e3.</span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">CONNECTIONS_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">         COALESCE(e2.</span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) + COALESCE(e4.</span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">CONNECTIONS_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">         COALESCE(e1.</span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">IN_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">         COALESCE(e2.</span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">IN_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">         COALESCE(e3.</span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">OUT_DIRECTED_COLUMN_NAME</span><span class="si">}</span><span class="s2">,</span>
+<span class="s2">         COALESCE(e4.</span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span><span class="s2">, 0) as </span><span class="si">{</span><span class="n">OUT_DIRECTED_MULTI_COLUMN_NAME</span><span class="si">}</span>
 <span class="s2">         </span><span class="si">{</span><span class="n">other_columns</span><span class="si">}</span>
 <span class="s2">         FROM nodes_table n</span>
 <span class="s2">         left join</span>
@@ -1406,7 +1420,7 @@
       <p>Augment the edges table with additional pre-computed columns for directed and undirected weights..</p>
 
       <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
@@ -1525,7 +1539,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a51614de.min.js"></script>
       
     
   </body>
