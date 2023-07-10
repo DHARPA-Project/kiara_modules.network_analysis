@@ -17,7 +17,7 @@
         <link rel="next" href="../data_types/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -664,6 +664,100 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_6" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../streamlit/__init__/">streamlit</a>
+          
+            <label for="__nav_5_1_1_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          streamlit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_6_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../streamlit/components/__init__/">components</a>
+          
+            <label for="__nav_5_1_1_6_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_1_1_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../streamlit/components/data_import/" class="md-nav__link">
+        data_import
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../utils/" class="md-nav__link">
         utils
@@ -763,6 +857,13 @@
           <li class="md-nav__item">
   <a href="#kiara_plugin.network_analysis.find_pipelines" class="md-nav__link">
     find_pipelines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiara_plugin.network_analysis.find_kiara_streamlit_components" class="md-nav__link">
+    find_kiara_streamlit_components
   </a>
   
 </li>
@@ -925,6 +1026,25 @@
 
 </div>
 
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="kiara_plugin.network_analysis.find_kiara_streamlit_components" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">find_kiara_streamlit_components</span><span class="p">:</span> <span class="n">KiaraEntryPointItem</span> <span class="o">=</span> <span class="p">(</span><span class="n">find_kiara_streamlit_components_under</span><span class="p">,</span> <span class="s1">&#39;kiara_plugin.network_analysis.streamlit.components&#39;</span><span class="p">)</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#kiara_plugin.network_analysis.find_kiara_streamlit_components" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
 <h2 id="kiara_plugin.network_analysis-functions">Functions<a href="#kiara_plugin.network_analysis-functions" class="headerlink" title="Permanent link">&para;</a></h2>
 
 <div class="doc doc-object doc-function">
@@ -941,16 +1061,7 @@
 
       <details class="quote">
         <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/__init__.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
@@ -965,7 +1076,16 @@
 <span class="normal">77</span>
 <span class="normal">78</span>
 <span class="normal">79</span>
-<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_version</span><span class="p">():</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_version</span><span class="p">():</span>
     <span class="kn">from</span> <span class="nn">pkg_resources</span> <span class="kn">import</span> <span class="n">DistributionNotFound</span><span class="p">,</span> <span class="n">get_distribution</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -1040,10 +1160,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>

@@ -17,7 +17,7 @@
         <link rel="next" href="../inputs/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -656,6 +656,100 @@
       <a href="../../pipelines/__init__/" class="md-nav__link">
         pipelines
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_6" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../streamlit/__init__/">streamlit</a>
+          
+            <label for="__nav_5_1_1_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_1_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_6">
+          <span class="md-nav__icon md-icon"></span>
+          streamlit
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1_6_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../streamlit/components/__init__/">components</a>
+          
+            <label for="__nav_5_1_1_6_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_1_1_6_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1_1_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../streamlit/components/data_import/" class="md-nav__link">
+        data_import
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2051,7 +2145,7 @@ sub-class a pydantic BaseModel or implement custom base classes.</p>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the node attributes that should be included in the output.&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">incl_node_attributes</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">node_attr_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">]</span>
+            <span class="n">node_attr_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">all_node_attr_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">column_names</span>
             <span class="k">if</span> <span class="n">incl_node_attributes</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -3621,8 +3715,8 @@ the original network_data. The original _node_id will be set as an attribute (<c
 <code class="highlight language-python"><span class="n">number_of_edges</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;The number of edges.&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#kiara_plugin.network_analysis.models.GraphProperties.number_of_edges" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -3641,8 +3735,8 @@ the original network_data. The original _node_id will be set as an attribute (<c
 <code class="highlight language-python"><span class="n">parallel_edges</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;The number of parallel edges (if &#39;multi&#39; graph type).&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#kiara_plugin.network_analysis.models.GraphProperties.parallel_edges" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -3874,8 +3968,8 @@ the original network_data. The original _node_id will be set as an attribute (<c
 <code class="highlight language-python"><span class="n">number_of_nodes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of nodes in the network graph.&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_nodes" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -3894,8 +3988,8 @@ the original network_data. The original _node_id will be set as an attribute (<c
 <code class="highlight language-python"><span class="n">properties_by_graph_type</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">GraphType</span><span class="o">.</span><span class="n">DIRECTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">GraphType</span><span class="o">.</span><span class="n">UNDIRECTED</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">GraphType</span><span class="o">.</span><span class="n">UNDIRECTED_MULTI</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">GraphType</span><span class="o">.</span><span class="n">DIRECTED_MULTI</span><span class="o">.</span><span class="n">value</span><span class="p">],</span> <span class="n">GraphProperties</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Properties of the network data, by graph type.&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.properties_by_graph_type" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -3914,8 +4008,8 @@ the original network_data. The original _node_id will be set as an attribute (<c
 <code class="highlight language-python"><span class="n">number_of_self_loops</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of edges where source and target point to the same node.&#39;</span><span class="p">)</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
   </span>
 
 <a href="#kiara_plugin.network_analysis.models.NetworkGraphProperties.number_of_self_loops" class="headerlink" title="Permanent link">&para;</a></h5>
@@ -4157,10 +4251,10 @@ the original network_data. The original _node_id will be set as an attribute (<c
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tracking"], "search": "../../../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
