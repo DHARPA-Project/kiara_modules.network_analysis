@@ -1046,7 +1046,13 @@
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataPreview</span><span class="p">(</span><span class="n">PreviewComponent</span><span class="p">):</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">NetworkDataPreview</span><span class="p">(</span><span class="n">PreviewComponent</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Preview a value of type &#39;network data&#39;.</span>
 
 <span class="sd">    Currently, this displays a graph, as well as the nodes and edges tables. The graph is only a preview, and takes a while to render depending on the network data size, this will replaced at some point.</span>
@@ -1068,18 +1074,20 @@
 
         <span class="n">_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
-        <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;edges&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">show_properties</span><span class="p">:</span>
+            <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;Edges&quot;</span><span class="p">,</span> <span class="s2">&quot;Graph&quot;</span><span class="p">,</span> <span class="s2">&quot;Value properties&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;Edges&quot;</span><span class="p">,</span> <span class="s2">&quot;Graph&quot;</span><span class="p">]</span>
 
         <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">_value</span><span class="o">.</span><span class="n">data</span>
         <span class="n">tabs</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tabs</span><span class="p">(</span><span class="n">tab_names</span><span class="p">)</span>
 
-        <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">NODES_TABLE_NAME</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-
+            <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">NODES_TABLE_NAME</span><span class="p">)</span>
             <span class="n">_callback</span><span class="p">,</span> <span class="n">_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_store_callback</span><span class="p">(</span>
                 <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;nodes&quot;</span>
             <span class="p">)</span>
-            <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
+            <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
                 <span class="s2">&quot;Show computed columns&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">show_internal_columns</span><span class="p">:</span>
@@ -1091,18 +1099,18 @@
                     <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span>
                     <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
                 <span class="p">)</span>
-            <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+            <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
                 <span class="n">nodes_table</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(</span><span class="n">exclude_columns</span><span class="o">=</span><span class="n">exclude_columns</span><span class="p">),</span>
                 <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="n">edges_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">EDGES_TABLE_NAME</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">edges_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">EDGES_TABLE_NAME</span><span class="p">)</span>
             <span class="n">_callback</span><span class="p">,</span> <span class="n">_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_store_callback</span><span class="p">(</span>
                 <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;edges&quot;</span>
             <span class="p">)</span>
-            <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
+            <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
                 <span class="s2">&quot;Show computed columns&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">show_internal_columns</span><span class="p">:</span>
@@ -1115,7 +1123,7 @@
                     <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">EDGE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">SOURCE_COLUMN_NAME</span><span class="p">,</span> <span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
                     <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
                 <span class="p">)</span>
-            <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+            <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
                 <span class="n">edges_table</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(</span><span class="n">exclude_columns</span><span class="o">=</span><span class="n">exclude_columns</span><span class="p">),</span>
                 <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1127,7 +1135,7 @@
                 <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;graphs&quot;</span>
             <span class="p">)</span>
             <span class="n">graph_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;non-directed&quot;</span><span class="p">,</span> <span class="s2">&quot;directed&quot;</span><span class="p">]</span>
-            <span class="n">graph_type</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
+            <span class="n">graph_type</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
                 <span class="s2">&quot;Graph type&quot;</span><span class="p">,</span> <span class="n">graph_types</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">graph_type</span> <span class="o">==</span> <span class="s2">&quot;non-directed&quot;</span><span class="p">:</span>
@@ -1152,6 +1160,10 @@
 
             <span class="n">html</span> <span class="o">=</span> <span class="n">vis_graph</span><span class="o">.</span><span class="n">generate_html</span><span class="p">()</span>
             <span class="n">components</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">435</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">show_properties</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+                <span class="n">comp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_component</span><span class="p">(</span><span class="s2">&quot;display_value_properties&quot;</span><span class="p">)</span>
+                <span class="n">comp</span><span class="o">.</span><span class="n">render_func</span><span class="p">(</span><span class="n">tabs</span><span class="p">[</span><span class="mi">3</span><span class="p">])(</span><span class="n">value</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1303,7 +1315,13 @@
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">render_preview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">st</span><span class="p">:</span> <span class="n">DeltaGenerator</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PreviewOptions</span><span class="p">):</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">render_preview</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">st</span><span class="p">:</span> <span class="n">DeltaGenerator</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PreviewOptions</span><span class="p">):</span>
 
     <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
     <span class="kn">import</span> <span class="nn">streamlit.components.v1</span> <span class="k">as</span> <span class="nn">components</span>
@@ -1313,18 +1331,20 @@
 
     <span class="n">_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
-    <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;edges&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">show_properties</span><span class="p">:</span>
+        <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;Edges&quot;</span><span class="p">,</span> <span class="s2">&quot;Graph&quot;</span><span class="p">,</span> <span class="s2">&quot;Value properties&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tab_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;Edges&quot;</span><span class="p">,</span> <span class="s2">&quot;Graph&quot;</span><span class="p">]</span>
 
     <span class="n">network_data</span><span class="p">:</span> <span class="n">NetworkData</span> <span class="o">=</span> <span class="n">_value</span><span class="o">.</span><span class="n">data</span>
     <span class="n">tabs</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tabs</span><span class="p">(</span><span class="n">tab_names</span><span class="p">)</span>
 
-    <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">NODES_TABLE_NAME</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-
+        <span class="n">nodes_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">NODES_TABLE_NAME</span><span class="p">)</span>
         <span class="n">_callback</span><span class="p">,</span> <span class="n">_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_store_callback</span><span class="p">(</span>
             <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;nodes&quot;</span>
         <span class="p">)</span>
-        <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
+        <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
             <span class="s2">&quot;Show computed columns&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">show_internal_columns</span><span class="p">:</span>
@@ -1336,18 +1356,18 @@
                 <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">NODE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">LABEL_COLUMN_NAME</span><span class="p">]</span>
                 <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
             <span class="p">)</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+        <span class="n">tabs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
             <span class="n">nodes_table</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(</span><span class="n">exclude_columns</span><span class="o">=</span><span class="n">exclude_columns</span><span class="p">),</span>
             <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="n">edges_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">EDGES_TABLE_NAME</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">edges_table</span> <span class="o">=</span> <span class="n">network_data</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">EDGES_TABLE_NAME</span><span class="p">)</span>
         <span class="n">_callback</span><span class="p">,</span> <span class="n">_key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_session_store_callback</span><span class="p">(</span>
             <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;edges&quot;</span>
         <span class="p">)</span>
-        <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
+        <span class="n">show_internal_columns</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span>
             <span class="s2">&quot;Show computed columns&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">show_internal_columns</span><span class="p">:</span>
@@ -1360,7 +1380,7 @@
                 <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">EDGE_ID_COLUMN_NAME</span><span class="p">,</span> <span class="n">SOURCE_COLUMN_NAME</span><span class="p">,</span> <span class="n">TARGET_COLUMN_NAME</span><span class="p">]</span>
                 <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
             <span class="p">)</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+        <span class="n">tabs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
             <span class="n">edges_table</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(</span><span class="n">exclude_columns</span><span class="o">=</span><span class="n">exclude_columns</span><span class="p">),</span>
             <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">hide_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1372,7 +1392,7 @@
             <span class="n">options</span><span class="p">,</span> <span class="s2">&quot;preview&quot;</span><span class="p">,</span> <span class="s2">&quot;network_data&quot;</span><span class="p">,</span> <span class="s2">&quot;graphs&quot;</span>
         <span class="p">)</span>
         <span class="n">graph_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;non-directed&quot;</span><span class="p">,</span> <span class="s2">&quot;directed&quot;</span><span class="p">]</span>
-        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
+        <span class="n">graph_type</span> <span class="o">=</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span>
             <span class="s2">&quot;Graph type&quot;</span><span class="p">,</span> <span class="n">graph_types</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">_key</span><span class="p">,</span> <span class="n">on_change</span><span class="o">=</span><span class="n">_callback</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">graph_type</span> <span class="o">==</span> <span class="s2">&quot;non-directed&quot;</span><span class="p">:</span>
@@ -1397,6 +1417,10 @@
 
         <span class="n">html</span> <span class="o">=</span> <span class="n">vis_graph</span><span class="o">.</span><span class="n">generate_html</span><span class="p">()</span>
         <span class="n">components</span><span class="o">.</span><span class="n">html</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">435</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">show_properties</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tabs</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+            <span class="n">comp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_component</span><span class="p">(</span><span class="s2">&quot;display_value_properties&quot;</span><span class="p">)</span>
+            <span class="n">comp</span><span class="o">.</span><span class="n">render_func</span><span class="p">(</span><span class="n">tabs</span><span class="p">[</span><span class="mi">3</span><span class="p">])(</span><span class="n">value</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
