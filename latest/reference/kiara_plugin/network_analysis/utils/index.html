@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -987,6 +987,7 @@
 
 <h2 id="kiara_plugin.network_analysis.utils-functions">Functions<a href="#kiara_plugin.network_analysis.utils-functions" class="headerlink" title="Permanent link">&para;</a></h2>
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1000,6 +1001,8 @@
   <div class="doc doc-contents ">
   
       <p>Extract the nodes of a networkx graph as a pyarrow table.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1057,6 +1060,8 @@
     </tbody>
   </table>
 
+
+
   <p><strong>Returns:</strong></p>
   <table>
     <thead>
@@ -1079,9 +1084,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 42</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 42</span>
 <span class="normal"> 43</span>
 <span class="normal"> 44</span>
 <span class="normal"> 45</span>
@@ -1211,10 +1216,11 @@
 
     <span class="k">return</span> <span class="n">nodes_table</span><span class="p">,</span> <span class="n">nodes_map</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1230,6 +1236,8 @@
   
       <p>Extract the edges of this graph as a pyarrow table.</p>
 <p>The provided <code>node_id_map</code> might be modified if a node id is not yet in the map.</p>
+
+
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -1273,9 +1281,9 @@
     </tbody>
   </table>
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
@@ -1379,10 +1387,11 @@
 
     <span class="k">return</span> <span class="n">edges_table</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1396,9 +1405,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
 <span class="normal">166</span>
@@ -1494,10 +1503,11 @@
     <span class="n">nodes_table_augmented</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">arrow</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">nodes_table_augmented</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1513,9 +1523,9 @@
   
       <p>Augment the edges table with additional pre-computed columns for directed and undirected weights..</p>
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/utils.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
 <span class="normal">214</span>
 <span class="normal">215</span>
 <span class="normal">216</span>
@@ -1581,7 +1591,7 @@
     <span class="n">edges_table_augmented</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">arrow</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">edges_table_augmented</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>

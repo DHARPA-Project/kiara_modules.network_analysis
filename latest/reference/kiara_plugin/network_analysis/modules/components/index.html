@@ -17,7 +17,7 @@
         <link rel="next" href="../create/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -1304,25 +1304,24 @@
 
 
 <h3 id="kiara_plugin.network_analysis.modules.components.ExtractLargestComponentModule" class="doc doc-heading">
-        <code>ExtractLargestComponentModule</code>
+          <code>ExtractLargestComponentModule</code>
 
 
 <a href="#kiara_plugin.network_analysis.modules.components.ExtractLargestComponentModule" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
 
   
       <p>Extract the largest connected component from this network data.</p>
 <p>This module analyses network data and checks if it contains clusters, and if so, how many. If all nodes are connected, all nodes will have '0' as value in the component_id field.</p>
 <p>Otherwise, the nodes will be assigned 'component_id'-s according to the component they belong to, with the  largest component having '0' as component_id, the second largest '1' and so on. If two components have the same size, who gets the higher component_id is not determinate.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 32</span>
+            <details class="quote">
+              <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 32</span>
 <span class="normal"> 33</span>
 <span class="normal"> 34</span>
 <span class="normal"> 35</span>
@@ -1560,7 +1559,7 @@
             <span class="n">network_data</span><span class="o">=</span><span class="n">network_data</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -1574,6 +1573,7 @@
 
 <h4 id="kiara_plugin.network_analysis.modules.components.ExtractLargestComponentModule-functions">Functions<a href="#kiara_plugin.network_analysis.modules.components.ExtractLargestComponentModule-functions" class="headerlink" title="Permanent link">&para;</a></h4>
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -1586,9 +1586,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
@@ -1608,10 +1608,11 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1625,9 +1626,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
@@ -1667,10 +1668,11 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">result</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -1684,9 +1686,9 @@
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 74</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 74</span>
 <span class="normal"> 75</span>
 <span class="normal"> 76</span>
 <span class="normal"> 77</span>
@@ -1840,7 +1842,7 @@
         <span class="n">network_data</span><span class="o">=</span><span class="n">network_data</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
@@ -1858,25 +1860,24 @@
 
 
 <h3 id="kiara_plugin.network_analysis.modules.components.CutPointsList" class="doc doc-heading">
-        <code>CutPointsList</code>
+          <code>CutPointsList</code>
 
 
 <a href="#kiara_plugin.network_analysis.modules.components.CutPointsList" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
   <div class="doc doc-contents ">
-      <p class="doc doc-class-bases">
-        Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-external" title="kiara.api.KiaraModule" href="https://dharpa.org/kiara/latest/reference/kiara/api/#kiara.api.KiaraModule">KiaraModule</a></code></p>
 
   
       <p>Create a list of nodes that are cut-points.
 Cut-points are any node in a network whose removal disconnects members of the network, creating one or more new distinct components.</p>
 <p>Uses the <a href="https://qiskit.org/documentation/retworkx/dev/apiref/rustworkx.articulation_points.html#rustworkx-articulation-points">rustworkx.articulation_points</a> function.</p>
 
-
-        <details class="quote">
-          <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
+            <details class="quote">
+              <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
 <span class="normal">156</span>
@@ -2016,7 +2017,7 @@ Cut-points are any node in a network whose removal disconnects members of the ne
         <span class="p">)</span>
         <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">network_data</span><span class="o">=</span><span class="n">network_data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-        </details>
+            </details>
 
   
 
@@ -2030,6 +2031,7 @@ Cut-points are any node in a network whose removal disconnects members of the ne
 
 <h4 id="kiara_plugin.network_analysis.modules.components.CutPointsList-functions">Functions<a href="#kiara_plugin.network_analysis.modules.components.CutPointsList-functions" class="headerlink" title="Permanent link">&para;</a></h4>
 
+
 <div class="doc doc-object doc-function">
 
 
@@ -2042,9 +2044,9 @@ Cut-points are any node in a network whose removal disconnects members of the ne
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -2058,10 +2060,11 @@ Cut-points are any node in a network whose removal disconnects members of the ne
         <span class="p">}</span>
     <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2075,9 +2078,9 @@ Cut-points are any node in a network whose removal disconnects members of the ne
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
@@ -2091,10 +2094,11 @@ Cut-points are any node in a network whose removal disconnects members of the ne
         <span class="p">}</span>
     <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
@@ -2108,9 +2112,9 @@ Cut-points are any node in a network whose removal disconnects members of the ne
 
   <div class="doc doc-contents ">
 
-      <details class="quote">
-        <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">178</span>
+          <details class="quote">
+            <summary>Source code in <code>/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/kiara_plugin/network_analysis/modules/components.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">178</span>
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
@@ -2200,7 +2204,7 @@ Cut-points are any node in a network whose removal disconnects members of the ne
     <span class="p">)</span>
     <span class="n">outputs</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="n">network_data</span><span class="o">=</span><span class="n">network_data</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-      </details>
+          </details>
   </div>
 
 </div>
